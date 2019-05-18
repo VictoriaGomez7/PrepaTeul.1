@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color:#033145;
+}
+
+.content-all{
+    width: 80%;
+    height: 320px;
+    margin: auto;
+    position: relative;
+    margin-top: 190px;
+}
+
+/*.boton1 button{
+    width: 100%;
+    height: 100px;
+    font-size: 600%;
+    font-family: Arial BlackL;
+    color: rgb(171,186,14);
+}
+
+.boton2 button{
+    width: 100%;
+    height: 100px;
+      font-size: 600%;
+      font-family: Arial BlackL;
+      color: rgb(171,186,14);
+}
+
+.boton3 button{
+    width: 100%;
+    height: 100px;
+      font-size: 600%;
+      font-family: Arial BlackL;
+      color: rgb(171,186,14);
+}
+
+.boton4 button{
+    width: 100%;
+    height: 100px;
+      font-size: 600%;
+      font-family: Arial BlackL;
+      color: rgb(171,186,14);
+}
+
+.boton5 button{
+    width: 100%;
+    height: 100px;
+      font-size: 600%;
+      font-family: Arial BlackL;
+      color: rgb(171,186,14);
+}
+
+.boton6 button{
+    width: 100%;
+    height: 100px;
+      font-size: 600%;
+      font-family: Arial BlackL;
+      color: rgb(171,186,14);
+}*/
+
+
+
+
+
+.content-carrousel{
+    width: 100%;
+    align-content: center;
+    position: absolute;
+}
+
+.content-carrousel:hover{
+    animation-play-state: paused;
+    cursor: pointer;
+}
+
+.content-carrousel img{
+    width: 1050px;
+    height: 300px;
+    transition: all 300ms;
+    overflow: hidden;
+    position: absolute;
+    box-shadow: 0px 0px 20px 0px black;
+    transition: all 300ms;
+    background-color: white;
+}
+
+.content-carrousel img:hover{
+    transform: scale(1.1);
+    transition: all 300ms;
+}
+

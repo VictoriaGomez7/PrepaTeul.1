@@ -1,0 +1,62 @@
+body{
+    /*background-color:#033145;*/
+    background-color: white;
+}
+/* Estilo Del Menu*/
+header{
+  width: 100%;
+}
+
+.navegacion{
+  width: 1000px;
+  margin: 10px auto;
+  background-color: rgb(171,186,14);
+}
+
+.navegacion ul{
+  list-style: none;
+}
+
+.menu > li{
+  position: relative;
+  display: inline-block;
+  color: black;
+}
+
+.menu > li > a{
+  display: block;
+  padding: 15px 35px;
+  color: #353535;
+  font-family: 'Arial BlackL';
+  font-size: 1.35em;
+  text-decoration: none;
+}
+
+.menu li a:hover{
+  color: #CE7D35;
+  transition: all .3s;
+}
+
+.submenu{
+  position: absolute;
+  z-index: 2;
+  background: #333333;
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 1.5s;
+}
+
+.submenu li a{
+  display: block;
+  padding: 15px;
+  color: #fff;
+  font-family: 'Arial BlackL';
+  text-decoration: none;
+}
+
+.menu li:hover .submenu{
+  visibility: visible;
+  opacity: 1;
+
+}
