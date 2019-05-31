@@ -304,11 +304,11 @@ section {
 			$k=0;
 			$color='#B71C1C';
 			$ColorPrimero='#515A5A'; // es un tono de gris
-			$ColorSegundo='#00FF00'; // es como un verde limon
+			$ColorSegundo='#85C1E9';
 			$ColorTercero='#515A5A';
-			$ColorCuarto='#FFEB3B'; //es como amarillo
+			$ColorCuarto='#F0B27A';
 			$ColorQuinto='#515A5A';
-			$ColorSexto='#0000FF'; // es azul
+			$ColorSexto='#7DCEA0';
 			$NombresPrimero=array( );
 			$NombresSegundo=array( );
 			$NombresTercero=array( );
@@ -434,11 +434,11 @@ section {
 
 	<div style=" position: absolute;top: 100%; left: 5%;">SEMESTRE:</div>
 	<div style="background: #515A5A; position: absolute;top: 100%; left: 11.5%;">Primero</div>
-	<div style="background: #00FF00; position: absolute;top: 100%; left: 16%;">Segundo</div>
+	<div style="background: #85C1E9; position: absolute;top: 100%; left: 16%;">Segundo</div>
 	<div style="background: #515A5A; position: absolute;top: 100%; left: 21%;">Tercero</div>
-	<div style="background: #FFEB3B; position: absolute;top: 100%; left: 25%;">Cuarto</div>
+	<div style="background: #F0B27A; position: absolute;top: 100%; left: 25%;">Cuarto</div>
 	<div style="background: #515A5A; position: absolute;top: 100%; left: 29%;">Quinto</div>
-	<div style="background: #0000FF; position: absolute;top: 100%; left: 33%;">Sexto</div>
+	<div style="background: #7DCEA0; position: absolute;top: 100%; left: 33%;">Sexto</div>
 
 </body>
 
