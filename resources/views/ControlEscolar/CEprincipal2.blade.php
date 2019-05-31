@@ -6,7 +6,8 @@
      <link rel="stylesheet" type="text/css" href="/css/estilos2.css">
       <link rel="stylesheet" type="text/css" href="/css/image.css">
      <link rel="icon" href="/images/escolarcono.ico">
-
+	@extends('layouts.app')
+  
 	<title>Control Escolar</title>
 </head>
 <body>
@@ -41,6 +42,13 @@
 						<li><a href="compro">Formatos PDF</a></li>
 					</ul>
 				</li>
+				<li><a href="#">Asignaciones</a>
+						<ul class="submenu">
+							<li><a href="http://127.0.0.1:8000/grupos">Crear Grupos</a></li>
+							<li><a href="http://127.0.0.1:8000/Asigna">Docentes - Materias</a></li>
+							
+						</ul>
+					</li>
 			</ul>
 		</nav>
 

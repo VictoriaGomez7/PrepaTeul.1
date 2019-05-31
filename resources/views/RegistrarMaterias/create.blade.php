@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <a href="ControlEscolarInicio">
             <button class="btn btn-success" style="position: absolute;top: 120%;left:65%">Cancelar</button></a>
 
@@ -54,16 +54,13 @@
 
             <div style="position: absolute;top: 62%; left: 25%; width: 50%;height:50%; background-color:#aaa">
 
-                <p style="font-size:130%; position:  absolute;top: 10%; left: 10%">{{('Clave:')}}</p>
+                <p style="font-size:130%; position:  absolute;top: 10%; left: 10%">{{('Nombre:')}}</p>
                 <p style="font-size:130%; position:  absolute;top: 25%; left: 10%">{{('Tipo:')}}</p>
                 <p style="font-size:130%; position:  absolute;top: 40%; left: 10%">{{('Bachillerato:')}}</p>
-                <p style="font-size:130%; position:  absolute;top: 55%; left: 10%">{{('Nombre:')}}</p>
-                <p style="font-size:130%; position:  absolute;top: 70%; left: 10%">{{('Semestre:')}}</p>
-                <p style="font-size:130%; position:  absolute;top: 85%; left: 10%">{{('Horas:')}}</p>
+                <p style="font-size:130%; position:  absolute;top: 55%; left: 10%">{{('Semestre:')}}</p>
+                <p style="font-size:130%; position:  absolute;top: 70%; left: 10%">{{('Horas:')}}</p>
 
-                <p><input type="text" placeholder="FB-MAT1" id="id" name="id" value="{{old('id')}}" style="font-size:105%; width: 65%; position:  absolute;top: 10%; left: 30%"/>  </p>
-
-
+                <p><input type="text" placeholder="Matemáticas I" value="{{ old('nombre') }}" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" id="nombre" name="nombre" style="font-size:105%; width:65%; position:  absolute;top: 10%; left: 30%"/></p>
 
                 <select name="tipo" di="tipo" required style="font-size:110%;width: 65%; position:  absolute;top: 25%; left: 30%" onchange="habilitar(this.value)">
                             <option value="{{ old('tipo') }}">{{ old('tipo') }}</option>
@@ -72,17 +69,15 @@
                             <option value="Actividades Paraescolares">Actividades Paraescolares</option>
                             <option value="Formación Básica" selected>Formación Básica</option>
                       </select>
-                <select name="bachillerato" id="bachillerato" style="font-size:110%;width: 65%; position:  absolute;top: 40%; left: 30%" disabled="true">
+                <select name="bachillerato" id="bachillerato" required style="font-size:110%;width: 65%; position:  absolute;top: 40%; left: 30%" disabled="true">
                             <option value="{{ old('tipo') }}">{{ old('tipo') }}</option>
                             <option value="Químico Biológico">Químico Biológico</option>
                             <option value="Físico Matemático">Físico Matemático</option>
                             <option value="Ciencias sociales y humanidades">Ciencias sociales y humanidades</option>
                             <option value="Económico Administrativo">Económico Administrativo</option>
                       </select>
-
-                <p><input type="text" placeholder="Matemáticas I" value="{{ old('nombre') }}" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" id="nombre" name="nombre" style="font-size:105%; width:65%; position:  absolute;top: 55%; left: 30%"/></p>
                 
-                <select name="semestre" required style="font-size:110%;width: 65%;;position: absolute;top:70%; left:30%;">
+                <select name="semestre" required style="font-size:110%;width: 65%;;position: absolute;top:55%; left:30%;">
                             <option value="{{ old('semestre') }}">{{ old('semestre') }}</option>
                             <option value="PRIMER SEMESTRE" selected>PRIMER SEMESTRE</option>
                             <option value="SEGUNDO SEMESTRE">SEGUNDO SEMESTRE</option>
@@ -91,7 +86,7 @@
                             <option value="QUINTO SEMESTRE">QUINTO SEMESTRE</option>
                             <option value="SEXTO SEMESTRE">SEXTO SEMESTRE</option>
                       </select>
-                <p><input type="number" placeholder="1" value="{{ old('horas') }}" required min="1" id="horas" name="horas" style="font-size:105%; width: 65%; position:  absolute;top: 85%; left: 30%"/></p>
+                <p><input type="number" placeholder="1" value="{{ old('horas') }}" required min="1" id="horas" name="horas" style="font-size:105%; width: 65%; position:  absolute;top: 70%; left: 30%"/></p>
             </div>
 
 

@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreTrainerRequest;
-    use App\compromisoEstudiante;
+use App\compromisoEstudiante;
+
 class compromisoEstudianteController extends Controller
 {
     /**

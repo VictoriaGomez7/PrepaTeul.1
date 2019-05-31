@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Docente;
+use App\Docentes;
 Use Session;
 Use Redirect;
 Use Alert;
@@ -22,7 +22,7 @@ class DocenteController extends Controller
     {
       if ($id->name!="" && $id->id1=="")
          {
-            $CDocente = Docente::where('Nombre', $id->name)->get();
+            $CDocente = Docentes::where('Nombre', $id->name)->get();
             if (count($CDocente)==0)
             {
 
@@ -43,7 +43,7 @@ class DocenteController extends Controller
          }
          if ($id->id1!="" && $id->name=="")
          {
-            $CDocente = Docente::where('id', $id->id1)->get();
+            $CDocente = Docentes::where('id', $id->id1)->get();
             if (count($CDocente)==0)
             {
 
@@ -64,7 +64,7 @@ class DocenteController extends Controller
          if ($id->name!="" && $id->id1!="")
          {
             //$CDocente = Docente::where('id', $id->id)->get();
-            $CDocente = Docente::where('id', $id->id1)->get();
+            $CDocente = Docentes::where('id', $id->id1)->get();
             foreach ($CDocente as $key) {
                 # code...
             }
@@ -114,7 +114,7 @@ class DocenteController extends Controller
      */
     public function store(TagStoreRequestDocentes $request)
     {
-        $docente=new Docente();
+        $docente=new Docentes();
         $docente->id=$request['id'];
         $docente->Nombre=$request['nombre'];
         $docente->Domicilio=$request['direccion'];
@@ -141,7 +141,7 @@ class DocenteController extends Controller
     {
         //echo "hola";
         //return $id;
-        $CDocente = Docente::where('id', $id->id)->get();
+        $CDocente = Docentes::where('id', $id->id)->get();
         //return $CAlumno;
         //return $CDocente;
         //return $CDocente;
@@ -165,7 +165,7 @@ class DocenteController extends Controller
         //$docente = Docente::where('Clave', $docente1->clave1)->first();
 
 
-        $docente=Docente::find($ides);
+        $docente=Docentes::find($ides);
 
 
         $docente->Nombre = $NombreN;
@@ -203,9 +203,9 @@ class DocenteController extends Controller
      */
     public function destroy($id)
     {
-        Docente::where('id',$id)->delete();
+        Docentes::where('id',$id)->delete();
       usuariomaestro::where('Usuario',$id)->delete();
-       Docente::get();
+       Docentes::get();
         //return  view('Alumnos.index',compact('alumnos'));
        return Redirect('docenteconsulta')->with('msj1','Docente Eliminado Correctamente');
     }

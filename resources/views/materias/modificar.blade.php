@@ -1,7 +1,9 @@
+<!DOCTYPE html>
 
 <a href="http://127.0.0.1:8000/materiaConsulta">
             <button class="btn btn-success" style="position: absolute;top: 115%;left:65%">Cancelar</button></a>
 <html>
+
 
     <head>
 

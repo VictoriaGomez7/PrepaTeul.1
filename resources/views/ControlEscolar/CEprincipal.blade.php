@@ -2,10 +2,10 @@
 <html>
 <head>
 	<meta charset="utf-8">
-   <link rel="stylesheet" type="text/css" href="/css/style.css">
-     <link rel="stylesheet" type="text/css" href="/css/estilos2.css">
-      <link rel="stylesheet" type="text/css" href="/css/image.css">
-     <link rel="icon" href="/images/escolarcono.ico">
+   	<link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/estilos2.css">
+    <link rel="stylesheet" type="text/css" href="/css/image.css">
+    <link rel="icon" href="/images/escolarcono.ico">
 
 	<title>Control Escolar</title>
 </head>
@@ -42,6 +42,12 @@
 							<li><a href="http://127.0.0.1:8000/compromisos">Agregar Compromisos Estudiantes</a></li>
 							<li><a href="http://127.0.0.1:8000/compromisosFamilia">Agregar Compromisos Familia</a></li>
 							<li><a href="http://127.0.0.1:8000/compro">Formatos PDF</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Asignaciones</a>
+						<ul class="submenu">
+							<li><a href="http://127.0.0.1:8000/grupos">Crear Grupos</a></li>
+							<li><a href="http://127.0.0.1:8000/RelacionDoMa">Docentes - Materias</a></li>
 						</ul>
 					</li>
 				</ul>

@@ -1,7 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <a href="http://127.0.0.1:8000/docenteconsulta">
             <button class="btn btn-success " style="position: absolute;top: 120%;left:25%">Cancelar</button></a>
-
+<html>
 @extends('layouts.app')
 
 @section('title','Docente')
@@ -55,10 +55,14 @@
 
     </form>
 
+
+    @endforeach()
+    @endsection
+</body>
+
+</html>
+
+
     {!!Form::open(['route' => ['Docente.destroy',$docente->id],'method'=>'DELETE'])!!}
     {!!Form::submit('Eliminar',['class'=>'btn btn-danger', 'style'=>'position: absolute;top: 120%;left:69%'])!!}
-        {!! Form::close()!!}
-
-@endforeach()
-</body>
-@endsection
+    {!! Form::close()!!}

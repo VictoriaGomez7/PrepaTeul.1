@@ -51,12 +51,14 @@
           </div>
        </a>
 
-         <a href="LoginDirector">
+        <a href="LoginDirector">
           <div class="Contenedor" id="cuatro">
             <img class="icon" src="/images/icon11.png">
             <p class="texto4">Directivo</p>
           </div>
         </a>
+
+
         </header>
          <div class="content-all">
             <div class="content-carrousel">
@@ -65,7 +67,7 @@
      </div>
      <br>
      <br><br><br><br><br><br><br>
-      <p align="center" style="color: white; font-size: 1.3em;"> Constitución s/n Teúl de González Ortega.</p>
+      <p align="center" style="color: white; font-size: 1.3em;"> Constitución s/n Teul de González Ortega.</p>
       <p align="center" style="color: white; font-size: 1.3em;"> Zac. C.P. 99800</p>
       <p align="center" style="color: white; font-size: 1.3em;">Teléfono (467)-952-71-83  </p>
       <p align="center" style="color: white; font-size: 1.3em;">Correo-e:prepateul@yahoo.com.mx

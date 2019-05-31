@@ -11,6 +11,10 @@
 |
 */
 
+Route::resource('Asigna','Arrastrarcontroller');
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -93,3 +97,5 @@ Route::resource('PDF','PDFController' );
 Route::resource('/formatoestudiantes', 'compromisoEstudianteController');
 
 Route::resource('/formatofamilia', 'compromisoFamiliaController');
+
+Route::resource('/grupos','gruposController');
