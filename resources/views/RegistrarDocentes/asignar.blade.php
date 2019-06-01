@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <a href="http://127.0.0.1:8000/ControlEscolarInicio">
             <button class="btn btn-success" style="position: absolute;top: 100%;left:88%">Cancelar</button></a>
@@ -315,6 +313,11 @@ section {
 			$ColorTercero='#F0B27A';
 			$ColorCuarto='#F0B27A';
 			$ColorQuinto='#7DCEA0';
+			$ColorPrimero='#515A5A'; // es un tono de gris
+			$ColorSegundo='#85C1E9';
+			$ColorTercero='#515A5A';
+			$ColorCuarto='#F0B27A';
+			$ColorQuinto='#515A5A';
 			$ColorSexto='#7DCEA0';
 			$NombresPrimero=array( );
 			$NombresSegundo=array( );
@@ -322,7 +325,6 @@ section {
 			$NombresCuarto=array( );
 			$NombresQuinto=array( );
 			$NombresSexto=array( );
-
 			$ColorPrimeroExtra='#515A5A'; // es un tono de gris
 			$ColorSegundoExtra='#515A5A';
 			$ColorTerceroExtra='#515A5A';
@@ -416,7 +418,7 @@ section {
 
 
 
-		<section style="{{-- background: #E74C3C; --}} width:67%; height: 53%; position: absolute; top: 45%; left: 28%">
+		<section style="{{-- background: #E74C3C; --}} width:67%; height: 53%; position: absolute; top: 45%; left: 26%">
 
 			<?php $var=array('01','02','03','04','05','06','07','08','09','10','11','12','13','14');;
 				$i=0;
@@ -451,6 +453,7 @@ section {
 	<input type="hidden" value="" name="Arreglo" id="Arreglo" >
 	<input type="hidden" value="{{$CadenaDocente}}" name="Arreglo2" id="Arreglo2" >
 	<button type="submit" class="btn btn-primary" style="position: absolute;top: 104%;left:78%">Guardar</button>
+	<button type="submit" class="btn btn-primary" style="position: absolute;top: 105%;left:80%">Guardar</button>
 	{!! Form::close()!!}
 		</section>
 
