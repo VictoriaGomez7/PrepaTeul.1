@@ -18,7 +18,7 @@ section {
 	width: 1000px;
 }
 
-#cuadro1, #cuadro2,#cuadro3,#cuadro4,#cuadro5,#cuadro6,#cuadro7,#cuadro8, #cuadro9,#cuadro10,#cuadro11,#cuadro12,#cuadro13,#cuadro14 {
+#cuadro01, #cuadro02,#cuadro03,#cuadro04,#cuadro05,#cuadro06,#cuadro07,#cuadro08, #cuadro09,#cuadro10,#cuadro11,#cuadro12,#cuadro13,#cuadro14 {
 	float: left;
 	width: 220px;
 	height: 230px;
@@ -26,38 +26,38 @@ section {
 	margin: 10px;
 }
 
-#cuadro1{
+#cuadro01{
 	background: white;
 }
 
-#cuadro2 {
+#cuadro02 {
 	background: white;
 }
 
-#cuadro3 {
+#cuadro03 {
 	background: white;
 }
 
-#cuadro4 {
+#cuadro04 {
 	background: white;
 }
 
-#cuadro5 {
+#cuadro05 {
 	background: white;
 }
-#cuadro6{
-	background: white;
-}
-
-#cuadro7 {
+#cuadro06{
 	background: white;
 }
 
-#cuadro8 {
+#cuadro07 {
 	background: white;
 }
 
-#cuadro9 {
+#cuadro08 {
+	background: white;
+}
+
+#cuadro09 {
 	background: white;
 }
 
@@ -147,7 +147,6 @@ section {
 
 	</style>
 	<script type="text/javascript">
-		contador = 0; // Variable global para tener poder poner un id unico a cada elemento cuando se clona.
 		materiaObtenida="";
 		docenteObtenido="";
 		MateriYCuadro=[];
@@ -199,33 +198,33 @@ section {
 
 
 			// return false para que se pueda soltar
-			if (id == 'cuadro1'){
-				return false; // Cualquier elemento se puede soltar sobre el div destino 1
+			if (id == 'cuadro01'){
+				return false;
 			}
 
-			if ((id == 'cuadro2')){
-				return false; // En el cuadro2 se puede soltar cualquier elemento menos el elemento con id=arrastrable3
+			if ((id == 'cuadro02')){
+				return false;
 			}
 
-			if (id == 'cuadro3'){
+			if (id == 'cuadro03'){
 				return false;
 			}
-			if (id == 'cuadro4'){
+			if (id == 'cuadro04'){
 				return false;
 			}
-			if (id == 'cuadro5'){
+			if (id == 'cuadro05'){
 				return false;
 			}
-			if (id == 'cuadro6'){
+			if (id == 'cuadro06'){
 				return false;
 			}
-			if (id == 'cuadro7'){
+			if (id == 'cuadro07'){
 				return false;
 			}
-			if (id == 'cuadro8'){
+			if (id == 'cuadro08'){
 				return false;
 			}
-			if (id == 'cuadro9'){
+			if (id == 'cuadro09'){
 				return false;
 			}
 			if (id == 'cuadro10'){
@@ -291,6 +290,14 @@ section {
 	</script>
 </head>
 <body>
+
+	@if (session()->has('msj'))
+        <div class="alert alert-success" role="alert" style="width: 50%; position:  absolute;top: 43%; left: 25%;z-index: 1;">
+            <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                <strong>¡Correcto! </strong>{{ session('msj') }}
+        </div>
+    @endif
+
 	<div style="background: #000080; width:20%; height: 10%; position: absolute; top: 45%; left: 5%;">
 		<p style="text-align:  center; font-size:160%; color: rgb(212, 172, 13)">
 			Materias
@@ -298,23 +305,30 @@ section {
 	</div>
 
 	<section style="background: #aaa; width:20%; height: 42%; position: absolute; top: 55%; left: 5%; overflow-y: scroll; text-align:  center;">
-		<?php $var=array(1,2,3,4,5,6,7,8,9,10,11,12,13,14);
+		<?php $var=array('01','02','03','04','05','06','07','08','09','10','11','12','13','14');
 			$i=0;
 			$j=0;
 			$k=0;
 			$color='#B71C1C';
-			$ColorPrimero='#515A5A'; // es un tono de gris
-			$ColorSegundo='#00FF00'; // es como un verde limon
-			$ColorTercero='#515A5A';
-			$ColorCuarto='#FFEB3B'; //es como amarillo
-			$ColorQuinto='#515A5A';
-			$ColorSexto='#0000FF'; // es azul
+			$ColorPrimero='#85C1E9'; // es un tono de gris
+			$ColorSegundo='#85C1E9';
+			$ColorTercero='#F0B27A';
+			$ColorCuarto='#F0B27A';
+			$ColorQuinto='#7DCEA0';
+			$ColorSexto='#7DCEA0';
 			$NombresPrimero=array( );
 			$NombresSegundo=array( );
 			$NombresTercero=array( );
 			$NombresCuarto=array( );
 			$NombresQuinto=array( );
 			$NombresSexto=array( );
+
+			$ColorPrimeroExtra='#515A5A'; // es un tono de gris
+			$ColorSegundoExtra='#515A5A';
+			$ColorTerceroExtra='#515A5A';
+			$ColorCuartoExtra='#515A5A';
+			$ColorQuintoExtra='#515A5A';
+			$ColorSextoExtra='#515A5A';
 
 		?>
 			@foreach ($M_P_S as $M_P) {{-- ES EL CICLO PARA NOM DE PRIMER SEM --}}
@@ -356,7 +370,7 @@ section {
 			@foreach($Materias as $Materia)
 
 				<?php
-					if ($num=2){
+					if ($num=1){
 						if (in_array($Materia->Nombre,$NombresSegundo)){
 							$color=$ColorSegundo;
 						}
@@ -366,11 +380,14 @@ section {
 						elseif (in_array($Materia->Nombre,$NombresSexto)){
 							$color=$ColorSexto;
 						}
-						else{
-							$color='#B71C1C';
-						}
+						$ColorPrimeroExtra='#515A5A'; // es un tono de gris
+						$ColorSegundoExtra='#85C1E9';
+						$ColorTerceroExtra='#515A5A';
+						$ColorCuartoExtra='#F0B27A';
+						$ColorQuintoExtra='#515A5A';
+						$ColorSextoExtra='#7DCEA0';
 					}
-					else{
+					if ($num2=1){
 						if (in_array($Materia->Nombre,$NombresPrimero)){
 							$color=$ColorPrimero;
 						}
@@ -380,9 +397,12 @@ section {
 						elseif (in_array($Materia->Nombre,$NombresQuinto)){
 							$color=$ColorQuinto;
 						}
-						else{
-							$color='#B71C1C';
-						}
+						$ColorPrimeroExtra='#85C1E9'; // es un tono de gris
+						$ColorSegundoExtra='#515A5A';
+						$ColorTerceroExtra='#F0B27A';
+						$ColorCuartoExtra='#515A5A';
+						$ColorQuintoExtra='#7DCEA0';
+						$ColorSextoExtra='#515A5A';
 					}
 				;?>
 
@@ -390,13 +410,15 @@ section {
 				<input class="cuadradito" style="background: {{ ($color) }};border: 2px solid #0000000; width: 200px;height: 30px; margin: 5px;" readonly id="arrastrable{{$j}}" draggable="true" ondragstart="start(event)" ondragend="end(event)" value='{{($Materia->Nombre)}}'>
 			@endforeach
 
+			
+
 	</section>
 
 
 
 		<section style="{{-- background: #E74C3C; --}} width:67%; height: 53%; position: absolute; top: 45%; left: 28%">
 
-			<?php $var=array(1,2,3,4,5,6,7,8,9,10,11,12,13,14);
+			<?php $var=array('01','02','03','04','05','06','07','08','09','10','11','12','13','14');;
 				$i=0;
 				$j=0;
 				$k=0;
@@ -416,9 +438,10 @@ section {
 						</tr>
 						<tbody>
 							@foreach($Docentes as $Docente)
-								<?php  $i=$i+1;?>
-								<td style="background: #aaa"><div  id="cuadro{{$i}}" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)"></div>
+
+								<td style="background: #aaa"><div  id="cuadro{{$var[$i]}}" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)"></div>
 								</td>
+								<?php  $i=$i+1;?>
 							@endforeach
 						</tbody>
 					</table>
@@ -427,18 +450,18 @@ section {
 				{!! Form::open(['route'=>['Asigna.store'],'method'=>'POST'])!!}
 	<input type="hidden" value="" name="Arreglo" id="Arreglo" >
 	<input type="hidden" value="{{$CadenaDocente}}" name="Arreglo2" id="Arreglo2" >
-	<button type="submit" class="btn btn-primary" style="position: absolute;top: 100%;left:80%">Guardar</button>
+	<button type="submit" class="btn btn-primary" style="position: absolute;top: 104%;left:78%">Guardar</button>
 	{!! Form::close()!!}
 		</section>
 
 
 	<div style=" position: absolute;top: 100%; left: 5%;">SEMESTRE:</div>
-	<div style="background: #515A5A; position: absolute;top: 100%; left: 11.5%;">Primero</div>
-	<div style="background: #00FF00; position: absolute;top: 100%; left: 16%;">Segundo</div>
-	<div style="background: #515A5A; position: absolute;top: 100%; left: 21%;">Tercero</div>
-	<div style="background: #FFEB3B; position: absolute;top: 100%; left: 25%;">Cuarto</div>
-	<div style="background: #515A5A; position: absolute;top: 100%; left: 29%;">Quinto</div>
-	<div style="background: #0000FF; position: absolute;top: 100%; left: 33%;">Sexto</div>
+	<div style="background: {{ ($ColorPrimeroExtra) }}; position: absolute;top: 100%; left: 11.5%;">Primero</div>
+	<div style="background:{{ ($ColorSegundoExtra) }}; position: absolute;top: 100%; left: 16%;">Segundo</div>
+	<div style="background: {{ ($ColorTerceroExtra) }}; position: absolute;top: 100%; left: 21%;">Tercero</div>
+	<div style="background:{{ ($ColorCuartoExtra) }}; position: absolute;top: 100%; left: 25%;">Cuarto</div>
+	<div style="background: {{ ($ColorQuintoExtra) }}; position: absolute;top: 100%; left: 29%;">Quinto</div>
+	<div style="background: {{ ($ColorSextoExtra) }}; position: absolute;top: 100%; left: 33%;">Sexto</div>
 
 </body>
 

@@ -9,8 +9,10 @@
 @section('frameTitulo')
 @if (Session()->has('msj'))
   <div class="alert alert-danger" role="alert" style="width: 30%; position:  absolute;top: 43%; left: 35%;z-index: 1;">
+    <button class="close" data-dismiss="alert"><span>&times;</span></button>
     <strong>¡Error! </strong>{{Session('msj')}}
   </div>
+
 @endif
 <style>
 /*Al cuerpo de la
