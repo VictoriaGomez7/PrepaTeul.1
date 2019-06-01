@@ -17,6 +17,7 @@ class CreateRelacionDocenteMateriaGruposTable extends Migration
             $table->string('ClaveMateria')->nullable();
             $table->string('Docente');
             $table->string('Materia');
+            $table->string('Grupo');
             $table->timestamps();
         });
     }

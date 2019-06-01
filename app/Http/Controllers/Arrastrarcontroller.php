@@ -25,12 +25,17 @@ class Arrastrarcontroller extends Controller
         $now= Carbon::now();
         $fecha=$now-> format('m');
         $Materias_Grupo=materia_grupo::get('Clave');
+        $Grupo_M=materia_grupo::get('Grupo');
+        //return $Grupo_M;
+        //return $Materias_Grupo;
 
 
-        if ($fecha>='07' and $fecha<='12'){
+        if ($fecha>='01' and $fecha<='06'){
+            //return 'ESTA AQUI';
             $Materias=array();
 
             $Nom_Mat = Materia::where('Semestre','=','SEGUNDO SEMESTRE')->orWhere('Semestre','=','CUARTO SEMESTRE')->orWhere('Semestre','=','SEXTO SEMESTRE')->get();
+            //return $Nom_Mat;
 
             $Materias=array();
             $bandera=False;
@@ -44,7 +49,7 @@ class Arrastrarcontroller extends Controller
                     if ($Clave_Mat == $Clave_2){
                         $dato=$Nom_Mat[$j];
                         $bandera=True;
-                        //print_r("Salio. ");
+                        //print_r($dato);
                        
                     }
                 }
@@ -54,7 +59,8 @@ class Arrastrarcontroller extends Controller
                 }
                 
             }
-            
+            //return 'Fin';
+
             $M_P_S=Materia::where('Semestre','PRIMER SEMESTRE')->get();
             $M_S_S=Materia::where('Semestre','SEGUNDO SEMESTRE')->get();
             $M_T_S=Materia::where('Semestre','TERCER SEMESTRE')->get();
@@ -63,11 +69,9 @@ class Arrastrarcontroller extends Controller
             $M_SIX_S=Materia::where('Semestre','SEXTO SEMESTRE')->get();
             $num=1;
 
-            
-
-            return view('RegistrarDocentes.asignar',compact('Materias','Docentes','M_S_S','M_C_S','M_SIX_S','num','M_P_S','M_T_S','M_Q_S'));
+            return view('RegistrarDocentes.asignar',compact('Materias','Docentes','M_S_S','M_C_S','M_SIX_S','num','M_P_S','M_T_S','M_Q_S','Grupo_M'));
         }
-        else if ($fecha>='01' and $fecha<='06'){
+        else if ($fecha>='07' and $fecha<='12'){
 
             $Materias=array();
 
@@ -102,10 +106,10 @@ class Arrastrarcontroller extends Controller
             $M_C_S=Materia::where('Semestre','CUARTO SEMESTRE')->get();
             $M_Q_S=Materia::where('Semestre','QUINTO SEMESTRE')->get();
             $M_SIX_S=Materia::where('Semestre','SEXTO SEMESTRE')->get();
-            $num2=1;
+            $num=0;
 
             //return $M_Q_S;
-            return view('RegistrarDocentes.asignar',compact('Materias','Docentes','M_P_S','M_T_S','M_Q_S','num2','M_S_S','M_C_S','M_SIX_S'));
+            return view('RegistrarDocentes.asignar',compact('Materias','Docentes','M_P_S','M_T_S','M_Q_S','num','M_S_S','M_C_S','M_SIX_S'));
         }
 
 
@@ -148,6 +152,8 @@ class Arrastrarcontroller extends Controller
             $c=$c+1;
         }
 
+        //return $arreglo1;
+
         $arreglo2=array();
         $var2=($request->Arreglo2).",";
         $tam2=strlen($var2);
@@ -169,7 +175,7 @@ class Arrastrarcontroller extends Controller
         $arregloCuadros=array();
         $tamArreglo1V1=count($arreglo1);
         $i=0;
-         while ($i <$tamArreglo1V1) { //Este while solo separa las materias y los cuadros
+        while ($i <$tamArreglo1V1) { //Este while solo separa las materias y los cuadros
             if ($i%2==0){
 
                 array_push($arregloMaterias, $arreglo1[$i]);
@@ -217,10 +223,93 @@ class Arrastrarcontroller extends Controller
                 $doce=$cuadro[strlen($cuadro)-2].$cuadro[strlen($cuadro)-1];
                 //print "Soy el docente del arreglo ".$doce;
                 $docenteselec=$arreglo2[intval($doce)-1];
-                print "Docente: ".$docenteselec." Materia asignada--> ".$materiaasignada."  ";
+                //print "Docente: ".$docenteselec." Materia asignada--> ".$materiaasignada."  ";
+
+
+
+                //ESTE CICLO ES PARA QUITAR DEL NOMBRE DE LA MATERIA AL GRUPO QUE PERTENECE
+                $nueva_materiaasignada='';
+                $nuevo_grupo='';
+                $ban=True;
+                for ($m=0; $m < strlen($materiaasignada); $m++) {
+
+                    if ($materiaasignada[strlen($materiaasignada)-1]=='A' or $materiaasignada[strlen($materiaasignada)-1]=='B') {
+
+                        if ($m==strlen($materiaasignada)-2){
+                        $nuevo_grupo=$materiaasignada[strlen($materiaasignada)-1];
+                        }
+                        else if ($m<strlen($materiaasignada)-2){
+                            $nueva_materiaasignada=$nueva_materiaasignada.$materiaasignada[$m];
+                        }
+                    }
+                    else{
+                        $buscador=$materiaasignada[strlen($materiaasignada)-1];
+                        if ($buscador=='o'){
+                            $buscador_2=$materiaasignada[strlen($materiaasignada)-2];
+                            if ($buscador_2=='v'){
+                                if ($m>strlen($materiaasignada)-27){
+                                $nuevo_grupo=$nuevo_grupo.$materiaasignada[$m];
+                                }
+                                else if ($m<strlen($materiaasignada)-27){
+                                    $nueva_materiaasignada=$nueva_materiaasignada.$materiaasignada[$m];
+                                }
+                            }
+                            else if ($buscador_2=='c'){
+                                $buscador_3=$materiaasignada[strlen($materiaasignada)-4];
+                                if ($buscador_3=='g'){
+                                    if ($m>strlen($materiaasignada)-21){
+                                    $nuevo_grupo=$nuevo_grupo.$materiaasignada[$m];
+                                    }
+                                    else if ($m<strlen($materiaasignada)-21){
+                                        $nueva_materiaasignada=$nueva_materiaasignada.$materiaasignada[$m];
+                                    }
+                                }
+                                else if($buscador_3=='t'){
+                                    if ($m>strlen($materiaasignada)-21){
+                                    $nuevo_grupo=$nuevo_grupo.$materiaasignada[$m];
+                                    }
+                                    else if ($m<strlen($materiaasignada)-21){
+                                        $nueva_materiaasignada=$nueva_materiaasignada.$materiaasignada[$m];
+                                    }
+                                }
+                            }
+                        }
+                        else if($buscador=='s' and $materiaasignada[strlen($materiaasignada)-11]=='H'){
+                            if ($m>strlen($materiaasignada)-33){
+                                $nuevo_grupo=$nuevo_grupo.$materiaasignada[$m];
+                            }
+                            else if ($m<strlen($materiaasignada)-33){
+                                $nueva_materiaasignada=$nueva_materiaasignada.$materiaasignada[$m];
+                            }
+                        }
+                        else{
+                            //return 'Es de esto';
+                            $dijito=$materiaasignada[$m];
+
+                            if ($ban==True and $dijito!='-'){
+                                $nueva_materiaasignada=$nueva_materiaasignada.$materiaasignada[$m];
+                            }
+                            else if ($ban==False){
+                                $nuevo_grupo=$nuevo_grupo.$materiaasignada[$m];
+                            }
+                            if ($dijito=='-'){
+                                $ban=False;
+                            }
+                            
+                        }
+                    }
+                    
+                }
+                //return $nueva_materiaasignada.$nuevo_grupo;
+                $materiaasignada=$nueva_materiaasignada;
+
+                $Materias_all= Materia::where('Nombre',$materiaasignada)->get('Clave');
+                
                 $Relacion=new RelacionDocenteMateriaGrupo();
+                $Relacion->ClaveMateria=$Materias_all[0]->Clave;
                 $Relacion->Materia=$materiaasignada;
                 $Relacion->Docente=$docenteselec;
+                $Relacion->Grupo=$nuevo_grupo;
                 $Relacion->save();
                 //print "Hola soy un inpar";
                 //print $i;
