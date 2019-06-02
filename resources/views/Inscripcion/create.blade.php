@@ -1,7 +1,7 @@
 <!doctype html>
 
 <a href="http://127.0.0.1:8000/ControlEscolarInicio">
-            <button class="btn btn-success" style="position: absolute;top: 205%;left:75%">Cancelar</button></a>
+            <button class="btn btn-success" style="position: absolute;top: 225%;left:75%">Cancelar</button></a>
 <script type="text/javascript">
     var Grado = function(x)
     {
@@ -21,7 +21,26 @@
 
 <body>
     @section('frameTitulo')
-
+    <script type="text/javascript">
+           function habilitar(valor){
+            if (valor=="SEGUNDO"){
+                document.getElementById("ft1").disabled = false;
+            }else{
+                
+                document.getElementById("ft1").disabled = true;
+            }
+           }
+    </script>
+    <script type="text/javascript">
+           function habilitar2(valor){
+            if (valor=="TERCER"){
+                document.getElementById("bach1").disabled = false;
+            }else{
+                
+                document.getElementById("bach1").disabled = true;
+            }
+           }
+    </script>
 
         @if (session()->has('msj'))
             <div class="alert alert-success" role="alert" style="width: 90%; position:  absolute; top: 43%; left: 5%;z-index: 1;">
@@ -113,7 +132,7 @@
 
             <div style="font-size:140%;width: 90%; height: 11.5%;position: absolute;top: 115%;left:5%; background-color:#aaa  ">
                     <p style="position: absolute;top: 2%;left:14%; width: 80%">{{('Con todo respeto solicito a Usted Sr. Director, me acepte como alumno  de esta Escuela Preparatoria a su cargo para cursar el')}}</p>
-                        <select name="semestres" required onchange="Grado(this.value); semes(this.options[this.selectedIndex].innerHTML)" style="font-size:80%;width: 17%;/*posicion->*/position: absolute;top:54%; left:46%;">
+                        <select name="semestres" id="semestres" required onchange="Grado(this.value); semes(this.options[this.selectedIndex].innerHTML);habilitar(this.value),habilitar2(this.value)" style="font-size:80%;width: 17%;/*posicion->*/position: absolute;top:54%; left:46%;">
                             <option value="{{ old('semestres') }}">{{ old('semestres') }}</option>
                             <option value="PRIMER">PRIMER SEMESTRE</option>
                             <option value="PRIMER">SEGUNDO SEMESTRE</option>
@@ -130,12 +149,33 @@
 
                     <p style="position: absolute; top:53%; left: 75.5%;font-size:90%"> {{('GRADO.')}}</p>
             </div>
+            <div style="position: absolute;top: 127%; left: 5%; width: 90%;height:15%;background-color:#aaa">
+                <p style="font-size:138%">{{('Formación para el Trabajo:')}}</p>
+                <p style="font-size:138%">{{('Bachillerato:')}}</p>
+                <select name="ft1" id="ft1" style="font-size:110%;width: 26.5%; position:  absolute;top: 4%; left: 22%"  disabled="true">
+                            <option value="{{ old('Grado') }}">{{ old('Grado') }}</option>
+                            <option value="Lenguas">Lenguas</option>
+                            <option value="Informatica">Informatica</option>
+                            <option value="Higiene y Salud Comunitaria">Higiene y Salud Comunitaria</option>
+                            <option value="Económico Administrativo">Económico Administrativo</option>
+                      </select>
+
+                <select name="bach1" id="bach1" style="font-size:110%;width: 26.5%; position:  absolute;top: 53%; left: 22%" disabled="true">
+                            <option value="{{ old('Grado') }}">{{ old('Grado') }}</option>
+                            <option value="Químico Biológico">Químico Biológico</option>
+                            <option value="Físico Matemático">Físico Matemático</option>
+                            <option value="Ciencias sociales y humanidades">Ciencias sociales y humanidades</option>
+                            <option value="Económico Administrativo">Económico Administrativo</option>
+                      </select>
+
+                
+            </div>
 
 
-            <div class="card-header text-center" style="font-size:180%;width: 90%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 126.5%; left: 5%;" >{{ __('Requisitos') }}</div>
+            <div class="card-header text-center" style="font-size:180%;width: 90%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 143%; left: 5%;" >{{ __('Requisitos') }}</div>
 
             <!-- ********************** PARTE DE DONDE SE AGREGA PARA LOS REQUISITOS ********************************-->
-            <div style="position: absolute;top: 136%; left: 5%; width: 70%;height:65%;background-color:#aaa">
+            <div style="position: absolute;top: 153%; left: 5%; width: 70%;height:65%;background-color:#aaa">
                 <p style="font-size:138%">{{('A) Certificado de Secundaria.')}}</p>
                 <p style="font-size:138%">{{('B) Acta de Nacimiento.')}}</p>
                 <p style="font-size:138%">{{('C) Curp.')}}</p>
@@ -146,14 +186,16 @@
                 <p style="font-size:138%">{{('H) Firmar de conformidad padres y alumno  en la hoja de solicitud de inscripción.')}}</p>
             </div>
 
-            <div style="position: absolute;top: 136%; left: 75%; width: 20%; height:65%;background-color:#aaa">
+            <div style="position: absolute;top: 153%; left: 75%; width: 20%; height:65%;background-color:#aaa">
                 <p><select id="A" name="A" value="No" required style="width: 18%;height: 9%; position: absolute;top: 0%;left:10%">
                     <option value="{{ old('A') }}">{{ old('A') }}</option>
                     <option value="Si">SI</option>
+                    <option value="No">NO</option>
                 </select></p>
                 <p><select required id="B" name="B" style="width: 18%;height: 9%; position: absolute;top: 12%;left:10%">
                     <option value="{{ old('B') }}">{{ old('B') }}</option>
                     <option value="Si">SI</option>
+                    <option value="No">NO</option>
                 </select></p>
                 <p><select required id="C" name="C" style="width: 18%;height: 9%; position: absolute;top: 23%;left:10%">
                     <option value="{{ old('C') }}">{{ old('C') }}</option>
@@ -189,7 +231,7 @@
 
             </div>
 
-            <button type="submit" class="btn btn-primary" style="position: absolute;top: 205%;left:65%">Inscribir</button>
+            <button type="submit" class="btn btn-primary" style="position: absolute;top: 225%;left:65%">Inscribir</button>
 
             {{--<button  class="btn btn-success" href="http://127.0.0.1:8000/ControlEscolarInicio" style="position: absolute;top: 190%;left:65%">Cancelar</button>--}}
         <!--</form>-->
