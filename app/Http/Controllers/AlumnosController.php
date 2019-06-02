@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Alumno;
 use App\usuarioalumno;
+use App\ft_bach;
+use App\Http\Requests\TagStoreRequestFTyBACH;
 use App\Http\Requests\TagStoreRequest;
+
 
 
 class AlumnosController extends Controller
@@ -89,10 +92,9 @@ class AlumnosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TagStoreRequest $request)
+    public function store(TagStoreRequest $request, TagStoreRequestFTyBACH $request2)
     {
         
-
         $alumno=new Alumno();
         
         $alumno->id=$request['id'];
@@ -126,6 +128,13 @@ class AlumnosController extends Controller
         $alumnoL->Usuario=$request['id'];
         $alumnoL->save();
 
+        $campo=new ft_bach();
+        
+        $campo->id=$request['id'];
+        $campo->Formación_Trabajo=$request2['ft1'];
+        $campo->Bachillerato=$request2['bach1'];
+        $campo->save();
+
         //return $alumno->fechAll('Numero');
 
         return back()->with('msj','Alumno inscrito con éxito.');
@@ -133,27 +142,6 @@ class AlumnosController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $alumno1)
-    {
-           $CAlumno = Alumno::where('id', $alumno1->PMatri)->get();
-        //return $CAlumno;
-        if (count($CAlumno)==0)
-        {
-
-            return back()->with('msj','La matrícula no existe' );
-        }
-        else{
-            return view('ModificarAlumno.show',compact('CAlumno','alumno1'));
-        }
-    }
-
-
-    /**
-     * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

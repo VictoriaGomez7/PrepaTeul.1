@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
-
 use App\Alumno;
 use App\Reinscripcion;
 Use Session;
 Use Redirect;
 Use Alert;
+use App\ft_bach;
+use App\Http\Requests\TagStoreRequestFTyBACH;
 use Illuminate\Http\Request;
 
 class ReinscripcionesController extends Controller
@@ -39,9 +39,14 @@ class ReinscripcionesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(TagStoreRequestFTyBACH $request2)
     {
-        //
+        $campo=new ft_bach();
+        
+        $campo->id=$request['id'];
+        $campo->Formación_Trabajo=$request2['ft1'];
+        $campo->Bachillerato=$request2['bach1'];
+        $campo->save();
     }
 
     /**
@@ -114,8 +119,7 @@ class ReinscripcionesController extends Controller
         //return redirect()->view('Reinscripcion.show');
         //return back()->with('re',' correctamente' );
         //return back()->with('msj',' esa matricula no existe' );
-        //return view('Reinscripciones.create');
-        return redirect('reinscripcion')->with('msjCorrecto','Alumno re-inscrito con éxito.');
+        return view('Reinscripciones.create');
     }
 
 

@@ -289,6 +289,7 @@ class MateriaController extends Controller
          # code...
 
         $materia=$row;
+        
      }
 
 
