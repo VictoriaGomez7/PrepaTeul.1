@@ -236,15 +236,18 @@ class MateriaController extends Controller
             
             
             if ($request['tipo']=="Actividades Paraescolares" or $request['tipo']=="Formación Básica"){
+                //return $request['semestre'];
 
                 $materia_grupo=new Materia_Grupo();
                 $materia_grupo->Clave=$Clavemat;
                 $materia_grupo->Grupo='A';
+                $materia_grupo->Semestre=$request['semestre'];
                 $materia_grupo->save();
 
                 $materia_Grupo=new Materia_Grupo();
                 $materia_Grupo->Clave=$Clavemat;
                 $materia_Grupo->Grupo='B';
+                $materia_Grupo->Semestre=$request['semestre'];
                 $materia_Grupo->save();
                 //
             }
@@ -254,6 +257,7 @@ class MateriaController extends Controller
                 $materia_Grupo=new Materia_Grupo();
                 $materia_Grupo->Clave=$Clavemat;
                 $materia_Grupo->Grupo=$request['nombre'];
+                $materia_Grupo->Semestre=$request['semestre'];
                 $materia_Grupo->save();
                 //return "Formación hola";
 
@@ -263,6 +267,7 @@ class MateriaController extends Controller
                 $materia_Grupo=new Materia_Grupo();
                 $materia_Grupo->Clave=$Clavemat;
                 $materia_Grupo->Grupo=$request['bachillerato'];
+                $materia_Grupo->Semestre=$request['semestre'];
                 $materia_Grupo->save();
                 //return "Propedéutica hola";
 

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <a href="http://127.0.0.1:8000/ControlEscolarInicio">
             <button class="btn btn-success" style="position: absolute;top: 107%;left:88%">Cancelar</button></a>
@@ -323,13 +321,6 @@ section {
 			$NombresQuinto=array( );
 			$NombresSexto=array( );
 
-			$ColorPrimeroExtra='#515A5A';
-			$ColorSegundoExtra='#515A5A';
-			$ColorTerceroExtra='#515A5A';
-			$ColorCuartoExtra='#515A5A';
-			$ColorQuintoExtra='#515A5A';
-			$ColorSextoExtra='#515A5A';
-
 			$Nombre_Editado='';
 
 		?>
@@ -357,7 +348,7 @@ section {
 				$NombresCuarto[]=$nomC; ?>
 			@endforeach
 
-			@foreach ($M_Q_S as $M_Q) {{-- ES EL CICLO PARA NOM DE TERCER SEM --}}
+			@foreach ($M_Q_S as $M_Q) {{-- ES EL CICLO PARA NOM DE QUINTO SEM --}}
 				<?php
 				$nomQ=$M_Q->Nombre;
 				$NombresQuinto[]=$nomQ; ?>
@@ -372,58 +363,83 @@ section {
 			@foreach($Materias as $Materia)
 
 				<?php
-					if ($num=1){
+					
+					if ($num==1){
+						//print_r($Materia->Clave);
+						//print_r($Grupo_M[$i]->Grupo.$i);
 						if (in_array($Materia->Nombre,$NombresSegundo)){
 							$color=$ColorSegundo;
 
-							if ($Grupo_M[$i]->Grupo=='A' or $Grupo_M[$i]->Grupo=='B'){
+							if ($Grupo_M[$i]->Grupo=='A'){
+								$Nombre_Editado=$Materia->Nombre." ".$Grupo_M[$i]->Grupo;
+							}
+							else if ($Grupo_M[$i]->Grupo=='B') {
 								$Nombre_Editado=$Materia->Nombre." ".$Grupo_M[$i]->Grupo;
 							}
 							else{
 								$Nombre_Editado=$Materia->Nombre." - ".$Grupo_M[$i]->Grupo;
 							}
+
 						}
-						elseif (in_array($Materia->Nombre,$NombresCuarto)){
+						else if (in_array($Materia->Nombre,$NombresCuarto)){
 							$color=$ColorCuarto;
-							if ($Grupo_M[$i]->Grupo=='A' or $Grupo_M[$i]->Grupo=='B'){
+							if ($Grupo_M[$i]->Grupo=='A'){
+								$Nombre_Editado=$Materia->Nombre." ".$Grupo_M[$i]->Grupo;
+							}
+							else if ($Grupo_M[$i]->Grupo=='B') {
 								$Nombre_Editado=$Materia->Nombre." ".$Grupo_M[$i]->Grupo;
 							}
 							else{
 								$Nombre_Editado=$Materia->Nombre." - ".$Grupo_M[$i]->Grupo;
 							}
+
+
 						}
-						elseif (in_array($Materia->Nombre,$NombresSexto)){
+						else if (in_array($Materia->Nombre,$NombresSexto)){
 							$color=$ColorSexto;
-							if ($Grupo_M[$i]->Grupo=='A' or $Grupo_M[$i]->Grupo=='B'){
+							if ($Grupo_M[$i]->Grupo=='A'){
+								$Nombre_Editado=$Materia->Nombre." ".$Grupo_M[$i]->Grupo;
+							}
+							else if ($Grupo_M[$i]->Grupo=='B') {
 								$Nombre_Editado=$Materia->Nombre." ".$Grupo_M[$i]->Grupo;
 							}
 							else{
 								$Nombre_Editado=$Materia->Nombre." - ".$Grupo_M[$i]->Grupo;
 							}
+
 						}
 					}
-					if ($num2=1){
+					else if ($num==0){
+
 						if (in_array($Materia->Nombre,$NombresPrimero)){
 							$color=$ColorPrimero;
-							if ($Grupo_M[$i]->Grupo=='A' or $Grupo_M[$i]->Grupo=='B'){
+							if ($Grupo_M[$i]->Grupo=='A'){
+								$Nombre_Editado=$Materia->Nombre." ".$Grupo_M[$i]->Grupo;
+							}
+							else if ($Grupo_M[$i]->Grupo=='B') {
 								$Nombre_Editado=$Materia->Nombre." ".$Grupo_M[$i]->Grupo;
 							}
 							else{
 								$Nombre_Editado=$Materia->Nombre." - ".$Grupo_M[$i]->Grupo;
 							}
 						}
-						elseif (in_array($Materia->Nombre,$NombresTercero)){
+						else if (in_array($Materia->Nombre,$NombresTercero)){
 							$color=$ColorTercero;
-							if ($Grupo_M[$i]->Grupo=='A' or $Grupo_M[$i]->Grupo=='B'){
+							if ($Grupo_M[$i]->Grupo=='A'){
+								$Nombre_Editado=$Materia->Nombre." ".$Grupo_M[$i]->Grupo;
+							}
+							else if ($Grupo_M[$i]->Grupo=='B') {
 								$Nombre_Editado=$Materia->Nombre." ".$Grupo_M[$i]->Grupo;
 							}
 							else{
 								$Nombre_Editado=$Materia->Nombre." - ".$Grupo_M[$i]->Grupo;
-							}
-						}
-						elseif (in_array($Materia->Nombre,$NombresQuinto)){
+							}						}
+						else if (in_array($Materia->Nombre,$NombresQuinto)){
 							$color=$ColorQuinto;
-							if ($Grupo_M[$i]->Grupo=='A' or $Grupo_M[$i]->Grupo=='B'){
+							if ($Grupo_M[$i]->Grupo=='A'){
+								$Nombre_Editado=$Materia->Nombre." ".$Grupo_M[$i]->Grupo;
+							}
+							else if ($Grupo_M[$i]->Grupo=='B') {
 								$Nombre_Editado=$Materia->Nombre." ".$Grupo_M[$i]->Grupo;
 							}
 							else{
@@ -431,15 +447,15 @@ section {
 							}
 						}
 					}
-				;?>
+				?>
 
-				<?php  $j=$j+1;?>
-				<?php  $i=$i+1;?>
+				<?php  $j=$j+1 ?>
+				<?php  $i=$i+1 ?>
 				<input class="cuadradito" style="background: {{ ($color) }};border: 2px solid #0000000; width: 200px;height: 30px; margin: 5px;" readonly id="arrastrable{{$j}}" draggable="true" ondragstart="start(event)" ondragend="end(event)" value='{{($Nombre_Editado)}}'>
 			@endforeach
 			
 			<?php
-			//echo "valor de num:".$num;
+				
 				if ($num==1){
 					$ColorPrimeroExtra='#515A5A';
 					$ColorSegundoExtra='#85C1E9';

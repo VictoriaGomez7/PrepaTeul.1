@@ -24,42 +24,37 @@ class Arrastrarcontroller extends Controller
 
         $now= Carbon::now();
         $fecha=$now-> format('m');
-        $Materias_Grupo=materia_grupo::get('Clave');
-        $Grupo_M=materia_grupo::get('Grupo');
-        //return $Grupo_M;
-        //return $Materias_Grupo;
-
+        
+        
 
         if ($fecha>='01' and $fecha<='06'){
-            //return 'ESTA AQUI';
-            $Materias=array();
+            $Materias_Grupo=materia_grupo::get('Clave');
 
             $Nom_Mat = Materia::where('Semestre','=','SEGUNDO SEMESTRE')->orWhere('Semestre','=','CUARTO SEMESTRE')->orWhere('Semestre','=','SEXTO SEMESTRE')->get();
-            //return $Nom_Mat;
+            $Grupo_Mat = materia_grupo::where('Semestre','=','SEGUNDO SEMESTRE')->orWhere('Semestre','=','CUARTO SEMESTRE')->orWhere('Semestre','=','SEXTO SEMESTRE')->get();
 
             $Materias=array();
+            $Grupo_M=array();
             $bandera=False;
+
             for ($i=0; $i < count($Materias_Grupo); $i++) {
                 $Clave_Mat=$Materias_Grupo[$i]->Clave;
 
-                for ($j=0; $j <count($Nom_Mat) ; $j++) { 
-                    //return $Nom_Mat[$j]->Clave;
+                for ($j=0; $j <count($Nom_Mat) ; $j++) {
                     $Clave_2=$Nom_Mat[$j]->Clave;
 
                     if ($Clave_Mat == $Clave_2){
                         $dato=$Nom_Mat[$j];
                         $bandera=True;
-                        //print_r($dato);
-                       
+                        $valor=$Grupo_Mat[$i];
                     }
                 }
                 if ($bandera==True){
                     array_push($Materias,$dato);
                     $bandera=False;
+                    array_push($Grupo_M,$valor);
                 }
-                
             }
-            //return 'Fin';
 
             $M_P_S=Materia::where('Semestre','PRIMER SEMESTRE')->get();
             $M_S_S=Materia::where('Semestre','SEGUNDO SEMESTRE')->get();
@@ -71,35 +66,32 @@ class Arrastrarcontroller extends Controller
 
             return view('RegistrarDocentes.asignar',compact('Materias','Docentes','M_S_S','M_C_S','M_SIX_S','num','M_P_S','M_T_S','M_Q_S','Grupo_M'));
         }
-        else if ($fecha>='07' and $fecha<='12'){
+        if ($fecha>='07' and $fecha<='12'){
+            $Materias_Grupo=materia_grupo::where('Semestre','=','PRIMER SEMESTRE')->orWhere('Semestre','=','TERCER SEMESTRE')->orWhere('Semestre','=','QUINTO SEMESTRE')->get('Clave');
+
+            $Nom_Mat2= Materia::where('Semestre','=','PRIMER SEMESTRE')->orWhere('Semestre','=','TERCER SEMESTRE')->orWhere('Semestre','=','QUINTO SEMESTRE')->get();
+            $Grupo_Mat2= materia_grupo::where('Semestre','=','PRIMER SEMESTRE')->orWhere('Semestre','=','TERCER SEMESTRE')->orWhere('Semestre','=','QUINTO SEMESTRE')->get();
 
             $Materias=array();
+            $Grupo_M=array();
+            $bandera2=0;
 
-            $Nom_Mat = Materia::where('Semestre','=','PRIMER SEMESTRE')->orWhere('Semestre','=','TERCER SEMESTRE')->orWhere('Semestre','=','QUINTO SEMESTRE')->get();
-            //return $Nom_Mat;
-            $Materias=array();
-            $bandera=False;
             for ($i=0; $i < count($Materias_Grupo); $i++) {
                 $Clave_Mat=$Materias_Grupo[$i]->Clave;
 
-                for ($j=0; $j <count($Nom_Mat) ; $j++) { 
-                    //return $Nom_Mat[$j]->Clave;
-                    $Clave_2=$Nom_Mat[$j]->Clave;
-
+                for ($j=0; $j <count($Nom_Mat2) ; $j++) {
+                    $Clave_2=$Nom_Mat2[$j]->Clave;
+                    
                     if ($Clave_Mat == $Clave_2){
-                        $dato=$Nom_Mat[$j];
-                        $bandera=True;
-                        //print_r("Salio. ");
-                       
+                        //print_r('entro');
+                        $dato=$Nom_Mat2[$j];
+                        $valor=$Grupo_Mat2[$i];
+                        array_push($Materias,$dato);
+                        array_push($Grupo_M,$valor);
                     }
                 }
-                if ($bandera==True){
-                    array_push($Materias,$dato);
-                    $bandera=False;
-                }
-                
             }
-
+            
             $M_P_S=Materia::where('Semestre','PRIMER SEMESTRE')->get();
             $M_S_S=Materia::where('Semestre','SEGUNDO SEMESTRE')->get();
             $M_T_S=Materia::where('Semestre','TERCER SEMESTRE')->get();
@@ -108,13 +100,8 @@ class Arrastrarcontroller extends Controller
             $M_SIX_S=Materia::where('Semestre','SEXTO SEMESTRE')->get();
             $num=0;
 
-            //return $M_Q_S;
-            return view('RegistrarDocentes.asignar',compact('Materias','Docentes','M_P_S','M_T_S','M_Q_S','num','M_S_S','M_C_S','M_SIX_S'));
+            return view('RegistrarDocentes.asignar',compact('Materias','Docentes','M_S_S','M_C_S','M_SIX_S','num','M_P_S','M_T_S','M_Q_S','Grupo_M'));
         }
-
-
-        //return route->()
-
     }
 
     /**
