@@ -394,7 +394,7 @@ section {
 
 
 
-		<section style="{{-- background: #E74C3C; --}} width:67%; height: 53%; position: absolute; top: 45%; left: 28%">
+		<section style="{{-- background: #E74C3C; --}} width:67%; height: 53%; position: absolute; top: 45%; left: 26%">
 
 			<?php $var=array(1,2,3,4,5,6,7,8,9,10,11,12,13,14);
 				$i=0;
@@ -427,7 +427,7 @@ section {
 				{!! Form::open(['route'=>['Asigna.store'],'method'=>'POST'])!!}
 	<input type="hidden" value="" name="Arreglo" id="Arreglo" >
 	<input type="hidden" value="{{$CadenaDocente}}" name="Arreglo2" id="Arreglo2" >
-	<button type="submit" class="btn btn-primary" style="position: absolute;top: 100%;left:80%">Guardar</button>
+	<button type="submit" class="btn btn-primary" style="position: absolute;top: 105%;left:80%">Guardar</button>
 	{!! Form::close()!!}
 		</section>
 
