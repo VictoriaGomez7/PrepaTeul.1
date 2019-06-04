@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class RelacionDocenteMateriaGrupo extends Model
 {
-    protected $fillable = ['ClaveMateria','Docente','Materia','Grupo'];
+    protected $fillable = ['id','ClaveMateria','Docente','Materia','Grupo'];
 }

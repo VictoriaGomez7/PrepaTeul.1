@@ -14,6 +14,7 @@ class CreateRelacionDocenteMateriaGruposTable extends Migration
     public function up()
     {
         Schema::create('relacion_docente_materia_grupos', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('ClaveMateria')->nullable();
             $table->string('Docente');
             $table->string('Materia');

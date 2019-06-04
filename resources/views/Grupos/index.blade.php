@@ -80,13 +80,6 @@
       <span>Crear grupos</span>
     </label>
 
-   
-     <label style="font-size:130%; position:  absolute;top: 55%; left: 7%">
-          <input type="radio" name="grupoAB" id="opcion"  class="with-gap" value="grupos"  >
-      <span>Listado por grupos</span>
-    </label>
-
-
     <label style="font-size:130%; position:  absolute;top: 10%; left: 53%" >
           <input type="radio" name="semestre" onclick="verifica()" class="with-gap" value="PRIMER SEMESTRE" required="true" >
       <span>PRIMER SEMESTRE</span>

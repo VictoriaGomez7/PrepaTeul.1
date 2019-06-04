@@ -66,7 +66,7 @@ class LoginMController extends Controller
             if ($CE==$Ps)
             {
                 //return 'son igual';
-                return 'LoginM';//view('ControlEscolar.CEprincipal');
+                return view('DocenteInterfazPrincipal.InterfazPrincipal2');
             }
             else{
 

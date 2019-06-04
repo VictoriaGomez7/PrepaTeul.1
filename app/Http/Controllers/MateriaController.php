@@ -18,11 +18,9 @@ class MateriaController extends Controller
     public function index()
     {
 
+      
+      return view('materias.consulta');
 
-        //return $compromisos;
-          return view('materias.consulta');
-
-          // return view('mostrar',compact('compromisos'));
     }
 
     /**
@@ -33,6 +31,7 @@ class MateriaController extends Controller
     public function create(TagStoreRequestMaterias $request)
     {       //return $request;
             //Arreglo de numero romanos
+     
             $Romanos=array('I','II','III',"IV",'V','VI' );
             $Quitar=array('a','del','la',"para",'de','y','el' );
             $Auxiliar=array();
@@ -236,15 +235,18 @@ class MateriaController extends Controller
             
             
             if ($request['tipo']=="Actividades Paraescolares" or $request['tipo']=="Formación Básica"){
+                //return $request['semestre'];
 
                 $materia_grupo=new Materia_Grupo();
                 $materia_grupo->Clave=$Clavemat;
                 $materia_grupo->Grupo='A';
+                $materia_grupo->Semestre=$request['semestre'];
                 $materia_grupo->save();
 
                 $materia_Grupo=new Materia_Grupo();
                 $materia_Grupo->Clave=$Clavemat;
                 $materia_Grupo->Grupo='B';
+                $materia_Grupo->Semestre=$request['semestre'];
                 $materia_Grupo->save();
                 //
             }
@@ -254,6 +256,7 @@ class MateriaController extends Controller
                 $materia_Grupo=new Materia_Grupo();
                 $materia_Grupo->Clave=$Clavemat;
                 $materia_Grupo->Grupo=$request['nombre'];
+                $materia_Grupo->Semestre=$request['semestre'];
                 $materia_Grupo->save();
                 //return "Formación hola";
 
@@ -263,13 +266,11 @@ class MateriaController extends Controller
                 $materia_Grupo=new Materia_Grupo();
                 $materia_Grupo->Clave=$Clavemat;
                 $materia_Grupo->Grupo=$request['bachillerato'];
+                $materia_Grupo->Semestre=$request['semestre'];
                 $materia_Grupo->save();
-                //return "Propedéutica hola";
 
-            }
-                          
-            return back()->with('msj','Materia registrada con éxito.');
-
+            }      
+            return back()->with('msj','Materia registrada con éxito. Clave: '.$Clavemat);
             
     }
     /**
@@ -280,20 +281,15 @@ class MateriaController extends Controller
      */
     public function store(Request $r)
     {
-           $materia=[];
-     $materias=materia::where([
-
-            ['Clave',$r->claveOriginal]
-        ])->get();
+      $materia=[];
+      $materias=materia::where([['Clave',$r->claveOriginal]])->get();
       foreach ($materias as $row ) {
-         # code...
-
         $materia=$row;
         
      }
 
 
-if(strlen($materia)){
+      if(strlen($materia)){
                 if(($r->Tipo=="Formación Propedéutica")){
                     if ($r->Semestre=="QUINTO SEMESTRE" or $r->Semestre=="SEXTO SEMESTRE") {
                               $materia->fill($r->all());

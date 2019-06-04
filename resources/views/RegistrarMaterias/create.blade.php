@@ -87,6 +87,8 @@
                             <option value="SEXTO SEMESTRE">SEXTO SEMESTRE</option>
                       </select>
                 <p><input type="number" placeholder="1" value="{{ old('horas') }}" required min="1" id="horas" name="horas" style="font-size:105%; width: 65%; position:  absolute;top: 70%; left: 30%"/></p>
+
+                
             </div>
 
 

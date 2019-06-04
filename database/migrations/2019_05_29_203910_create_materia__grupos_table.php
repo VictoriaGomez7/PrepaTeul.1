@@ -14,8 +14,10 @@ class CreateMateriaGruposTable extends Migration
     public function up()
     {
         Schema::create('materia__grupos', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('Clave');
             $table->string('Grupo');
+            $table->string('Semestre');
             $table->timestamps();
         });
     }

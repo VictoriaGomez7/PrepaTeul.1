@@ -90,25 +90,20 @@ body{
 
 </style>
 	<head>
-		    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-			<!-- vinculo a bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<!-- Temas--
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-<!-- se vincula al hoja de estilo para definir el aspecto del formulario de login--
-<link rel="stylesheet" type="text/css" href="estilo.css"-->
-		</head>
-		<body>
-		 <div id="Contenedor">
-		 <div class="Icon">
-                    <!--Icono de usuario-->
-                   <span class="glyphicon glyphicon-user"></span>
-                 </div>
-<div class="ContentForm">
-	<form type="session" class="form-group"  method="GET" action="/LoginDirector/show">
-		<div class="input-group input-group-lg">
-				  <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
-				  <input type="text" class="form-control" name="Usuario" placeholder="Usuario" id="Usuario" aria-describedby="sizing-addon1" required>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	</head>
+	<body>
+		<div id="Contenedor">
+		<div class="Icon">
+            <span class="glyphicon glyphicon-user"></span>
+        </div>
+		<div class="ContentForm">
+		<form type="session" class="form-group"  method="GET" action="/LoginDirector/show">
+			<div class="input-group input-group-lg">
+				<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
+				<input type="text" class="form-control" name="Usuario" placeholder="Usuario" id="Usuario" aria-describedby="sizing-addon1" required>
 				</div>
 				<br>
 				<div class="input-group input-group-lg">
@@ -119,40 +114,19 @@ body{
 				<p><button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Entrar</button></p>
 
 		</a>
-				{{--
-					<p><button class="btn btn-lg btn-primary btn-block btn-signin" id="IngresoLog" type="submit">Entrar</button></p>
-
-					<div class="opcioncontra"><a href="">Olvidaste tu contraseña?</a></div>--}}
+				
 		 	</form>
 		 </div>
 		 <a href="interfazpri">
     	<button class="btn btn-lg btn-success btn-block btn-signin">Cancelar</button>
 		 </div>
-     <br><br><br><br><br>
-      <p align="center" style="color: black; font-size: 1.3em;"> Constitución s/n Teúl de González Ortega.<br/>
-     Zac. C.P. 99800 <br/>
-    Teléfono (467)-952-71-83 <br/>
-      Correo-e:prepateul@yahoo.com.mx
-     </p >
-</body>
- <!-- vinculando a libreria Jquery-->
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
- <!-- Libreria java scritp de bootstrap -->
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	{{--<form type="session" class="form-group"  method="GET" action="/LoginDirector/show">
-	    <div class="row" style="position: absolute;top: 261px; left: 440px; width: 1500px; height:250px">
-		    <div class="col-lg-4" name='Columna' style="background-color:#aaa">
-
-				<p><label style="/*posicion->*/position: absolute; top:10%; left: 5%; font-size:130% " >Usuario:</label></p>
-
-				<input type="text" id="Usuario" name="Usuario" required style="/*ancho->*/width: 50%; padding: 7px 20px;margin: 8px 0;/*posicion->*/position: absolute; top: 5%; left: 30%;/*ancho y color del borde->*/border: 1px solid #646464;border-radius: 10px;box-sizing: border-box;right: 500px;/*alinacion del texto->*/text-align: center; color:#646464;">
-
-				<p><label style="/*posicion->*/position: absolute; top: 50%; left: 5%; font-size:130% " >Contraseña:</label></p>
-
-				<p><input type="password"  id="contraseña" name="Contraseña" style="/*ancho->*/width: 50%; padding: 7px 20px;margin: 8px 0;/*posicion->*/position: absolute; top: 45%; left: 30%;/*ancho y color del borde->*/border: 1px solid #646464;border-radius: 10px;box-sizing: border-box;right: 500px;/*alinacion del texto->*/text-align: center; color:#646464;"/></p>
-
-					<p><button  type="submit" class="btn btn-primary" style="position: absolute;top: 80%;left:35%" >Aceptar</button></p>
-			</div>
-		</div>
-	</form>--}}
+	     <br><br><br><br><br>
+	      <p align="center" style="color: black; font-size: 1.3em;"> Constitución s/n Teul de González Ortega.<br/>
+	     Zac. C.P. 99800 <br/>
+	    Teléfono (467)-952-71-83 <br/>
+	      Correo-e:prepateul@yahoo.com.mx
+	     </p >
+	</body>
+ 
+	
 @endsection

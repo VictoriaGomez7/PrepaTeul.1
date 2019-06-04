@@ -11,9 +11,6 @@
 |
 */
 
-Route::resource('Asigna','Arrastrarcontroller');
-
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -71,6 +68,15 @@ Route::get('/docenteconsulta' ,function(){
     return view('DocenteC.createC');
 });
 
+//PARA LA INTERFAZ DE DOCENTE
+Route::get('/DocenteInicio', function () {
+    return view('DocenteInterfazPrincipal.InterfazPrincipal2');
+});
+
+Route::get('/Docentes', function () {
+    return view('DocenteInterfazPrincipal.InterfazPrincipal');
+});
+
 
 Route::resource('LoginAlumno','LoginAController');
 
@@ -99,3 +105,7 @@ Route::resource('/formatoestudiantes', 'compromisoEstudianteController');
 Route::resource('/formatofamilia', 'compromisoFamiliaController');
 
 Route::resource('/grupos','gruposController');
+
+Route::resource('Asigna','Arrastrarcontroller');
+
+Route::resource('VisualizaListas','VisualizaListasController');
