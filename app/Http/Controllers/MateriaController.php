@@ -236,24 +236,28 @@ class MateriaController extends Controller
             
             
             if ($request['tipo']=="Actividades Paraescolares" or $request['tipo']=="Formación Básica"){
+                //return $request['semestre'];
 
                 $materia_grupo=new Materia_Grupo();
                 $materia_grupo->Clave=$Clavemat;
                 $materia_grupo->Grupo='A';
+                $materia_grupo->Semestre=$request['semestre'];
                 $materia_grupo->save();
 
                 $materia_Grupo=new Materia_Grupo();
                 $materia_Grupo->Clave=$Clavemat;
                 $materia_Grupo->Grupo='B';
+                $materia_Grupo->Semestre=$request['semestre'];
                 $materia_Grupo->save();
                 //
             }
 
-            else if ($request['tipo']=="Formación Para el Trabajo")
+            else if ($request['tipo']=="Formación Para El Trabajo")
             {
                 $materia_Grupo=new Materia_Grupo();
                 $materia_Grupo->Clave=$Clavemat;
                 $materia_Grupo->Grupo=$request['nombre'];
+                $materia_Grupo->Semestre=$request['semestre'];
                 $materia_Grupo->save();
                 //return "Formación hola";
 
@@ -263,6 +267,7 @@ class MateriaController extends Controller
                 $materia_Grupo=new Materia_Grupo();
                 $materia_Grupo->Clave=$Clavemat;
                 $materia_Grupo->Grupo=$request['bachillerato'];
+                $materia_Grupo->Semestre=$request['semestre'];
                 $materia_Grupo->save();
                 //return "Propedéutica hola";
 
@@ -289,6 +294,7 @@ class MateriaController extends Controller
          # code...
 
         $materia=$row;
+        
      }
 
 
@@ -306,7 +312,7 @@ if(strlen($materia)){
 
 
                 }
-                if ($r->Tipo=="Formación para el Trabajo"){
+                if ($r->Tipo=="Formación Para El Trabajo"){
                 if ($r->Semestre=="TERCER SEMESTRE" or $r->Semestre=="CUARTO SEMESTRE" or $r->Semestre=="QUINTO SEMESTRE" or $r->Semestre=="SEXTO SEMESTRE") {
                      $materia->fill($r->all());
                             $materia->save();
@@ -357,21 +363,28 @@ if(strlen($materia)){
         $materia=$row;
         if($materia->Tipo=='Formación Propedéutica'){
                     $opciones=' <option value="Formación Propedéutica" selected="true">Formación Propedéutica</option>
-                            <option value="Formación Profesional">Formación Profesional</option>
-                            <option value="Actividades Paraescolares">Actividades Paraescolares</option>';
+                      <option value="Formación Para El Trabajo">Formación Para El Trabajo</option>
+                      <option value="Actividades Paraescolares">Actividades Paraescolares</option>
+                      <option value="Formación Básica">Formación Básica</option>';
 
-                }else if($materia->Tipo=='Formación Profesional'){
+                }else if($materia->Tipo=='Formación Para El Trabajo'){
                     $opciones=' <option value="Formación Propedéutica" >Formación Propedéutica</option>
-                            <option value="Formación Profesional" selected="true">Formación Profesional</option>
-                            <option value="Actividades Paraescolares">Actividades Paraescolares</option>';
+                      <option value="Formación Para El Trabajo" selected="true">Formación Para El Trabajo</option>
+                      <option value="Actividades Paraescolares">Actividades Paraescolares</option>
+                      <option value="Formación Básica">Formación Básica</option>';
 
                 }else if($materia->Tipo=='Actividades Paraescolares'){
                     $opciones=' <option value="Formación Propedéutica" >Formación Propedéutica</option>
-                            <option value="Formación Profesional" >Formación Profesional</option>
-                            <option value="Actividades Paraescolares" selected="true">Actividades Paraescolares</option>';
+                      <option value="Formación Para El Trabajo">Formación Para El Trabajo</option>
+                      <option value="Actividades Paraescolares" selected="true">Actividades Paraescolares</option>
+                      <option value="Formación Básica">Formación Básica</option>';
 
+                }else if($materia->Tipo=='Formación Básica'){
+                    $opciones=' <option value="Formación Propedéutica" >Formación Propedéutica</option>
+                      <option value="Formación Para El Trabajo">Formación Para El Trabajo</option>
+                      <option value="Actividades Paraescolares">Actividades Paraescolares</option>
+                      <option value="Formación Básica" selected="true">Formación Básica</option>';
                 }
-
 
                 if($materia->Semestre=='PRIMER SEMESTRE'){
                     $opciones2='<option value="PRIMER SEMESTRE" selected="true">PRIMER SEMESTRE</option>
@@ -418,20 +431,20 @@ if(strlen($materia)){
                 }
 
 
- }
- return view('materias.modificar' ,compact('materia','opciones','opciones2'));
-}
+           }
+           return view('materias.modificar' ,compact('materia','opciones','opciones2'));
+          }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+              /**
+               * Show the form for editing the specified resource.
+               *
+               * @param  int  $id
+               * @return \Illuminate\Http\Response
+               */
     public function edit($g, Request $r)
     {
-            $materia=[];
-       $materias=Materia::where([['Clave',$r->Clave]
+      $materia=[];
+      $materias=Materia::where([['Clave',$r->Clave]
         ])->get();
         foreach ($materias as $row ) {
             $materia=$row;

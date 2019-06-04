@@ -65,7 +65,7 @@
                 <select name="tipo" di="tipo" required style="font-size:110%;width: 65%; position:  absolute;top: 25%; left: 30%" onchange="habilitar(this.value)">
                             <option value="{{ old('tipo') }}">{{ old('tipo') }}</option>
                             <option value="Formación Propedéutica">Formación Propedéutica</option>
-                            <option value="Formación Para el Trabajo">Formación para el Trabajo</option>
+                            <option value="Formación Para El Trabajo">Formación Para El Trabajo</option>
                             <option value="Actividades Paraescolares">Actividades Paraescolares</option>
                             <option value="Formación Básica" selected>Formación Básica</option>
                       </select>
@@ -73,7 +73,7 @@
                             <option value="{{ old('tipo') }}">{{ old('tipo') }}</option>
                             <option value="Químico Biológico">Químico Biológico</option>
                             <option value="Físico Matemático">Físico Matemático</option>
-                            <option value="Ciencias sociales y humanidades">Ciencias sociales y humanidades</option>
+                            <option value="Ciencias Sociales y Humanidades">Ciencias Sociales y Humanidades</option>
                             <option value="Económico Administrativo">Económico Administrativo</option>
                       </select>
                 

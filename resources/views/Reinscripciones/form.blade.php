@@ -1,11 +1,10 @@
 <!doctype html>
 <a href="http://127.0.0.1:8000/reinscripcion">
-            <button class="btn btn-success" style="position: absolute;top: 135%;left:75%">Cancelar</button></a>
+            <button class="btn btn-success" style="position: absolute;top: 150%;left:75%">Cancelar</button></a>
 
 
 <body>
 @foreach($CAlumno as $alumno)
-
         <script type="text/javascript">
           var Grados = function(x)
             {
@@ -110,9 +109,31 @@
                     <p style="position: absolute; top:53%; left: 75.5%;font-size:90%"> {{('GRADO.')}}</p>
 
             </div>
+            <div style="position: absolute;top: 127%; left: 5%; width: 90%;height:15%;background-color:#aaa">
+                <p style="font-size:138%">{{('Formación para el Trabajo:')}}</p>
+                <p style="font-size:138%">{{('Bachillerato:')}}</p>
+                <select name="ft2" id="ft2" style="font-size:110%;width: 26.5%; position:  absolute;top: 4%; left: 22%"  >
+                            <option value="{{ old('Grado') }}">{{ old('Grado') }}</option>
+
+                            <option value="Lenguas">Lenguas</option>
+                            <option value="Informatica">Informatica</option>
+                            <option value="Higiene y Salud Comunitaria">Higiene y Salud Comunitaria</option>
+                            <option value="Económico Administrativo">Económico Administrativo</option>
+                      </select>
+
+                <select name="bach1" id="bach1" style="font-size:110%;width: 26.5%; position:  absolute;top: 53%; left: 22%" >
+                            <option value="{{ old('Grado') }}">{{ old('Grado') }}</option>
+                            <option value="Químico Biológico">Químico Biológico</option>
+                            <option value="Físico Matemático">Físico Matemático</option>
+                            <option value="Ciencias sociales y humanidades">Ciencias sociales y humanidades</option>
+                            <option value="Económico Administrativo">Económico Administrativo</option>
+                      </select>
+
+                
+            </div>
 
 
-            <button type="submit" class="btn btn-primary" href="#" style="position: absolute;top: 135%;left:65%">Reinscribir</button>
+            <button type="submit" class="btn btn-primary" href="#" style="position: absolute;top: 150%;left:65%">Reinscribir</button>
 
         {!! Form::close()!!}
 

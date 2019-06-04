@@ -8,6 +8,5 @@ class Materia_Grupo extends Model
 {
     //
     protected $fillable = [
-        'Clave', 'Grupo'
-    ];
+        'Clave', 'Grupo','Semestre'];
 }

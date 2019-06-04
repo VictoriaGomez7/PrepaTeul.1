@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Docentes;
 use App\Materia;
+use App\RelacionDocenteMateriaGrupo;
+use App\materia_grupo;
 use Carbon\Carbon;
 
 
@@ -19,27 +21,40 @@ class Arrastrarcontroller extends Controller
     {
 
         $Docentes = Docentes::all();
+
         $now= Carbon::now();
-        $fecha=$now-> format('d/m');
+        $fecha=$now-> format('m');
+        
+        
 
+        if ($fecha>='01' and $fecha<='06'){
+            $Materias_Grupo=materia_grupo::get('Clave');
 
+            $Nom_Mat = Materia::where('Semestre','=','SEGUNDO SEMESTRE')->orWhere('Semestre','=','CUARTO SEMESTRE')->orWhere('Semestre','=','SEXTO SEMESTRE')->get();
+            $Grupo_Mat = materia_grupo::where('Semestre','=','SEGUNDO SEMESTRE')->orWhere('Semestre','=','CUARTO SEMESTRE')->orWhere('Semestre','=','SEXTO SEMESTRE')->get();
 
-        if ($fecha>'01/01' and $fecha<'30/06'){
-            $Materias=Materia::where('Semestre','SEGUNDO SEMESTRE')->orWhere('Semestre','CUARTO SEMESTRE')->orWhere('Semestre','SEXTO SEMESTRE')->get();
-            //return $Materias;
-            $M_P_S=Materia::where('Semestre','PRIMER SEMESTRE')->get();
-            $M_S_S=Materia::where('Semestre','SEGUNDO SEMESTRE')->get();
-            $M_T_S=Materia::where('Semestre','TERCER SEMESTRE')->get();
-            $M_C_S=Materia::where('Semestre','CUARTO SEMESTRE')->get();
-            $M_Q_S=Materia::where('Semestre','QUINTO SEMESTRE')->get();
-            $M_SIX_S=Materia::where('Semestre','SEXTO SEMESTRE')->get();
-            $num=2;
+            $Materias=array();
+            $Grupo_M=array();
+            $bandera=False;
 
-            return view('RegistrarDocentes.asignar',compact('Materias','Docentes','M_S_S','M_C_S','M_SIX_S','num','M_P_S','M_T_S','M_Q_S'));
-        }
-        else if ($Materias>'01/07' and $fecha<'31/12'){
-            $Materias=Materia::where('Semestre','PRIMER SEMESTRE')->orWhere('Semestre','TERCER SEMESTRE')->orWhere('Semestre','QUINTO SEMESTRE')->get();
-            //return $Materias;
+            for ($i=0; $i < count($Materias_Grupo); $i++) {
+                $Clave_Mat=$Materias_Grupo[$i]->Clave;
+
+                for ($j=0; $j <count($Nom_Mat) ; $j++) {
+                    $Clave_2=$Nom_Mat[$j]->Clave;
+
+                    if ($Clave_Mat == $Clave_2){
+                        $dato=$Nom_Mat[$j];
+                        $bandera=True;
+                        $valor=$Grupo_Mat[$i];
+                    }
+                }
+                if ($bandera==True){
+                    array_push($Materias,$dato);
+                    $bandera=False;
+                    array_push($Grupo_M,$valor);
+                }
+            }
 
             $M_P_S=Materia::where('Semestre','PRIMER SEMESTRE')->get();
             $M_S_S=Materia::where('Semestre','SEGUNDO SEMESTRE')->get();
@@ -49,12 +64,44 @@ class Arrastrarcontroller extends Controller
             $M_SIX_S=Materia::where('Semestre','SEXTO SEMESTRE')->get();
             $num=1;
 
-            return view('RegistrarDocentes.asignar',compact('Materias','Docentes','M_P_S','M_T_S','M_Q_S','num','M_S_S','M_C_S','M_SIX_S'));
+            return view('RegistrarDocentes.asignar',compact('Materias','Docentes','M_S_S','M_C_S','M_SIX_S','num','M_P_S','M_T_S','M_Q_S','Grupo_M'));
         }
+        if ($fecha>='07' and $fecha<='12'){
+            $Materias_Grupo=materia_grupo::where('Semestre','=','PRIMER SEMESTRE')->orWhere('Semestre','=','TERCER SEMESTRE')->orWhere('Semestre','=','QUINTO SEMESTRE')->get('Clave');
 
+            $Nom_Mat2= Materia::where('Semestre','=','PRIMER SEMESTRE')->orWhere('Semestre','=','TERCER SEMESTRE')->orWhere('Semestre','=','QUINTO SEMESTRE')->get();
+            $Grupo_Mat2= materia_grupo::where('Semestre','=','PRIMER SEMESTRE')->orWhere('Semestre','=','TERCER SEMESTRE')->orWhere('Semestre','=','QUINTO SEMESTRE')->get();
 
-        //return route->()
+            $Materias=array();
+            $Grupo_M=array();
+            $bandera2=0;
 
+            for ($i=0; $i < count($Materias_Grupo); $i++) {
+                $Clave_Mat=$Materias_Grupo[$i]->Clave;
+
+                for ($j=0; $j <count($Nom_Mat2) ; $j++) {
+                    $Clave_2=$Nom_Mat2[$j]->Clave;
+                    
+                    if ($Clave_Mat == $Clave_2){
+                        //print_r('entro');
+                        $dato=$Nom_Mat2[$j];
+                        $valor=$Grupo_Mat2[$i];
+                        array_push($Materias,$dato);
+                        array_push($Grupo_M,$valor);
+                    }
+                }
+            }
+            
+            $M_P_S=Materia::where('Semestre','PRIMER SEMESTRE')->get();
+            $M_S_S=Materia::where('Semestre','SEGUNDO SEMESTRE')->get();
+            $M_T_S=Materia::where('Semestre','TERCER SEMESTRE')->get();
+            $M_C_S=Materia::where('Semestre','CUARTO SEMESTRE')->get();
+            $M_Q_S=Materia::where('Semestre','QUINTO SEMESTRE')->get();
+            $M_SIX_S=Materia::where('Semestre','SEXTO SEMESTRE')->get();
+            $num=0;
+
+            return view('RegistrarDocentes.asignar',compact('Materias','Docentes','M_S_S','M_C_S','M_SIX_S','num','M_P_S','M_T_S','M_Q_S','Grupo_M'));
+        }
     }
 
     /**
@@ -82,7 +129,7 @@ class Arrastrarcontroller extends Controller
         $tam=strlen($var);
         $conca="";
         $c=0;
-        while ($c<$tam) {
+        while ($c<$tam) { //este while mete las materias y los cudros(identidficadores) en el primer arreglo
              if ($var[$c]==","){
                 array_push($arreglo1, $conca);
                 $conca="";
@@ -92,12 +139,14 @@ class Arrastrarcontroller extends Controller
             $c=$c+1;
         }
 
+        //return $arreglo1;
+
         $arreglo2=array();
         $var2=($request->Arreglo2).",";
         $tam2=strlen($var2);
         $conca="";
         $c=0;
-        while ($c<$tam2) {
+        while ($c<$tam2) { //Este while mete los docentes obtenidos en un arreglo
              if ($var2[$c]==","){
                 array_push($arreglo2, $conca);
                 $conca="";
@@ -106,14 +155,14 @@ class Arrastrarcontroller extends Controller
             }
             $c=$c+1;
         }
-        print_r($arreglo1);
+        //print_r($arreglo1);
        // print_r($arreglo2);
         $arregloSinRepetidos=array();
         $arregloMaterias=array();
         $arregloCuadros=array();
         $tamArreglo1V1=count($arreglo1);
         $i=0;
-         while ($i <$tamArreglo1V1) {
+        while ($i <$tamArreglo1V1) { //Este while solo separa las materias y los cuadros
             if ($i%2==0){
 
                 array_push($arregloMaterias, $arreglo1[$i]);
@@ -126,48 +175,135 @@ class Arrastrarcontroller extends Controller
         //print_r($arregloCuadros);
         //print_r($arregloMaterias);
         $tamArreglo1V2=count($arregloCuadros);
-        for ($i=0; $i < $tamArreglo1V2 ; $i++) {
+        for ($i=0; $i < $tamArreglo1V2 ; $i++) {//Este for borra todos los movimietos anteriores de las cajitas
 
             if (in_array($arregloMaterias[$i],$arregloSinRepetidos)){
-                print "si estoy";
+                //print "si estoy";
+                $buscar=$arregloMaterias[$i];
+                $posi=array_search ($buscar , $arregloSinRepetidos );
+                //print_r("Soy la posicion en la que se repite");
+                //print_r($posi);
+                array_splice($arregloSinRepetidos, $posi,1);
+                array_splice($arregloSinRepetidos, $posi,1);
+
+                array_push($arregloSinRepetidos, $arregloMaterias[$i]);
+                array_push($arregloSinRepetidos, $arregloCuadros[$i]);
 
             } else {
-                print "no estoy";
+                //print "no estoy";
                 array_push($arregloSinRepetidos, $arregloMaterias[$i]);
                 array_push($arregloSinRepetidos, $arregloCuadros[$i]);
             }
         }
-        print "Holaaaaaaaaaa";
-        print_r($arregloSinRepetidos);
+        //print "Holaaaaaaaaaa";
+        //print_r($arregloSinRepetidos);
 
         $tamArreglo1=count($arregloSinRepetidos);
-        for ($i=0; $i < $tamArreglo1; $i++) {
+        //print_r($tamArreglo1);
+        for ($i=0; $i < $tamArreglo1; $i++) {//Este For cuadra las materias con el docente de el segundo arreglo
             if ($i%2==0){
             //print "Hola soy un par";
             //print $i;
             } else {
                 $cuadro=$arregloSinRepetidos[$i];
                 $materiaasignada=$arregloSinRepetidos[$i-1];
-                $doce=$cuadro[strlen($cuadro)-1];
+                $doce=$cuadro[strlen($cuadro)-2].$cuadro[strlen($cuadro)-1];
+                //print "Soy el docente del arreglo ".$doce;
                 $docenteselec=$arreglo2[intval($doce)-1];
-                print "Soy el numero del cuadro ".$docenteselec." Soy la materia asignada ".$materiaasignada."  ";
+                //print "Docente: ".$docenteselec." Materia asignada--> ".$materiaasignada."  ";
+
+
+
+                //ESTE CICLO ES PARA QUITAR DEL NOMBRE DE LA MATERIA AL GRUPO QUE PERTENECE
+                $nueva_materiaasignada='';
+                $nuevo_grupo='';
+                $ban=True;
+                for ($m=0; $m < strlen($materiaasignada); $m++) {
+
+                    if ($materiaasignada[strlen($materiaasignada)-1]=='A' or $materiaasignada[strlen($materiaasignada)-1]=='B') {
+
+                        if ($m==strlen($materiaasignada)-2){
+                        $nuevo_grupo=$materiaasignada[strlen($materiaasignada)-1];
+                        }
+                        else if ($m<strlen($materiaasignada)-2){
+                            $nueva_materiaasignada=$nueva_materiaasignada.$materiaasignada[$m];
+                        }
+                    }
+                    else{
+                        $buscador=$materiaasignada[strlen($materiaasignada)-1];
+                        if ($buscador=='o'){
+                            $buscador_2=$materiaasignada[strlen($materiaasignada)-2];
+                            if ($buscador_2=='v'){
+                                if ($m>strlen($materiaasignada)-27){
+                                $nuevo_grupo=$nuevo_grupo.$materiaasignada[$m];
+                                }
+                                else if ($m<strlen($materiaasignada)-27){
+                                    $nueva_materiaasignada=$nueva_materiaasignada.$materiaasignada[$m];
+                                }
+                            }
+                            else if ($buscador_2=='c'){
+                                $buscador_3=$materiaasignada[strlen($materiaasignada)-4];
+                                if ($buscador_3=='g'){
+                                    if ($m>strlen($materiaasignada)-21){
+                                    $nuevo_grupo=$nuevo_grupo.$materiaasignada[$m];
+                                    }
+                                    else if ($m<strlen($materiaasignada)-21){
+                                        $nueva_materiaasignada=$nueva_materiaasignada.$materiaasignada[$m];
+                                    }
+                                }
+                                else if($buscador_3=='t'){
+                                    if ($m>strlen($materiaasignada)-21){
+                                    $nuevo_grupo=$nuevo_grupo.$materiaasignada[$m];
+                                    }
+                                    else if ($m<strlen($materiaasignada)-21){
+                                        $nueva_materiaasignada=$nueva_materiaasignada.$materiaasignada[$m];
+                                    }
+                                }
+                            }
+                        }
+                        else if($buscador=='s' and $materiaasignada[strlen($materiaasignada)-11]=='H'){
+                            if ($m>strlen($materiaasignada)-33){
+                                $nuevo_grupo=$nuevo_grupo.$materiaasignada[$m];
+                            }
+                            else if ($m<strlen($materiaasignada)-33){
+                                $nueva_materiaasignada=$nueva_materiaasignada.$materiaasignada[$m];
+                            }
+                        }
+                        else{
+                            //return 'Es de esto';
+                            $dijito=$materiaasignada[$m];
+
+                            if ($ban==True and $dijito!='-'){
+                                $nueva_materiaasignada=$nueva_materiaasignada.$materiaasignada[$m];
+                            }
+                            else if ($ban==False){
+                                $nuevo_grupo=$nuevo_grupo.$materiaasignada[$m];
+                            }
+                            if ($dijito=='-'){
+                                $ban=False;
+                            }
+                            
+                        }
+                    }
+                    
+                }
+                //return $nueva_materiaasignada.$nuevo_grupo;
+                $materiaasignada=$nueva_materiaasignada;
+
+                $Materias_all= Materia::where('Nombre',$materiaasignada)->get('Clave');
+                
+                $Relacion=new RelacionDocenteMateriaGrupo();
+                $Relacion->ClaveMateria=$Materias_all[0]->Clave;
+                $Relacion->Materia=$materiaasignada;
+                $Relacion->Docente=$docenteselec;
+                $Relacion->Grupo=$nuevo_grupo;
+                $Relacion->save();
                 //print "Hola soy un inpar";
                 //print $i;
             }
         }
+        return back()->with('msj','Datos guardados con éxito.');
 
-        //
-       /* $rep=$request->Arreglo;
-        print_r($rep[0]);
-        print_r($rep);
-        $tam=strlen($rep);
-        print_r($tam);
-        //$repetidas=count($request->Arreglo2);
-
-        //sprint_r($repetidas);//
-        $hola=$request->Arreglo2;
-        //return $request->Arreglo;
-        //$NombreDocente[]=$Cadena;*/
     }
 
     /**
