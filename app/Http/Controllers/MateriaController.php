@@ -195,6 +195,12 @@ class MateriaController extends Controller
         }
       }
         //Aqui va la condicion por si son mas de 2 palabras
+<<<<<<< HEAD
+=======
+        elseif (count($Nombrediv>2)) {
+          print'Aqui voy';
+        }
+>>>>>>> 74bd17921a03d338e9995030adaf2923ccf120a3
 
 
             $materia=new Materia();
