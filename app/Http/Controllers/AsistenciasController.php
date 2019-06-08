@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use\App\Asistencia;
+use\App\Grupo;
 
 class AsistenciasController extends Controller
 {
@@ -13,7 +15,11 @@ class AsistenciasController extends Controller
      */
     public function index()
     {
-        //
+      $alumnos=Grupo::where([
+
+     ['grupo','A']
+  ])->get();
+          return view('Periodos.show',compact('alumnos'));
     }
 
     /**
