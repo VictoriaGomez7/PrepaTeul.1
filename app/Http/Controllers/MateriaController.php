@@ -31,7 +31,7 @@ class MateriaController extends Controller
     public function create(TagStoreRequestMaterias $request)
     {       //return $request;
             //Arreglo de numero romanos
-
+            $bandera1=0;
             $Romanos=array('I','II','III',"IV",'V','VI' );
             $Romanosara=array('1','2','3',"4",'5','6' );
             $Quitar=array('a','del','la',"para",'de','y','el' );
@@ -105,14 +105,14 @@ class MateriaController extends Controller
             elseif (count($Nombrediv)==2) {
               $prim=$Nombrediv[0];
               $seg=$Nombrediv[1];
-              $bandera1=0;
+
               //Aqui se hace la comparacion para ver si hay un numero romano
               for ($i=0; $i <count($Romanos) ; $i++) {
                 if ($seg==$Romanos[$i]) {
                   $bandera1=1;
                 }
               }
-            }
+
           if ($bandera1==1) {
             for ($i=0; $i <3 ; $i++) {
 
@@ -193,12 +193,8 @@ class MateriaController extends Controller
           }
 
         }
+      }
         //Aqui va la condicion por si son mas de 2 palabras
-        elseif (count($Nombrediv>2)) {
-          print'Aqui voy';
-        }
-            print($bandera1);
-            dd($Clavemat);
 
 
             $materia=new Materia();
