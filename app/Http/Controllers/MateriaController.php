@@ -197,8 +197,6 @@ class MateriaController extends Controller
         elseif (count($Nombrediv>2)) {
           print'Aqui voy';
         }
-            print($bandera1);
-            dd($Clavemat);
 
 
             $materia=new Materia();
