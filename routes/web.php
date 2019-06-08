@@ -77,6 +77,10 @@ Route::get('/Docentes', function () {
     return view('DocenteInterfazPrincipal.InterfazPrincipal');
 });
 
+Route::get('/periodos' ,function(){
+    return view('Periodos.create');
+});
+
 
 Route::resource('LoginAlumno','LoginAController');
 
@@ -109,3 +113,5 @@ Route::resource('/grupos','gruposController');
 Route::resource('Asigna','Arrastrarcontroller');
 
 Route::resource('VisualizaListas','VisualizaListasController');
+
+Route::resource('Periodos','PeriodosController');

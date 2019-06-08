@@ -28,6 +28,7 @@ class Arrastrarcontroller extends Controller
         
 
         if ($fecha>='01' and $fecha<='06'){
+
             $Materias_Grupo=materia_grupo::where('Semestre','=','SEGUNDO SEMESTRE')->orWhere('Semestre','=','CUARTO SEMESTRE')->orWhere('Semestre','=','SEXTO SEMESTRE')->get('Clave');
 
             $Nom_Mat = Materia::where('Semestre','=','SEGUNDO SEMESTRE')->orWhere('Semestre','=','CUARTO SEMESTRE')->orWhere('Semestre','=','SEXTO SEMESTRE')->get();

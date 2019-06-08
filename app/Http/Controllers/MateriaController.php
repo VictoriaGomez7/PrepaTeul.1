@@ -18,7 +18,7 @@ class MateriaController extends Controller
     public function index()
     {
 
-      
+
       return view('materias.consulta');
 
     }
@@ -31,24 +31,41 @@ class MateriaController extends Controller
     public function create(TagStoreRequestMaterias $request)
     {       //return $request;
             //Arreglo de numero romanos
-     
+
             $Romanos=array('I','II','III',"IV",'V','VI' );
+            $Romanosara=array('1','2','3',"4",'5','6' );
             $Quitar=array('a','del','la',"para",'de','y','el' );
             $Auxiliar=array();
             //Extraer el nombre se la materia en una variable($Nombremat)
-            $Nombremat=$request['nombre'];
+            $Nombremat=utf8_decode($request['nombre']);
             //Extraer el tipo de materia en una varible ($Tipomat)
             $Tipomat=$request['tipo'];
             $Clavemat='';
-            //Comparaciones del tipo de materia para sacar la primer parte
+            //Separar por palabras el nombre
+            $Nombrediv = explode(" ", $Nombremat);
+            //Saber el tipo a guardar
             switch ($Tipomat) {
               case 'Formación Básica':
                 $Clavemat=$Clavemat.'FB-';
                 break;
               case 'Formación Propedéutica':
-                  $Clavemat=$Clavemat.'FP-';
+                  switch ($request['bachillerato']) {
+                    case 'Químico Biológico':
+                      $Clavemat=$Clavemat.'QB-';
+                      break;
+                    case 'Físico Matemático':
+                      $Clavemat=$Clavemat.'FM-';
+                      break;
+                    case 'Ciencias Sociales y Humanidades':
+                      $Clavemat=$Clavemat.'CSH-';
+                      break;
+
+                    default:
+                      $Clavemat=$Clavemat.'EA-';
+                      break;
+                  }
                 break;
-              case 'Formación Profesional':
+              case 'Formación Para El Trabajo':
                     $Clavemat=$Clavemat.'FT-';
                 break;
 
@@ -56,173 +73,133 @@ class MateriaController extends Controller
                 $Clavemat=$Clavemat.'AP-';
                 break;
             }
+            //Proceso si solo es una Palabra
+            if (count($Nombrediv)==1) {
+              for ($i=0; $i <3 ; $i++) {
 
-            //proceso para dividir el nombre
-            $letras3='';
-            $letras=str_split($Nombremat);
-            $concatena='';
-            $arreglonombre= array();
-            for ($i=0; $i < count($letras) ; $i++) {
-              switch ($letras[$i]) {
-                case ' ':
-                  array_push ( $arreglonombre , $concatena );
-                  $concatena='';
-                  break;
-
-                default:
-
-                  $concatena=$concatena.$letras[$i];
-                  break;
-              }
-
-            }
-              array_push ( $arreglonombre , $concatena );
-          //Comparaciones de cuantas palabras son
-          $bandera='0';
-          switch (count($arreglonombre)) {
-            case 1:
-              $letras2=str_split($arreglonombre[0]);
-              $Clavemat=$Clavemat.strtoupper($letras2[0]).strtoupper($letras2[1]).strtoupper($letras2[2]);
-              break;
-
-              case 2:
-                $letras2=str_split($arreglonombre[0]);
-                $letras3=($arreglonombre[1]);
-                trim($letras3);
-                $Clavemat=$Clavemat.strtoupper($letras2[0]).strtoupper($letras2[1]);
-                //Ciclo para saber si hay un numero Romano
-                for ($i=0; $i <count($Romanos) ; $i++) {
-                  if ($letras3==$Romanos[$i]) {
-                    $bandera='1';
-                  }
-                }
-                if ($bandera=='0') {
-                  $Clavemat=$Clavemat.strtoupper($letras3[0]);
-                }
-                else {
-                    $Clavemat=$Clavemat.strtoupper($letras2[2]);
-
-                    switch ($letras3) {
-                      case 'I':
-                        $Clavemat=$Clavemat.'1';
-                        break;
-                      case 'II':
-                        $Clavemat=$Clavemat.'2';
-                        break;
-                      case 'III':
-                        $Clavemat=$Clavemat.'3';
-                        break;
-                      case 'IV':
-                        $Clavemat=$Clavemat.'4';
-                        break;
-                      case 'V':
-                        $Clavemat=$Clavemat.'5';
-                        break;
-
-                      default:
-                        $Clavemat=$Clavemat.'6';
-                        break;
-                    }
-                }
-                break;
-
-            default:
-              $b=False;
-              for ($i=0; $i <count($arreglonombre) ; $i++) {
-                for ($j=0; $j <count($Quitar) ; $j++){
-                  if ($arreglonombre[$i]==$Quitar[$j]){
-                    $b=False;
+                switch (utf8_encode(strtolower($Nombremat[$i]))) {
+                  case 'á':
+                    $Clavemat=$Clavemat.'A';
                     break;
-                  }else{
-                    $b=True;
-
-                  }
-                }
-                if ($b==True){
-                      array_push ( $Auxiliar , $arreglonombre[$i] );
-
-                }
-
-              }
-              $banderita=False;
-              if (count($Auxiliar)==2) {
-                $letras=str_split($Auxiliar[0]);
-                $letras2=str_split($Auxiliar[1]);
-                $Clavemat=$Clavemat.strtoupper($letras[0]).strtoupper($letras[1]).strtoupper($letras2[0]);
-              }
-              else {
-                  for ($i=0; $i <count($Romanos) ; $i++) {
-                    if ($Auxiliar[count($Auxiliar)-1]==$Romanos[$i]) {
-                      $banderita=True;
-                  }
-                }
-              }
-            if ($banderita==True) {
-              if (count($Auxiliar)-1==2) {
-                $letras=str_split($Auxiliar[0]);
-                $letras2=str_split($Auxiliar[1]);
-                $letras3=($Auxiliar[2]);
-                $Clavemat=$Clavemat.strtoupper($letras[0]).strtoupper($letras[1]).strtoupper($letras2[0]);
-                switch ($Auxiliar[count($Auxiliar)]) {
-                  case 'I':
-                    $Clavemat=$Clavemat.'1';
+                  case 'é':
+                    $Clavemat=$Clavemat.'E';
                     break;
-                  case 'II':
-                    $Clavemat=$Clavemat.'2';
+                  case 'í':
+                    $Clavemat=$Clavemat.'I';
                     break;
-                  case 'III':
-                    $Clavemat=$Clavemat.'3';
+                  case 'ó':
+                    $Clavemat=$Clavemat.'O';
                     break;
-                  case 'IV':
-                    $Clavemat=$Clavemat.'4';
-                    break;
-                  case 'V':
-                    $Clavemat=$Clavemat.'5';
+                  case 'ú':
+                    $Clavemat=$Clavemat.'U';
                     break;
 
                   default:
-                    $Clavemat=$Clavemat.'6';
+                    $Clavemat=$Clavemat.strtoupper($Nombremat[$i]);
                     break;
                 }
               }
-
-              else {
-                for ($i=0; $i <count($Auxiliar)-1 ; $i++) {
-                  $letras=str_split($Auxiliar[$i]);
-                  $Clavemat=$Clavemat.strtoupper($letras[0]);
             }
-            switch ($Auxiliar[count($Auxiliar)-1]) {
-              case 'I':
-                $Clavemat=$Clavemat.'1';
+
+            //Si son dos palabras
+            elseif (count($Nombrediv)==2) {
+              $prim=$Nombrediv[0];
+              $seg=$Nombrediv[1];
+              $bandera1=0;
+              //Aqui se hace la comparacion para ver si hay un numero romano
+              for ($i=0; $i <count($Romanos) ; $i++) {
+                if ($seg==$Romanos[$i]) {
+                  $bandera1=1;
+                }
+              }
+            }
+          if ($bandera1==1) {
+            for ($i=0; $i <3 ; $i++) {
+
+              switch (utf8_encode(strtolower($prim[$i]))) {
+                case 'á':
+                  $Clavemat=$Clavemat.'A';
+                  break;
+                case 'é':
+                  $Clavemat=$Clavemat.'E';
+                  break;
+                case 'í':
+                  $Clavemat=$Clavemat.'I';
+                  break;
+                case 'ó':
+                  $Clavemat=$Clavemat.'O';
+                  break;
+                case 'ú':
+                  $Clavemat=$Clavemat.'U';
+                  break;
+
+                default:
+                  $Clavemat=$Clavemat.utf8_encode(strtoupper($prim[$i]));
+                  break;
+              }
+            }
+            for ($i=0; $i <count($Romanos) ; $i++) {
+              if ($seg==$Romanos[$i]) {
+                $Clavemat=$Clavemat.$Romanosara[$i];
+              }
+          }
+        }
+        //No hay numero romanos
+        else {
+          for ($i=0; $i <2 ; $i++) {
+
+            switch (utf8_encode(strtolower($prim[$i]))) {
+              case 'á':
+                $Clavemat=$Clavemat.'A';
                 break;
-              case 'II':
-                $Clavemat=$Clavemat.'2';
+              case 'é':
+                $Clavemat=$Clavemat.'E';
                 break;
-              case 'III':
-                $Clavemat=$Clavemat.'3';
+              case 'í':
+                $Clavemat=$Clavemat.'I';
                 break;
-              case 'IV':
-                $Clavemat=$Clavemat.'4';
+              case 'ó':
+                $Clavemat=$Clavemat.'O';
                 break;
-              case 'V':
-                $Clavemat=$Clavemat.'5';
+              case 'ú':
+                $Clavemat=$Clavemat.'U';
                 break;
 
               default:
-                $Clavemat=$Clavemat.'6';
+                $Clavemat=$Clavemat.utf8_encode(strtoupper($prim[$i]));
                 break;
             }
           }
-        }
-            else {
-              for ($i=0; $i <count($Auxiliar) ; $i++) {
-                $letras=str_split($Auxiliar[$i]);
-                $Clavemat=$Clavemat.strtoupper($letras[0]);
-              }
-            }
+          switch (utf8_encode(strtolower($seg[0]))) {
+            case 'á':
+              $Clavemat=$Clavemat.'A';
+              break;
+            case 'é':
+              $Clavemat=$Clavemat.'E';
+              break;
+            case 'í':
+              $Clavemat=$Clavemat.'I';
+              break;
+            case 'ó':
+              $Clavemat=$Clavemat.'O';
+              break;
+            case 'ú':
+              $Clavemat=$Clavemat.'U';
+              break;
 
+            default:
+              $Clavemat=$Clavemat.utf8_encode(strtoupper($seg[0]));
               break;
           }
+
+        }
+        //Aqui va la condicion por si son mas de 2 palabras
+        elseif (count($Nombrediv>2)) {
+          print'Aqui voy';
+        }
+            print($bandera1);
+            dd($Clavemat);
+
 
             $materia=new Materia();
             $materia->Clave=$Clavemat;
@@ -232,8 +209,8 @@ class MateriaController extends Controller
             $materia->Bachillerato=$request['bachillerato'];
             $materia->Horas=$request['horas'];
             $materia->save();
-            
-            
+
+
             if ($request['tipo']=="Actividades Paraescolares" or $request['tipo']=="Formación Básica"){
                 //return $request['semestre'];
 
@@ -269,9 +246,9 @@ class MateriaController extends Controller
                 $materia_Grupo->Semestre=$request['semestre'];
                 $materia_Grupo->save();
 
-            }      
+            }
             return back()->with('msj','Materia registrada con éxito. Clave: '.$Clavemat);
-            
+
     }
     /**
      * Store a newly created resource in storage.
@@ -285,7 +262,7 @@ class MateriaController extends Controller
       $materias=materia::where([['Clave',$r->claveOriginal]])->get();
       foreach ($materias as $row ) {
         $materia=$row;
-        
+
      }
 
 
