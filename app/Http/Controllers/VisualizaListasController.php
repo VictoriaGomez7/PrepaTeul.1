@@ -195,8 +195,16 @@ class VisualizaListasController extends Controller
      */
     public function show($id)
     {
-
-        return view('ListasDocentes.show',compact('id'));
+        $usu=$id;
+        $Nom_Do=Docentes::where('id',$usu)->get('Nombre');
+        $Ma=RelacionDocenteMateriaGrupo::where('Docente',$Nom_Do[0]->Nombre)->get();
+        
+        if (count($Ma)==0){
+            return back()->with('MsjERR','No tiene materias cargadas',compact('id'));
+        }
+        else{
+            return view('ListasDocentes.show',compact('id'));
+        }
     }
 
     /**
