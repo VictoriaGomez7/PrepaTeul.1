@@ -25,6 +25,7 @@
         @yield('ModificarAlumnos')
         @yield('ModificarAlumnosD')
         @yield('VerListas')
+        @yield('BuscarListas')
 
     </body>
 </html>

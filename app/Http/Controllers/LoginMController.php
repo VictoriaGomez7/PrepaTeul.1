@@ -16,6 +16,7 @@ class LoginMController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         return view('LoginM.index');
@@ -51,22 +52,23 @@ class LoginMController extends Controller
     public function show(Request $request)
     {
         $CE = usuariomaestro::where('Usuario', $request->Usuario)->get();
-        //$Ps=usuariomaestro::where('Usuario', $request->Usuario)->get('Password');
+        
         
         $Ps=usuariomaestro::where('Password', $request->Contraseña)->where('Usuario', $request->Usuario) ->get();
         //return 'CE'.$CE.'/'.'PS'.$Ps;
         //return $Ps;
+        $usua=$CE[0]->Usuario;
+        //return $usua;
 
         if (count($CE)==0)
         {
 
-            return back()->with('msj',' Usuario o Contrseña incorrecta' );
+            return back()->with('msj',' Usuario o Contrseña incorrecta');
         }
         else{
             if ($CE==$Ps)
             {
-                //return 'son igual';
-                return view('DocenteInterfazPrincipal.InterfazPrincipal2');
+                return view('DocenteInterfazPrincipal.InterfazPrincipal2',compact('usua'));
             }
             else{
 

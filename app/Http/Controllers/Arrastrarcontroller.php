@@ -272,20 +272,31 @@ class Arrastrarcontroller extends Controller
                         }
                         else{
                             //return 'Es de esto';
-                            $dijito=$materiaasignada[$m];
 
-                            if ($ban==True and $dijito!='-'){
+                            if ($m==0){
+                                $dijito=$materiaasignada[$m];
+                                $dijitoMa=$materiaasignada[$m+1];
+                            }
+                            elseif($m==strlen($materiaasignada)-1){
+                                $dijito=$materiaasignada[$m];
+                                $dijitoMe=$materiaasignada[$m-1];
+                            }
+                            else{
+                                $dijito=$materiaasignada[$m];
+                                $dijitoMa=$materiaasignada[$m+1];
+                                $dijitoMe=$materiaasignada[$m-1]; 
+                            }
+                            
+                            if ($ban==True and $dijito!='-' and $dijitoMa!='-'){
                                 $nueva_materiaasignada=$nueva_materiaasignada.$materiaasignada[$m];
                             }
-                            else if ($ban==False){
+                            else if ($ban==False and $dijitoMe!='-'){
                                 $nuevo_grupo=$nuevo_grupo.$materiaasignada[$m];
                             }
                             if ($dijito=='-'){
                                 $ban=False;
                             }
-                            
-                        }
-                    }
+                        }                    }
                     
                 }
                 //return $nueva_materiaasignada.$nuevo_grupo;

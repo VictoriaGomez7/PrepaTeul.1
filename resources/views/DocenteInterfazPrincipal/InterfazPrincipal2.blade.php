@@ -18,12 +18,11 @@
 			<ul class="menu">
 				<li><a href="#">Listas</a>
 						<ul class="submenu">
-						<li><a href ="http://127.0.0.1:8000/VisualizaListas">Visualizar</a></li>
+						<li><a href ="http://127.0.0.1:8000/VisualizaListas?valor={{ ($usua) }}">Visualizar</a></li>
 					</ul>
-				</li>
 				<li><a href="#">Asistencias</a>
 						<ul class="submenu">
-						<li><a href ="http://127.0.0.1:8000/Asistencias">capturar</a></li>
+						<li><a href ="http://127.0.0.1:8000/Asistencias">Capturar</a></li>
 					</ul>
 				</li>
 			</ul>
