@@ -796,8 +796,7 @@ class MateriaController extends Controller
      */
     public function destroy($id)
     {
-        materia::where('Clave',$id)->delete();
-       materia::get();
+       
        materia_grupo::where('Clave',$id)->delete();
        materia_grupo::get();
        return redirect('materia')->with('msj','Materia Eliminada Correctamente');
