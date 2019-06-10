@@ -30,7 +30,7 @@
       {!! Form::open(['route'=>['materia.store',$materia->Clave],'method'=>'POST','files'=>false]) !!}     {{ csrf_field() }}
    	
    			<p><label  style="font-size:130%; position:  absolute;top: 10%; left: 10%">Clave:</label></p>
-    		<p><input type="number" name="Clave" value="{{ $materia->Clave }}" required="true" min="1" readonly style="font-size:105%; width: 65%; position:  absolute;top: 10%; left: 30%"></p>
+    		<p><input type="text" name="Clave" value="{{ $materia->Clave }}" required="true" min="1" readonly style="font-size:105%; width: 65%; position:  absolute;top: 10%; left: 30%"></p>
         <p><input type="input" name="claveOriginal" value="{{ $materia->Clave }}"  hidden="true"></p>
 
         <p><label  style="font-size:130%; position:  absolute;top: 25%; left: 10%">Tipo:</label><p>

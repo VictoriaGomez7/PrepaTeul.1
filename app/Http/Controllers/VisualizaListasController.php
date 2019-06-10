@@ -203,6 +203,7 @@ class VisualizaListasController extends Controller
             return back()->with('MsjERR','No tiene materias cargadas',compact('id'));
         }
         else{
+            
             return view('ListasDocentes.show',compact('id'));
         }
     }

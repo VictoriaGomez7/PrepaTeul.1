@@ -71,10 +71,10 @@
                       </select>
                 <select name="bachillerato" id="bachillerato" required style="font-size:110%;width: 65%; position:  absolute;top: 40%; left: 30%" disabled="true">
                             <option value="{{ old('tipo') }}">{{ old('tipo') }}</option>
-                            <option value="Químico Biológico">Químico Biológico</option>
-                            <option value="Físico Matemático">Físico Matemático</option>
-                            <option value="Ciencias Sociales y Humanidades">Ciencias Sociales y Humanidades</option>
-                            <option value="Económico Administrativo">Económico Administrativo</option>
+                            <option value="Químico Biológica">Químico-Biológica</option>
+                            <option value="Físico Matemática">Físico-Matemática</option>
+                            <option value="Humanidades y Ciencias Sociales">Humanidades y Ciencias Sociales</option>
+                            <option value="Económico Administrativa">Económico-Administrativa</option>
                       </select>
                 
                 <select name="semestre" required style="font-size:110%;width: 65%;;position: absolute;top:55%; left:30%;">
