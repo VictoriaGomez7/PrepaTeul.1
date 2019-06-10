@@ -20,9 +20,6 @@
           <th  align="center">Matrícula</th>
           <th  align="center">Grupo</th>
           <th  align="center">Nombre</th>
-          <th  align="center">Asistencias</th>
-          <th  align="center">Retardos</th>
-          <th  align="center">Faltas</th>
         </tr>
       </thead>
         <tbody>
@@ -31,16 +28,12 @@
             <td align="center">{{ $alumno->id }}</td>
             <td align="center">{{ $alumno->Grupo }}</td>
             <td align="center">'deberia estar'</td>
-            <td align="center">{{ $alumno->id }}</td>
-            <td align="center">{{ $alumno->Grupo }}</td>
-            <td align="center">'deberia estar'</td>
-
             </div>
           </div>
                 </div>
             </div></td>
-            {!!Form::open(['route' => ['Alumnos.destroy',$alumno->id],'method'=>'DELETE'])!!}
-            <td>{!!Form::submit('Guardar',['class'=>'btn btn-danger'])!!}</td>
+            {!!Form::open(['route' => ['Alumnos.destroy',$alumno->id],'method'=>'POST'])!!}
+            <td>{!!Form::submit('Capturar Asistencia',['class'=>'btn btn-danger'])!!}</td>
             {!! Form::close()!!}
 
 
