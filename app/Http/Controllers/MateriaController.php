@@ -196,7 +196,6 @@ class MateriaController extends Controller
         }
       }
         //Aqui va la condicion por si son mas de 2 palabras
-<<<<<<< HEAD
         elseif (count($Nombrediv)>2) {
           for ($i=0; $i <count($Nombrediv) ; $i++) {
             $bandera2=0;
@@ -301,18 +300,6 @@ class MateriaController extends Controller
                   case 'ú':
                     $Clavemat=$Clavemat.'U';
                     break;
-=======
-<<<<<<< HEAD
-=======
-        elseif (count($Nombrediv>2)) {
-          print'Aqui voy';
-        }
->>>>>>> 74bd17921a03d338e9995030adaf2923ccf120a3
-
-        elseif (count($Nombrediv>2)) {
-          print'Aqui voy';
-        }
->>>>>>> b2e1032f342b79413261ae2c75623513d775cd20
 
                   default:
                     $Clavemat=$Clavemat.utf8_encode(strtoupper($prim[$i]));
@@ -561,7 +548,7 @@ class MateriaController extends Controller
 }
 }
 }
-            
+
             $materia=new Materia();
             $materia->Clave=$Clavemat;
             $materia->Tipo=$request['tipo'];
