@@ -22,7 +22,7 @@
           </div>
         @endif
 
-        <div class="card-header text-center" style="font-size:200%;width: 50%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 52%; left: 25%;" >{{ __(' Materia ' .$materia->Nombre ) }}
+        <div class="card-header text-center" style="font-size:200%;width: 50%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 52%; left: 25%;" >{{ __(' Materia: ' .$materia->Nombre ) }}
 
         </div> <div style="position: absolute;top: 62%; left: 25%; width: 50%;height:50%; background-color:#aaa">
 
@@ -35,7 +35,7 @@
           <p style="font-size:130%; position:  absolute;top: 70%; left: 10%">{{('Horas:')}}</p>
 
 
-          <p><input type="number" name="Clave" min="1" value="{{ $materia->Clave }}" style="font-size:105%; width: 65%; position:  absolute;top: 10%; left: 30%" disabled="true"/></p>
+          <p><input type="text" name="Clave" value="{{ $materia->Clave }}" style="font-size:105%; width: 65%; position:  absolute;top: 10%; left: 30%" disabled="true"/></p>
 
           <p><input name="Tipo" type="input" disabled="true" value="{{ $materia->Tipo }}" style="font-size:105%; width: 65%; position:  absolute;top: 25%; left: 30%"></p>
 

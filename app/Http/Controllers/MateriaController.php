@@ -548,7 +548,13 @@ class MateriaController extends Controller
 }
 }
 }
+        elseif (count($Nombrediv>2)) {
+          print'Aqui voy';
+        }
 
+        elseif (count($Nombrediv>2)) {
+          print'Aqui voy';
+        }
             $materia=new Materia();
             $materia->Clave=$Clavemat;
             $materia->Tipo=$request['tipo'];
@@ -629,24 +635,20 @@ class MateriaController extends Controller
 
                 }
                 if ($r->Tipo=="Formación Para El Trabajo"){
-                if ($r->Semestre=="TERCER SEMESTRE" or $r->Semestre=="CUARTO SEMESTRE" or $r->Semestre=="QUINTO SEMESTRE" or $r->Semestre=="SEXTO SEMESTRE") {
-                     $materia->fill($r->all());
-                            $materia->save();
-                           return redirect('materia')->with('msj','Materia Modificada Correctamente');
-                                           }
-                else{
-                    return back()->with('msj','El semestre seleccionado no coincide para el tipo de materia.' );
+                  if ($r->Semestre=="TERCER SEMESTRE" or $r->Semestre=="CUARTO SEMESTRE" or $r->Semestre=="QUINTO SEMESTRE" or $r->Semestre=="SEXTO SEMESTRE") {
+                       $materia->fill($r->all());
+                              $materia->save();
+                             return redirect('materia')->with('msj','Materia Modificada Correctamente');
+                  }
+                  else{
+                      return back()->with('msj','El semestre seleccionado no coincide para el tipo de materia.' );
+                  }
                 }
-            }
-
-
                 else{
-                   $materia->fill($r->all());
-                   $materia->save();
-                return redirect('materia')->with('msj','Materia Modificada Correctamente');
-            }
-
-
+                  $materia->fill($r->all());
+                  $materia->save();
+                  return redirect('materia')->with('msj','Materia Modificada Correctamente');
+                }
         }else {
 
          return redirect('materia')->with('msj2','Materia Modificada Correctamente1');
@@ -664,18 +666,13 @@ class MateriaController extends Controller
      */
     public function show($r)
     {
-        $opciones2="";
-         $opciones="";
+      $opciones2="";
+      $opciones="";
         ///return $r;//
-       $materia="";
-     $materias=materia::where([
-
-            ['Clave',$r]
-        ])->get();
+      $materia="";
+      $materias=materia::where([['Clave',$r]])->get();
       foreach ($materias as $row ) {
-         # code...
-
-
+        
         $materia=$row;
         if($materia->Tipo=='Formación Propedéutica'){
                     $opciones=' <option value="Formación Propedéutica" selected="true">Formación Propedéutica</option>
@@ -760,20 +757,20 @@ class MateriaController extends Controller
     public function edit($g, Request $r)
     {
       $materia=[];
-      $materias=Materia::where([['Clave',$r->Clave]
-        ])->get();
-        foreach ($materias as $row ) {
-            $materia=$row;
-
-        }
+      $materias=Materia::where([['Clave',$r->Clave]])->get();
+      
+      foreach ($materias as $row ) {
+        $materia=$row;
+      }
        //return $materia->Clave;
 
-        if($materia!=null)  {
-            return view('materias.vista',compact('materia'));
-         }else{
+      if($materia!=null)  {
 
-            return back()->with('msj2','La materia no existe' );
-         }
+        return view('materias.vista',compact('materia'));
+      }
+      else{
+        return back()->with('msj2','La materia no existe' );
+      }
     }
 
 
@@ -800,8 +797,7 @@ class MateriaController extends Controller
      */
     public function destroy($id)
     {
-        materia::where('Clave',$id)->delete();
-       materia::get();
+       
        materia_grupo::where('Clave',$id)->delete();
        materia_grupo::get();
        return redirect('materia')->with('msj','Materia Eliminada Correctamente');
