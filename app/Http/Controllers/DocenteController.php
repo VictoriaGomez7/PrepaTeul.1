@@ -125,6 +125,7 @@ class DocenteController extends Controller
 
         $docenteL=new usuariomaestro();
         $docenteL->Usuario=$request['id'];
+        $docenteL->Password='12345';
         $docenteL->save();
 
         return back()->with('msj','Docente registrado con éxito.');

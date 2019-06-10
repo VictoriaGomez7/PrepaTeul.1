@@ -28,7 +28,6 @@ class gruposController extends Controller
     {
         //return "Hola LoginA";
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -54,45 +53,42 @@ class gruposController extends Controller
 
  
 
-  $alumnosHombres=DB::select("SELECT DISTINCT alumnos.Numero,alumnos.Semestre ,alumnos.Sexo,alumnos.Nombre_A
+  $alumnosHombres=DB::select("SELECT DISTINCT alumnos.id,alumnos.Semestre ,alumnos.Sexo,alumnos.Nombre_A
 from alumnos    WHERE not EXISTS (SELECT 1 from grupos
-        WHERE grupos.Numero=alumnos.Numero
+        WHERE grupos.id=alumnos.id
                           )and  not EXISTS (SELECT 1 from grupo_temporals
-        WHERE grupo_temporals.Numero=alumnos.Numero
+        WHERE grupo_temporals.id=alumnos.id
                           ) and alumnos.Sexo='HOMBRE' AND alumnos.Semestre= :sem" ,['sem'=>$r->semestre]);
 
 
-$alumnosMujeres=DB::select("SELECT DISTINCT alumnos.Numero,alumnos.Semestre ,alumnos.Sexo ,alumnos.Nombre_A
+$alumnosMujeres=DB::select("SELECT DISTINCT alumnos.id,alumnos.Semestre ,alumnos.Sexo ,alumnos.Nombre_A
 from alumnos    WHERE not EXISTS (SELECT 1 from grupos
-        WHERE grupos.Numero=alumnos.Numero
+        WHERE grupos.id=alumnos.id
                           )and  not EXISTS (SELECT 1 from grupo_temporals
-        WHERE grupo_temporals.Numero=alumnos.Numero
+        WHERE grupo_temporals.id=alumnos.id
                           ) and alumnos.Sexo='MUJER' AND alumnos.Semestre= :sem" ,['sem'=>$r->semestre]);
             # code...
 $semestre=$r->semestre;
 
 
-    $listaA=DB::select("SELECT DISTINCT alumnos.Numero,alumnos.Nombre_A
+    $listaA=DB::select("SELECT DISTINCT alumnos.id,alumnos.Nombre_A
 from alumnos    WHERE  (EXISTS (SELECT 1 from grupos
-        WHERE grupos.Numero=alumnos.Numero and grupos.Grupo='A')
+        WHERE grupos.id=alumnos.id and grupos.Grupo='A')
         or   EXISTS ((SELECT 1 from grupo_temporals
-        WHERE grupo_temporals.Numero=alumnos.numero and grupo_temporals.Grupo='A'
+        WHERE grupo_temporals.id=alumnos.id and grupo_temporals.Grupo='A'
                           )))
                           AND alumnos.Semestre= :sem" ,['sem'=>$r->semestre]);
              //$s='Semestre'.$r->semestre;
 //return $s;
 
-             $listaB=DB::select("SELECT DISTINCT alumnos.Numero,alumnos.Nombre_A
+             $listaB=DB::select("SELECT DISTINCT alumnos.id,alumnos.Nombre_A
 from alumnos    WHERE  (EXISTS (SELECT 1 from grupos
-        WHERE grupos.Numero=alumnos.Numero and grupos.Grupo='B')
+        WHERE grupos.id=alumnos.id and grupos.Grupo='B')
         or   EXISTS ((SELECT 1 from grupo_temporals
-        WHERE grupo_temporals.Numero=alumnos.numero and grupo_temporals.Grupo='B'
+        WHERE grupo_temporals.id=alumnos.id and grupo_temporals.Grupo='B'
                           )))
                           AND alumnos.Semestre= :sem" ,['sem'=>$r->semestre]);
-
-
-
-              return view('grupos.creaGrupos',compact('alumnosHombres','alumnosMujeres' ,'semestre','listaA','listaB'));
+return view('grupos.creaGrupos',compact('alumnosHombres','alumnosMujeres' ,'semestre','listaA','listaB'));
       
 
 
@@ -102,11 +98,11 @@ from alumnos    WHERE  (EXISTS (SELECT 1 from grupos
 
                   foreach ($alumnos as $alum ) {
                       # code...
-                    $numero=$alum->Numero;
+                    $numero=$alum->id;
                     $grupo=$alum->Grupo;
                     $alumnosGrupo=new Grupo();
 
-                         $alumnosGrupo->Numero=$numero;
+                         $alumnosGrupo->id=$numero;
                         $alumnosGrupo->Grupo=$grupo;    
                         $alumnosGrupo->save();
                        $alum->delete();
@@ -119,77 +115,64 @@ from alumnos    WHERE  (EXISTS (SELECT 1 from grupos
         }else {
             
             $numeros=[];
-                //return 'boton';
-              //  return $semestre;
-             $alumnos=Alumno::where([['Semestre',$semestre] ])->get();
-            // return $semestre;
+                         $alumnos=Alumno::where([['Semestre',$semestre] ])->get();
              foreach ($alumnos as $alumno) {
                  # code...
-                $n=$alumno->Numero;
-                $boton='eliminar'.$alumno->Nombre_A;
-
+                $n=$alumno->id;
+                $boton='eliminar'.$alumno->id;
+                
                 if(isset($r->$n)){
                     $c='combo'.$n;
-
               $GrupoTemporal=new GrupoTemporal();
-                         $GrupoTemporal->Numero=$n;
+                         $GrupoTemporal->id=$n;
                         $GrupoTemporal->Grupo=$r->$c;    
                         $GrupoTemporal->save();
-                    
-                    
-                    //return redirect('grupos');
-
                 }
-
                  if(isset($r->$boton)){
-                     $eliminado=Grupo::where([['Numero',$alumno->Numero] ])->get();
+                     $eliminado=Grupo::where([['id',$alumno->id] ])->get();
                     foreach ($eliminado as $elimina) {
                         # code...
                         $elimina->delete();
                     }
-                   $eliminado=GrupoTemporal::where([['Numero',$alumno->Numero] ])->get();
+                   $eliminado=GrupoTemporal::where([['id',$alumno->id] ])->get();
+                  // return $alumno->id;
                      foreach ($eliminado as $elimina) {
                         # code...
+                        //return $elimina;
                         $elimina->delete();
                     }
-
-
                 } 
-
              }
-             //return $alumnos;
-                 $alumnosHombres=DB::select("SELECT DISTINCT alumnos.Numero,alumnos.Semestre ,alumnos.Sexo,alumnos.Nombre_A
+                 $alumnosHombres=DB::select("SELECT DISTINCT alumnos.id,alumnos.Semestre ,alumnos.Sexo,alumnos.Nombre_A
 from alumnos    WHERE not EXISTS (SELECT 1 from grupos
-        WHERE grupos.Numero=alumnos.Numero
+        WHERE grupos.id=alumnos.id
                           )and  not EXISTS (SELECT 1 from grupo_temporals
-        WHERE grupo_temporals.Numero=alumnos.Numero
+        WHERE grupo_temporals.id=alumnos.id
                           ) and alumnos.Sexo='HOMBRE' AND alumnos.Semestre= :sem" ,['sem'=>$r->semestre]);
-
-
-$alumnosMujeres=DB::select("SELECT DISTINCT alumnos.Numero,alumnos.Semestre ,alumnos.Sexo ,alumnos.Nombre_A
-from alumnos    WHERE not EXISTS (SELECT 1 from grupos
-        WHERE grupos.Numero=alumnos.Numero
+$alumnosMujeres=DB::select("SELECT DISTINCT alumnos.id,alumnos.Semestre ,alumnos.Sexo ,alumnos.Nombre_A
+                from alumnos    WHERE not EXISTS (SELECT 1 from grupos
+        WHERE grupos.id=alumnos.id
                           )and  not EXISTS (SELECT 1 from grupo_temporals
-        WHERE grupo_temporals.Numero=alumnos.Numero
+        WHERE grupo_temporals.id=alumnos.id
                           ) and alumnos.Sexo='MUJER' AND alumnos.Semestre= :sem" ,['sem'=>$r->semestre]);
             # code...
 $semestre=$r->semestre;
     
-  $listaA=DB::select("SELECT DISTINCT alumnos.Numero,alumnos.Nombre_A
+  $listaA=DB::select("SELECT DISTINCT alumnos.id,alumnos.Nombre_A
 from alumnos    WHERE  (EXISTS (SELECT 1 from grupos
-        WHERE grupos.Numero=alumnos.Numero and grupos.Grupo='A')
+        WHERE grupos.id=alumnos.id and grupos.Grupo='A')
         or   EXISTS ((SELECT 1 from grupo_temporals
-        WHERE grupo_temporals.Numero=alumnos.numero and grupo_temporals.Grupo='A'
+        WHERE grupo_temporals.id=alumnos.id and grupo_temporals.Grupo='A'
                           )))
                           AND alumnos.Semestre= :sem" ,['sem'=>$r->semestre]);
              //$s='Semestre'.$r->semestre;
 //return $s;
 
-             $listaB=DB::select("SELECT DISTINCT alumnos.Numero,alumnos.Nombre_A
+             $listaB=DB::select("SELECT DISTINCT alumnos.id,alumnos.Nombre_A
 from alumnos    WHERE  (EXISTS (SELECT 1 from grupos
-        WHERE grupos.Numero=alumnos.Numero and grupos.Grupo='B')
+        WHERE grupos.id=alumnos.id and grupos.Grupo='B')
         or   EXISTS ((SELECT 1 from grupo_temporals
-        WHERE grupo_temporals.Numero=alumnos.numero and grupo_temporals.Grupo='B'
+        WHERE grupo_temporals.id=alumnos.id and grupo_temporals.Grupo='B'
                           )))
                           AND alumnos.Semestre= :sem" ,['sem'=>$r->semestre]);
 
@@ -215,6 +198,7 @@ from alumnos    WHERE  (EXISTS (SELECT 1 from grupos
     public function edit($id)
     {
         //
+        return view('Grupos.grupo');
     }
 
     /**
