@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html>
 
     <head>
@@ -8,6 +10,7 @@
 
           {{--@include('interfazprincipal.image')--}}
           @include('ControlEscolar.CEprincipal')
+          @extends('layouts.app')
     </head>
 <body>
 
@@ -25,8 +28,8 @@
    <?php
           if(isset($semestre)){ 
          ?>
-        <div class="card-header text-center" style="font-size:200%;width: 96%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 32.5%; left: 2%;" >{{ __(' Grupos: '.$semestre) }}
-        </div> <div style="position: absolute;top: 42.5%; left:2%; width: 96%; background-color:#aaa">
+        <div class="card-header text-center" style="font-size:200%;width: 90%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 52%; left: 5%;" >{{ __(' Grupos: '.$semestre) }}
+        </div> <div style="position: absolute;top: 62%; left:5%; width: 90%; background-color:#aaa">
           {!! Form::open(['route'=>['grupos.show', $semestre ],'method'=>'GET','files'=>false]) !!}     {{ csrf_field() }}
         
          <table width="100%" left="5px" align="center" border="">

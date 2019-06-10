@@ -195,7 +195,6 @@ class MateriaController extends Controller
         }
       }
         //Aqui va la condicion por si son mas de 2 palabras
-<<<<<<< HEAD
         elseif (count($Nombrediv)>2) {
           for ($i=0; $i <count($Nombrediv) ; $i++) {
             $bandera2=0;
@@ -549,7 +548,6 @@ class MateriaController extends Controller
 }
 }
 
-=======
         elseif (count($Nombrediv>2)) {
           print'Aqui voy';
         }
@@ -557,8 +555,6 @@ class MateriaController extends Controller
         elseif (count($Nombrediv>2)) {
           print'Aqui voy';
         }
-
->>>>>>> 3feba2649371b746d33c28c453631e7c09da600c
             $materia=new Materia();
             $materia->Clave=$Clavemat;
             $materia->Tipo=$request['tipo'];
