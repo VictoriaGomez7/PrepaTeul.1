@@ -12,18 +12,24 @@
 </head>
 <body>
 	@include('interfazprincipal.image')
+    
+    @if (session()->has('MsjERR'))
+        <div class="alert alert-danger" role="alert" style="width: 90%; position:  absolute;top: 43%; left: 5%;z-index: 1;">
+            <button class="close" data-dismiss="alert"><span>&times;</span></button>
+            <strong>¡ERROR! </strong>{{ session('MsjERR') }}
+        </div>
+    @endif
 
 	<header>
 		<nav class="navegacion" style="width: 90%">
 			<ul class="menu">
 				<li><a href="#">Listas</a>
 						<ul class="submenu">
-						<li><a href ="http://127.0.0.1:8000/VisualizaListas">Visualizar</a></li>
+						<li><a href ="http://127.0.0.1:8000/VisualizaListas?valor={{ ($usua) }}">Visualizar</a></li>
 					</ul>
-				</li>
 				<li><a href="#">Asistencias</a>
 						<ul class="submenu">
-						<li><a href ="http://127.0.0.1:8000/Asistencias">capturar</a></li>
+						<li><a href ="http://127.0.0.1:8000/Asistencias">Capturar</a></li>
 					</ul>
 				</li>
 			</ul>

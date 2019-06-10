@@ -202,6 +202,9 @@ class MateriaController extends Controller
         }
 >>>>>>> 74bd17921a03d338e9995030adaf2923ccf120a3
 
+        elseif (count($Nombrediv>2)) {
+          print'Aqui voy';
+        }
 
             $materia=new Materia();
             $materia->Clave=$Clavemat;
