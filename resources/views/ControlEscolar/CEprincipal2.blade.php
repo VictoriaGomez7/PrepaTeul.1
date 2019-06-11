@@ -41,6 +41,7 @@
 					<ul class="submenu">
 						<li><a href="RegistraDocente">Registrar</a></li>
 						<li><a href="docenteconsulta">Consultar</a></li>
+						<li><a href="VisualizarDocentes">Materia de los Docentes</a></li>
 					</ul>
 				</li>
 				<li><a href="#">Directivo</a></li>
