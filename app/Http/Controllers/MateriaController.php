@@ -32,6 +32,7 @@ class MateriaController extends Controller
     {       //return $request;
             //Arreglo de numero romanos
             $bandera1=0;
+            $bandera4=0;
             $Romanos=array('I','II','III',"IV",'V','VI' );
             $Romanosara=array('1','2','3',"4",'5','6' );
             $Quitar=array('a','del','la',"para",'de','y','el' );
