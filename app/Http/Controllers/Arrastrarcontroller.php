@@ -38,11 +38,12 @@ class Arrastrarcontroller extends Controller
                     return redirect('/ControlEscolarInicio')->with('MsjERR','No tiene materias registrados');
                 }
                 else{
+
                     $Nom_Mat = Materia::where('Semestre','=','SEGUNDO SEMESTRE')->orWhere('Semestre','=','CUARTO SEMESTRE')->orWhere('Semestre','=','SEXTO SEMESTRE')->get();
                     $Grupo_Mat = materia_grupo::where('Semestre','=','SEGUNDO SEMESTRE')->orWhere('Semestre','=','CUARTO SEMESTRE')->orWhere('Semestre','=','SEXTO SEMESTRE')->get();
 
-                    $Materias=array();
-                    $Grupo_M=array();
+                    $Materias1=array();
+                    $Grupo_M1=array();
                     $bandera=False;
 
                     for ($i=0; $i < count($Materias_Grupo); $i++) {
@@ -58,9 +59,9 @@ class Arrastrarcontroller extends Controller
                             }
                         }
                         if ($bandera==True){
-                            array_push($Materias,$dato);
+                            array_push($Materias1,$dato);
                             $bandera=False;
-                            array_push($Grupo_M,$valor);
+                            array_push($Grupo_M1,$valor);
                         }
                     }
 
@@ -72,7 +73,48 @@ class Arrastrarcontroller extends Controller
                     $M_SIX_S=Materia::where('Semestre','SEXTO SEMESTRE')->get();
                     $num=1;
 
+                    $Materias_YA_Asignadas_Nombre=RelacionDocenteMateriaGrupo::get('Materia');
+                    $Materias_YA_Asignadas_Grupo=RelacionDocenteMateriaGrupo::get('Grupo');
+
+                    //ESTO ES PARA SACAR LA MATERIA Y EL GRUPO, PARA COMPARAR CUALES MATERIAS YA ESTAN ASIGNADAS A QUE MAESTRO.
+                    $Materias2=array();
+                    $Grupo_M2=array();
+                    foreach ($Materias1 as $Materia1) {
+                        array_push($Materias2,$Materia1->Nombre);
+                    }
+                    foreach ($Grupo_M1 as $Grup_M1) {
+                        array_push($Grupo_M2,$Grup_M1->Grupo);
+                    }
+                    
+                    $Materias=array();
+                    $Grupo_M=array();
+                    for ($i=0; $i < count($Materias2); $i++) { 
+                        $M=$Materias2[$i];
+                        $G=$Grupo_M2[$i];
+                        $datoM=$Materias1[$i];
+                        $datoG=$Grupo_M1[$i];
+                        $Ban=False;
+                        
+                        for ($j=0; $j <count($Materias_YA_Asignadas_Nombre) ; $j++) {$MA=$Materias_YA_Asignadas_Nombre[$j]->Materia;
+                            $GA=$Materias_YA_Asignadas_Grupo[$j]->Grupo;
+                            
+                            if ($MA==$M && $GA==$G){
+                                $Ban=True;
+                            }
+                        }
+                        if ($Ban==False){
+                            array_push($Materias,$datoM);
+                            array_push($Grupo_M,$datoG);
+                        }
+                    }
+
+                    if (count($Materias)==0){
+                        return redirect('/ControlEscolarInicio')->with('MsjERR','Todas las materias han sido asignadas');
+                    }
+                    else{
+                    
                     return view('RegistrarDocentes.asignar',compact('Materias','Docentes','M_S_S','M_C_S','M_SIX_S','num','M_P_S','M_T_S','M_Q_S','Grupo_M'));
+                    }
                 }
             }
             if ($fecha>='07' and $fecha<='12'){
@@ -85,8 +127,8 @@ class Arrastrarcontroller extends Controller
                     $Nom_Mat2= Materia::where('Semestre','=','PRIMER SEMESTRE')->orWhere('Semestre','=','TERCER SEMESTRE')->orWhere('Semestre','=','QUINTO SEMESTRE')->get();
                     $Grupo_Mat2= materia_grupo::where('Semestre','=','PRIMER SEMESTRE')->orWhere('Semestre','=','TERCER SEMESTRE')->orWhere('Semestre','=','QUINTO SEMESTRE')->get();
 
-                    $Materias=array();
-                    $Grupo_M=array();
+                    $Materias1=array();
+                    $Grupo_M1=array();
                     $bandera2=0;
 
                     for ($i=0; $i < count($Materias_Grupo); $i++) {
@@ -99,8 +141,8 @@ class Arrastrarcontroller extends Controller
                                 //print_r('entro');
                                 $dato=$Nom_Mat2[$j];
                                 $valor=$Grupo_Mat2[$i];
-                                array_push($Materias,$dato);
-                                array_push($Grupo_M,$valor);
+                                array_push($Materias1,$dato);
+                                array_push($Grupo_M1,$valor);
                             }
                         }
                     }
@@ -113,7 +155,48 @@ class Arrastrarcontroller extends Controller
                     $M_SIX_S=Materia::where('Semestre','SEXTO SEMESTRE')->get();
                     $num=0;
 
+                    $Materias_YA_Asignadas_Nombre=RelacionDocenteMateriaGrupo::get('Materia');
+                    $Materias_YA_Asignadas_Grupo=RelacionDocenteMateriaGrupo::get('Grupo');
+
+                    //ESTO ES PARA SACAR LA MATERIA Y EL GRUPO, PARA COMPARAR CUALES MATERIAS YA ESTAN ASIGNADAS A QUE MAESTRO.
+                    $Materias2=array();
+                    $Grupo_M2=array();
+                    foreach ($Materias1 as $Materia1) {
+                        array_push($Materias2,$Materia1->Nombre);
+                    }
+                    foreach ($Grupo_M1 as $Grup_M1) {
+                        array_push($Grupo_M2,$Grup_M1->Grupo);
+                    }
+                    
+                    $Materias=array();
+                    $Grupo_M=array();
+                    for ($i=0; $i < count($Materias2); $i++) { 
+                        $M=$Materias2[$i];
+                        $G=$Grupo_M2[$i];
+                        $datoM=$Materias1[$i];
+                        $datoG=$Grupo_M1[$i];
+                        $Ban=False;
+                        
+                        for ($j=0; $j <count($Materias_YA_Asignadas_Nombre) ; $j++) {$MA=$Materias_YA_Asignadas_Nombre[$j]->Materia;
+                            $GA=$Materias_YA_Asignadas_Grupo[$j]->Grupo;
+                            
+                            if ($MA==$M && $GA==$G){
+                                $Ban=True;
+                            }
+                        }
+                        if ($Ban==False){
+                            array_push($Materias,$datoM);
+                            array_push($Grupo_M,$datoG);
+                        }
+                    }
+
+                    if (count($Materias)==0){
+                        return redirect('/ControlEscolarInicio')->with('MsjERR','Todas las materias han sido asignadas');
+                    }
+                    else{
+                    
                     return view('RegistrarDocentes.asignar',compact('Materias','Docentes','M_S_S','M_C_S','M_SIX_S','num','M_P_S','M_T_S','M_Q_S','Grupo_M'));
+                    }
                 }
             }
         }

@@ -19,6 +19,11 @@
             <strong>¡ERROR! </strong>{{ session('MsjERR') }}
         </div>
     @endif
+	
+	<?php
+        $usua=$_GET['valor'];
+	?>
+    
 
 	<header>
 		<nav class="navegacion" style="width: 90%">

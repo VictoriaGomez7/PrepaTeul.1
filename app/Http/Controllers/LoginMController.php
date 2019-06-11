@@ -68,13 +68,13 @@ class LoginMController extends Controller
         else{
             if ($CE==$Ps)
             {
+                view('DocenteInterfazPrincipal.InterfazPrincipal',compact('usua'));
                 return view('DocenteInterfazPrincipal.InterfazPrincipal2',compact('usua'));
             }
             else{
 
                 //return 'no son igual '.$CE.'/'.$Ps;       
                 return back()->with('msj',' Usuario o Contrseña incorrecta' );
-            
             }
         }
     }
