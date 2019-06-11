@@ -5,7 +5,7 @@
 @section('title','Docente')
 
 {{--@include('interfazprincipal.image')--}}
-@include('DocenteInterfazPrincipal.interfazprincipal')
+@include('ControlEscolar.CEprincipal')
 @section('content')
 @foreach($Alumno as $alumno)
 {!!Form::open(['route' => ['Asistencias.create'],'method'=>'get'])!!}

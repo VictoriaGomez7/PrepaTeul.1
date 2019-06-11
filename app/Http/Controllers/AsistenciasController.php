@@ -40,6 +40,7 @@ class AsistenciasController extends Controller
       $asistencia->Retardos=$request['Ret'];
       $asistencia->Faltas=$request['Falt'];
       $asistencia->save();
+      return view('Asistencias.show');
     }
 
     /**

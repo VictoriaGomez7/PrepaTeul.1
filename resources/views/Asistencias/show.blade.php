@@ -5,7 +5,7 @@
 @section('title','Docente')
 
 {{--@include('interfazprincipal.image')--}}
-@include('DocenteInterfazPrincipal.interfazprincipal')
+@include('ControlEscolar.CEprincipal')
 @section('content')
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>

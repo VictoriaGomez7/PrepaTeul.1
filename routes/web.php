@@ -121,3 +121,5 @@ Route::resource('VisualizaListas','VisualizaListasController');
 Route::resource('Periodos','PeriodosController');
 
 Route::resource('Asistencias','AsistenciasController');
+
+Route::resource('VisualizarDocentes','VisuaDocentesController');

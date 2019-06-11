@@ -27,7 +27,11 @@
 					<li><a href="#">Docentes</a>
 						<ul class="submenu">
 							<li><a href="http://127.0.0.1:8000/RegistraDocente">Registrar</a></li>
-							<li><a href="http://127.0.0.1:8000/docenteconsulta">Consultar</a></li>
+							<li><a href="http://127.0.0.1:8000/docenteconsulta">Consultar
+							</a></li>
+							<li><a href="http://127.0.0.1:8000/VisualizarDocentes">Materia de los Docentes
+							</a></li>
+
 						</ul>
 					</li>
 					<li><a href="#">Directivo</a></li>
