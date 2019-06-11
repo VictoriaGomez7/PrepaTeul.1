@@ -13,12 +13,14 @@
 <body>
 	@include('interfazprincipal.image')
 
+	
+
 	<header>
 		<nav class="navegacion" style="width: 90%">
 			<ul class="menu">
 				<li><a href="#">Listas</a>
 						<ul class="submenu">
-						<li><a href ="http://127.0.0.1:8000/VisualizaListas">Visualizar</a></li>
+						<li><a href ="http://127.0.0.1:8000/VisualizaListas?valor={{ ($usua) }}">Visualizar</a></li>
 					</ul>
 				</li>
 				<li><a href="#">Asistencias</a>
