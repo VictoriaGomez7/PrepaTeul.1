@@ -70,6 +70,18 @@ class PeriodosController extends Controller
             if ($request['periodo']=='Primer') {
                 $fechaA=$request['fecha1'];
                 $fechaB=$request['fecha2'];
+
+                $ides='2';
+
+                $per=Periodo::find($ides);
+
+                $ant1=$per->fecha1;
+                $ant2=$per->fecha2;
+
+                if ($ant1!=null && $ant2!=null) {
+                    if ($ant1>$fechaA && $ant1>$fechaA) {
+
+
                 $ides='1';
                 $per=Periodo::find($ides);
 
@@ -84,10 +96,44 @@ class PeriodosController extends Controller
 
                 return back()->with('msj1','Primer periodo guardado correctamente');
             }
+            else{
+             return back()->with('msj',' El primer periodo debe ser menor al segundo periodo' );   
+            }
+        }
+        else{
+            $ides='1';
+                $per=Periodo::find($ides);
+
+                $per->fecha1=$fechaA;
+                $per->fecha2=$fechaB;
+
+
+                 function getBusinessDays($date1, $date2){ if(!is_numeric($date1)){ $date1 = strtotime($date1); } if(!is_numeric($date2)){ $date2 = strtotime($date2); } if($date2 < $date1){ $temp_date = $date1; $date1 = $date2; $date2 = $temp_date; unset($temp_date); } $diff = $date2 - $date1; $days_diff = intval($diff / (3600 * 24)); $current_day_of_week = intval(date("N", $date1)); $business_days = 0; for($i = 1; $i <= $days_diff; $i++){ if(!in_array($current_day_of_week, array("Sunday" => 1, "Saturday" => 7))){ $business_days++; } $current_day_of_week++; if($current_day_of_week > 7){ $current_day_of_week = 1; } } return $business_days; }
+                  $diash= getBusinessDays($request['fecha1'], $request['fecha2']);
+                  $per->dias=$diash;
+                  $per->save();
+
+                return back()->with('msj1','Primer periodo guardado correctamente');
+            
+        }
+    }
 
             if ($request['periodo']=='Segundo') {
                 $fechaA=$request['fecha3'];
                 $fechaB=$request['fecha4'];
+
+
+
+                $ides='1';
+
+                $per=Periodo::find($ides);
+
+                $ant1=$per->fecha1;
+                $ant2=$per->fecha2;
+
+                if ($ant1!=null && $ant2!=null) {
+                    if ($ant2<$fechaA) {
+
                 $ides='2';
                 $per=Periodo::find($ides);
 
@@ -100,11 +146,31 @@ class PeriodosController extends Controller
 
                 return back()->with('msj1','Segundo periodo guardado correctamente');
             }
+            else{
+             return back()->with('msj',' El segundo periodo debe ser mayor al anterior' );   
+            }
+        }
+        else{
+             return back()->with('msj',' El segundo periodo debe ser mayor al anterior' );   
+            }
+    }
 
             if ($request['periodo']=='Tercer') {
+                
                 $fechaA=$request['fecha5'];
                 $fechaB=$request['fecha6'];
+                $ides='2';
+
+                $per=Periodo::find($ides);
+
+                $ant1=$per->fecha1;
+                $ant2=$per->fecha2;
+
+                if ($ant1!=null && $ant2!=null) {
+                    if ($ant2<$fechaA) {
+
                 $ides='3';
+
                 $per=Periodo::find($ides);
 
                 $per->fecha1=$fechaA;
@@ -115,6 +181,14 @@ class PeriodosController extends Controller
                   $per->save();
 
                 return back()->with('msj1','Tercer periodo guardado correctamente');
+            }
+            else{
+             return back()->with('msj',' El tercer periodo debe ser mayor al anterior' );   
+            }
+        }
+            }
+            else{
+             return back()->with('msj',' El tercer periodo debe ser mayor al anterior' );   
             }
 
         }

@@ -2,9 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\RelacionDocenteMateriaGrupo;
+use App\Materia;
+use App\Materia_Grupo;
+use App\Alumno;
+use App\Grupo;
+use App\Asistencia;
+Use Session;
+Use Redirect;
+Use Alert;
 use Illuminate\Http\Request;
-use\App\Asistencia;
-use\App\Grupo;
+
 
 class AsistenciasController extends Controller
 {
@@ -15,11 +23,8 @@ class AsistenciasController extends Controller
      */
     public function index()
     {
-      $alumnos=Grupo::where([
 
-     ['grupo','A']
-  ])->get();
-          return view('Periodos.show',compact('alumnos'));
+        return view('Asistencias.provicional');
     }
 
     /**
@@ -27,9 +32,14 @@ class AsistenciasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+      $asistencia=new Asistencia();
+      $asistencia->id=$request['id'];
+      $asistencia->Asistencias=$request['Asist'];
+      $asistencia->Retardos=$request['Ret'];
+      $asistencia->Faltas=$request['Falt'];
+      $asistencia->save();
     }
 
     /**
@@ -40,7 +50,21 @@ class AsistenciasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $CDocente = RelacionDocenteMateriaGrupo::where('docente', $request->nombre)->get();
+            if (count($CDocente)==0)
+            {
+
+                return back()->with('msj',' El docente no existe' );
+        }
+        else{
+            //return $CDocente[0]->Materia;
+            $CMateria = Materia::get();
+            //return $CMateria;
+            $new=[$CDocente,$CMateria];
+            //return $CMateria;
+            return view('Asistencias.create',compact('CDocente','CMateria'));
+        }
     }
 
     /**
@@ -51,8 +75,25 @@ class AsistenciasController extends Controller
      */
     public function show($id)
     {
-        //
+      $separar = explode("_", $id);
+      $Clavemat=$separar[0];
+      $Grupo=$separar[1];
+      $Claves = Grupo::where('Grupo', $Grupo)->get();
+      $Materia= Materia::where('Clave',$Clavemat)->get();
+      $Alumnos= Alumno::get();
+      $bandera=0;
+      $arrayalumnos = array();
+      for ($i=0; $i <count($Claves) ; $i++) {
+        for ($j=0; $j <count($Alumnos) ; $j++) {
+          if ($Claves[$i]['id']==$Alumnos[$j]['id'] && $Materia[0]['Semestre']==$Alumnos[$j]['Semestre']) {
+            array_push($arrayalumnos, $Alumnos[$j]);
+          }
+        }
+      }
+        //return($arrayalumnos[0]);
+      return view('Asistencias.show',compact('arrayalumnos'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -62,7 +103,9 @@ class AsistenciasController extends Controller
      */
     public function edit($id)
     {
-        //
+      $Alumno= Alumno::where('id',$id)->get();
+        return view('Asistencias.form',compact('Alumno'));
+        //return $Alumno;
     }
 
     /**

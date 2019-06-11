@@ -63,15 +63,19 @@ function mostrar(id) {
   </head>
 
 <body>
-  <div id="Contenedor" style="position: absolute; top: 45%; left: 35%">
-  <div class="ContentForm" style="text-align: center;" >
+
+
+  <div class="card-header text-center" style="font-size:200%;width: 50%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 52%; left: 25%;" >{{ __('Periodos Parciales') }}</div> <!-- text-center ES PARA CENTRA EL TEXTO -->
+
+
+            <div style="position: absolute;top: 62%; left: 25%; width: 50%;height:30%; background-color:#aaa">
 
   {!!Form::open(['route' => ['Periodos.store'],'method'=>'POST','id'=>'elForm'])!!}
   @csrf
 <div>
-  <select name="periodo" id="periodo" onChange="mostrar(this.value);">
-<option value="ningun" >Seleccione un periodo</option>
-<option value="Primer">Primer Periodo</option>
+  <select name="periodo" id="periodo" size="10" onChange="mostrar(this.value);" style="position: absolute;top: 15%; left: 5%; width: 20%;height:53%;">
+<!--<option value="ningun" >Seleccione un periodo</option>-->
+<option value="Primer" >Primer Periodo</option>
 
 <option value="Segundo">Segundo Periodo</option>
 
@@ -81,13 +85,13 @@ function mostrar(id) {
 
 @foreach($no_p as $per)
 @endforeach
-<div id="Primer" class="element" style="display: none;">
+<div id="Primer" class="element" style="display: none; position: absolute;top: 5%; left: 45%; width: 20%;height:53%;">
 
-  <label>Fecha inicio</label>
+  <label>Fecha Inicial</label>
   <input 
    id="fecha1" 
    type="date" name="fecha1" onChange="sinDomingos();" 
-   onblur="obtenerfechafinf1();" style="height:30px;" value="{{$no_p[0]->fecha1}}" />
+   onblur="obtenerfechafinf1();" style="width:200px;" value="{{$no_p[0]->fecha1}}" />
    <input
     id="elSubmit1"  type="submit" style="display:none;" />
 
@@ -95,7 +99,7 @@ function mostrar(id) {
   <input 
    id="fecha2" 
    type="date" name="fecha2" onChange="sinDomingos2();" 
-   onblur="obtenerfechafinf2();" style="height:30px;" value="{{$no_p[0]->fecha2}}" />
+   onblur="obtenerfechafinf2();" style="width:200px;" value="{{$no_p[0]->fecha2}}" />
    <input
     id="elSubmit2"  type="submit" style="display:none;" />   
 
@@ -103,13 +107,13 @@ function mostrar(id) {
 
 
 
-  <div id="Segundo" class="element" style="display: none;">
+  <div id="Segundo" class="element" style="display: none; position: absolute;top: 5%; left: 45%; width: 20%;height:53%;">
 
-  <label>Fecha inicio</label>
+  <label>Fecha Inicial</label>
   <input 
    id="fecha3" 
    type="date" name="fecha3" onChange="sinDomingos3();" 
-   onblur="obtenerfechafinf3();" style="height:30px;"value="{{$no_p[1]->fecha1}}" />
+   onblur="obtenerfechafinf3();" style="width:200px;"value="{{$no_p[1]->fecha1}}" />
    <input
     id="elSubmit3"  type="submit" style="display:none;" />
 
@@ -117,7 +121,7 @@ function mostrar(id) {
   <input 
    id="fecha4" 
    type="date" name="fecha4" onChange="sinDomingos4();" 
-   onblur="obtenerfechafinf4();" style="height:30px;"value="{{$no_p[1]->fecha2}}" />
+   onblur="obtenerfechafinf4();" style="width:200px;"value="{{$no_p[1]->fecha2}}" />
    <input
     id="elSubmit4"  type="submit" style="display:none;" />   
 
@@ -127,13 +131,13 @@ function mostrar(id) {
 
 
 
-<div id="Tercer" class="element" style="display: none;">
+<div id="Tercer" class="element" style="display: none; position: absolute;top: 5%; left: 45%; width: 20%;height:53%;">
 
-  <label>Fecha inicio</label>
+  <label>Fecha Inicial</label>
   <input 
    id="fecha5" 
    type="date" name="fecha5" onChange="sinDomingo5();" 
-   onblur="obtenerfechafinf5();" style="height:30px;" value="{{$no_p[2]->fecha1}}"/>
+   onblur="obtenerfechafinf5();" style="width:200px;" value="{{$no_p[2]->fecha1}}"/>
    <input
     id="elSubmit5"  type="submit" style="display:none;" />
 
@@ -141,14 +145,14 @@ function mostrar(id) {
   <input 
    id="fecha6" 
    type="date" name="fecha6" onChange="sinDomingos6();" 
-   onblur="obtenerfechafinf6();" style="height:30px;"value="{{$no_p[2]->fecha2}}"/>
+   onblur="obtenerfechafinf6();" style="width:200px;"value="{{$no_p[2]->fecha2}}"/>
    <input
     id="elSubmit6"  type="submit" style="display:none;" />   
 
 
   </div>
 
-<button type="submit" class="btn btn-primary" id="boton" style="display:none;">Guardar</button>
+<button type="submit" class="btn btn-primary" id="boton" style="display:none; position: absolute;top: 70%; left: 52.5%;">Guardar</button>
 
 
 </div>
