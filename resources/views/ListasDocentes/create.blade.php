@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<a href="VisualizaListas.show">
+<a href="/VisualizaListas?valor={{ ($usua) }}">
             <button class="btn btn-success" style="position: absolute;top: 100%;left:90%">Cancelar</button></a>
 
 @extends('layouts.app')
@@ -13,7 +13,7 @@
     @section('VerListas')
 	
 	<div class="card-header text-center"
-        style="font-size:200%;width: 70%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 52%; left: 15%;" >{{ __('Materia: '.$nombreM.', Grupo: '.$grupo) }}</div>
+        style="font-size:200%;width: 70%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 52%; left: 15%;" >{{ __('Materia: '.$nombreM.', Grupo: '.$grupo)}}</div>
 
     <section style="position: absolute;top: 62%; left: 15%; width: 70%">{{-- " background: #aaa"> --}}
     	

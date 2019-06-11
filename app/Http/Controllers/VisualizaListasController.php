@@ -36,12 +36,56 @@ class VisualizaListasController extends Controller
      */
     public function create(Request $request)
     {
-        //return 'Esta en update';
+        //return 'En el create:'. $request;
+        //return $request['NombreM'].$request['NomDocente'];
+        $id=$request['NomDocente']; //ESTE ESTA
+        $NOMBRE_MATERIA_CON_GRUPO=$request['NombreM'];
 
-        $id=$request['NomDocente'];
-        $nombreM=$request['nombreM'];
-        $tipo=$request['tipo'];
-        $grupo=$request['grup'];
+        //ESTA PARTE ES PARA SEPARAR EL GRUPO DE LA MATERIA
+        $nueva_materia='';
+        $nuevo_grupo='';
+        $ban=True;
+        for ($m=0; $m < strlen($NOMBRE_MATERIA_CON_GRUPO); $m++) {
+
+            if ($NOMBRE_MATERIA_CON_GRUPO[strlen($NOMBRE_MATERIA_CON_GRUPO)-1]=='A' or $NOMBRE_MATERIA_CON_GRUPO[strlen($NOMBRE_MATERIA_CON_GRUPO)-1]=='B') {
+
+                if ($m==strlen($NOMBRE_MATERIA_CON_GRUPO)-2){
+                $nuevo_grupo=$NOMBRE_MATERIA_CON_GRUPO[strlen($NOMBRE_MATERIA_CON_GRUPO)-1];
+                }
+                else if ($m<strlen($NOMBRE_MATERIA_CON_GRUPO)-2){
+                    $nueva_materia=$nueva_materia.$NOMBRE_MATERIA_CON_GRUPO[$m];
+                }
+            }
+            else{
+                if ($m==0){
+                        $dijito=$NOMBRE_MATERIA_CON_GRUPO[$m];
+                        $dijitoMa=$NOMBRE_MATERIA_CON_GRUPO[$m+1];
+                    }
+                    elseif($m==strlen($NOMBRE_MATERIA_CON_GRUPO)-1){
+                        $dijito=$NOMBRE_MATERIA_CON_GRUPO[$m];
+                        $dijitoMe=$NOMBRE_MATERIA_CON_GRUPO[$m-1];
+                    }
+                    else{
+                        $dijito=$NOMBRE_MATERIA_CON_GRUPO[$m];
+                        $dijitoMa=$NOMBRE_MATERIA_CON_GRUPO[$m+1];
+                        $dijitoMe=$NOMBRE_MATERIA_CON_GRUPO[$m-1]; 
+                    }
+                    
+                    if ($ban==True and $dijito!='-' and $dijitoMa!='-'){
+                        $nueva_materia=$nueva_materia.$NOMBRE_MATERIA_CON_GRUPO[$m];
+                    }
+                    else if ($ban==False and $dijitoMe!='-'){
+                        $nuevo_grupo=$nuevo_grupo.$NOMBRE_MATERIA_CON_GRUPO[$m];
+                    }
+                    if ($dijito=='-'){
+                        $ban=False;
+                    }
+                }
+            }
+
+        // SE SCAN LOS DATOS PARA MOSTRAR LOS ALUMNOS
+        $nombreM=$nueva_materia;
+        $grupo=$nuevo_grupo;
 
         $usua=$id;
         //return $usua;
@@ -121,9 +165,11 @@ class VisualizaListasController extends Controller
 
         if ($bandera==True and $banderaClave==True){
             //return 'esto'.$bandera.$banderaClave;
+            view('DocenteInterfazPrincipal.InterfazPrincipal',compact('usua'));
             return back()->with('msjERROR','Materia no asignada');
         }
         elseif ($ba==1){
+            view('DocenteInterfazPrincipal.InterfazPrincipal',compact('usua'));
             return back()->with('msjERROR','Materia no asignada');
         }
         else{
@@ -154,7 +200,8 @@ class VisualizaListasController extends Controller
                     }
                 }
                 //return $grupo;
-                return view('ListasDocentes.create',compact('Lista','grupo','nombreM'));
+                view('DocenteInterfazPrincipal.InterfazPrincipal',compact('usua'));
+                return view('ListasDocentes.create',compact('Lista','grupo','nombreM','usua'));
             }
             else{
                 $alum=Alumno::where('Semestre',$Materia_Semestre[0]->Semestre)->get();
@@ -171,7 +218,8 @@ class VisualizaListasController extends Controller
                     }
                 }
                 //return $grupo;
-                return view('ListasDocentes.create',compact('Lista','grupo','nombreM'));
+                view('DocenteInterfazPrincipal.InterfazPrincipal',compact('usua'));
+                return view('ListasDocentes.create',compact('Lista','grupo','nombreM','usua'));
             }
         }
     }
@@ -196,15 +244,35 @@ class VisualizaListasController extends Controller
     public function show($id)
     {
         $usu=$id;
+        $usua=$id;
         $Nom_Do=Docentes::where('id',$usu)->get('Nombre');
         $Ma=RelacionDocenteMateriaGrupo::where('Docente',$Nom_Do[0]->Nombre)->get();
-        
+        $M=RelacionDocenteMateriaGrupo::where('Docente',$Nom_Do[0]->Nombre)->get('Materia');
+        $G=RelacionDocenteMateriaGrupo::where('Docente',$Nom_Do[0]->Nombre)->get('Grupo');
+        //return $M.$G;
         if (count($Ma)==0){
+            view('DocenteInterfazPrincipal.InterfazPrincipal',compact('usua'));
             return back()->with('MsjERR','No tiene materias cargadas',compact('id'));
         }
         else{
-            
-            return view('ListasDocentes.show',compact('id'));
+            $OpcionesNombres='';
+            $OpcionesGrupos='';
+            $Nombres=array();
+            $Grupos=array();
+            for ($i=0; $i < count($M); $i++) { 
+                $DM=$M[$i]->Materia;
+                $DG=$G[$i]->Grupo;
+                if ($DG=='A' or $DG=='B'){
+                    $OpcionesNombres=$OpcionesNombres.'<option value="'.$DM.' '.$DG.'">'.$DM.' '.$DG.'</option>';
+                }
+                else{
+                    $OpcionesNombres=$OpcionesNombres.'<option value="'.$DM.' '.$DG.'">'.$DM.' - '.$DG.'</option>';
+                }
+                array_push($Nombres,$DM);
+                array_push($Grupos,$DG);
+            }
+            view('DocenteInterfazPrincipal.InterfazPrincipal',compact('usua'));
+            return view('ListasDocentes.show',compact('id','OpcionesNombres','Nombres','Grupos','usua'));
         }
     }
 

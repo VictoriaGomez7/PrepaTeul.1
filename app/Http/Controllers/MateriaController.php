@@ -549,59 +549,71 @@ class MateriaController extends Controller
 }
 }
         elseif (count($Nombrediv>2)) {
-          print'Aqui voy';
+          //print'Aqui voy';
         }
 
         elseif (count($Nombrediv>2)) {
-          print'Aqui voy';
+          //print'Aqui voy';
         }
-            $materia=new Materia();
-            $materia->Clave=$Clavemat;
-            $materia->Tipo=$request['tipo'];
-            $materia->Nombre=$request['nombre'];
-            $materia->Semestre=$request['semestre'];
-            $materia->Bachillerato=$request['bachillerato'];
-            $materia->Horas=$request['horas'];
-            $materia->save();
-
-
-            if ($request['tipo']=="Actividades Paraescolares" or $request['tipo']=="Formación Básica"){
-                //return $request['semestre'];
-
-                $materia_grupo=new Materia_Grupo();
-                $materia_grupo->Clave=$Clavemat;
-                $materia_grupo->Grupo='A';
-                $materia_grupo->Semestre=$request['semestre'];
-                $materia_grupo->save();
-
-                $materia_Grupo=new Materia_Grupo();
-                $materia_Grupo->Clave=$Clavemat;
-                $materia_Grupo->Grupo='B';
-                $materia_Grupo->Semestre=$request['semestre'];
-                $materia_Grupo->save();
-                //
+            $Checa_Mate=Materia::get('Clave');
+            $CLAVES=array();
+            foreach ($Checa_Mate as $Mat_CH) {
+              //return $Mat_CH->Clave;
+              array_push($CLAVES,$Mat_CH->Clave);
             }
-
-            else if ($request['tipo']=="Formación Para El Trabajo")
-            {
-                $materia_Grupo=new Materia_Grupo();
-                $materia_Grupo->Clave=$Clavemat;
-                $materia_Grupo->Grupo=$request['nombre'];
-                $materia_Grupo->Semestre=$request['semestre'];
-                $materia_Grupo->save();
-                //return "Formación hola";
-
+            //return $CLAVES;
+            //return $Clavemat;
+            if (in_array($Clavemat,$CLAVES)){
+              return redirect('/RegistraMateria')->with('msjERROR','Materia ya registrada (Elija otra).');
             }
-               else if ($request['tipo']=="Formación Propedéutica")
-            {
-                $materia_Grupo=new Materia_Grupo();
-                $materia_Grupo->Clave=$Clavemat;
-                $materia_Grupo->Grupo=$request['bachillerato'];
-                $materia_Grupo->Semestre=$request['semestre'];
-                $materia_Grupo->save();
+            else{
+              $materia=new Materia();
+              $materia->Clave=$Clavemat;
+              $materia->Tipo=$request['tipo'];
+              $materia->Nombre=$request['nombre'];
+              $materia->Semestre=$request['semestre'];
+              $materia->Bachillerato=$request['bachillerato'];
+              $materia->Horas=$request['horas'];
+              $materia->save();
 
+              if ($request['tipo']=="Actividades Paraescolares" or $request['tipo']=="Formación Básica"){
+                  //return $request['semestre'];
+
+                  $materia_grupo=new Materia_Grupo();
+                  $materia_grupo->Clave=$Clavemat;
+                  $materia_grupo->Grupo='A';
+                  $materia_grupo->Semestre=$request['semestre'];
+                  $materia_grupo->save();
+
+                  $materia_Grupo=new Materia_Grupo();
+                  $materia_Grupo->Clave=$Clavemat;
+                  $materia_Grupo->Grupo='B';
+                  $materia_Grupo->Semestre=$request['semestre'];
+                  $materia_Grupo->save();
+                  //
+              }
+
+              else if ($request['tipo']=="Formación Para El Trabajo")
+              {
+                  $materia_Grupo=new Materia_Grupo();
+                  $materia_Grupo->Clave=$Clavemat;
+                  $materia_Grupo->Grupo=$request['nombre'];
+                  $materia_Grupo->Semestre=$request['semestre'];
+                  $materia_Grupo->save();
+                  //return "Formación hola";
+
+              }
+                 else if ($request['tipo']=="Formación Propedéutica")
+              {
+                  $materia_Grupo=new Materia_Grupo();
+                  $materia_Grupo->Clave=$Clavemat;
+                  $materia_Grupo->Grupo=$request['bachillerato'];
+                  $materia_Grupo->Semestre=$request['semestre'];
+                  $materia_Grupo->save();
+
+              }
+              return back()->with('msj','Materia registrada con éxito. Clave: '.$Clavemat);
             }
-            return back()->with('msj','Materia registrada con éxito. Clave: '.$Clavemat);
 
     }
     /**
@@ -742,7 +754,6 @@ class MateriaController extends Controller
                             <option value="QUINTO SEMESTRE" >QUINTO SEMESTRE</option>
                             <option value="SEXTO SEMESTRE" selected="true">SEXTO SEMESTRE</option>';
                 }
-
 
            }
            return view('materias.modificar' ,compact('materia','opciones','opciones2'));
