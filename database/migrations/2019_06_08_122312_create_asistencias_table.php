@@ -18,6 +18,7 @@ class CreateAsistenciasTable extends Migration
             $table->integer('Asistencias');
             $table->integer('Retardos');
             $table->integer('Faltas');
+            $table->string('Periodo');
             $table->timestamps();
         });
     }

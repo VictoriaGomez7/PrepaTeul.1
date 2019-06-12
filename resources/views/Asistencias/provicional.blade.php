@@ -39,16 +39,16 @@
             <div style="position: absolute;top: 62%; left: 25%; width: 50%;height:70%; background-color:#aaa">
 
                 <p style="font-size:130%; position:  absolute;top: 10%; left: 10%">{{('Nombre:')}}</p>
-                
 
-                
+
+
                 <p><input type="text" placeholder="Angélica Luna" value="{{ old('nombre') }}" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" id="nombre" name="nombre" style="font-size:105%; width: 65%; position:  absolute;top: 25%; left: 30%" /></h1>
-                
+
             </div>
 
            <button type="submit" class="btn btn-primary" style="position: absolute;top: 140%;left:55%">Buscar</button>
 
- 
+
   </body>
    <!-- vinculando a libreria Jquery-->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

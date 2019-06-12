@@ -13,7 +13,7 @@
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('interfazprincipal.Interfaz');
 });
 
 Route::get('/interfazpri', function () {

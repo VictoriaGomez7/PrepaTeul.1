@@ -1,12 +1,11 @@
-
-{{--<a href="interfazprinci">
-    <button class="btn btn-success" style="position: absolute;top: 110%;left:5%">Atras</button></a>--}}
+<a href="/DocenteInicio?valor={{ ($usua) }}">
+    <button class="btn btn-success" style="position: absolute;top: 81.5%;left:50%;z-index: 1;">Cancelar</button></a>
 @extends('layouts.app')
 
 @section('title','Docente')
 
 {{--@include('interfazprincipal.image')--}}
-@include('ControlEscolar.CEprincipal')
+@include('DocenteInterfazPrincipal.InterfazPrincipal')
 @section('content')
 
         @if (session()->has('msj'))
@@ -63,7 +62,7 @@ function mostrar(id) {
 @foreach($CMateria as $mat)
 @foreach( $CDocente as $doc)
 @if($mat->Clave == $doc->ClaveMateria)
-<?php $new=$mat->Clave .'_'. $doc->Grupo; ?>
+<?php $new=$mat->Clave .'_'. $doc->Grupo .'_'. $usua; ?>
 <div class="element" id="{{$mat->Clave}}" style="display: none; position: absolute;top: 5%; left: 35%; width: 20%;height:53%;">
     <table id="alumn" class="table">
       <thead>
@@ -79,7 +78,7 @@ function mostrar(id) {
         <tbody>
           <tr>
 
-            <form class="form-group" method="PUT" action="/Asistencias/<?php echo($new) ?>">
+            <form class="form-group" method="GET" action="/Asistencias/<?php echo($new) ?>">
               <td align="center">{{ $mat->Clave }}</td>
               <td align="center">{{ $mat->Nombre}}</td>
               <td align="center">{{ $mat->Tipo}}</td>

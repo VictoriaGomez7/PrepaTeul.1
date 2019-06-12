@@ -13,8 +13,9 @@
 <body>
 	@include('interfazprincipal.image')
 
-	
-
+		<?php
+	        $usua;
+		?>
 	<header>
 		<nav class="navegacion" style="width: 90%">
 			<ul class="menu">
@@ -25,7 +26,7 @@
 				</li>
 				<li><a href="#">Asistencias</a>
 						<ul class="submenu">
-						<li><a href ="http://127.0.0.1:8000/Asistencias">capturar</a></li>
+						<li><a href ="http://127.0.0.1:8000/Asistencias?valor={{ ($usua) }}">capturar</a></li>
 					</ul>
 				</li>
 
