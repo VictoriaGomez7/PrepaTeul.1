@@ -73,6 +73,10 @@ Route::get('/DocenteInicio', function () {
     return view('DocenteInterfazPrincipal.InterfazPrincipal2');
 });
 
+Route::get('/DocenteInicios', function () {
+    return view('DocenteInterfazPrincipal.InterfazPrincipal3');
+});
+
 Route::get('/Docentes', function () {
     return view('DocenteInterfazPrincipal.InterfazPrincipal');
 });
@@ -116,10 +120,10 @@ Route::resource('/grupos','gruposController');
 
 Route::resource('Asigna','Arrastrarcontroller');
 
-Route::resource('VisualizaListas','VisualizaListasController');
-
 Route::resource('Periodos','PeriodosController');
 
 Route::resource('Asistencias','AsistenciasController');
 
 Route::resource('VisualizarDocentes','VisuaDocentesController');
+
+Route::resource('VisualizaMaGr','VisualizarMateriaGrupoController');

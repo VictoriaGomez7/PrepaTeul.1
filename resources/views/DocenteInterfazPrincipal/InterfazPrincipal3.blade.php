@@ -10,29 +10,27 @@
 
 	<title>Docente Inicio</title>
 </head>
-	
 <body>
 	@include('interfazprincipal.image')
 
-    @if (session()->has('MsjERR'))
-        <div class="alert alert-danger" role="alert" style="width: 90%; position:  absolute;top: 43%; left: 5%;z-index: 1;">
-            <button class="close" data-dismiss="alert"><span>&times;</span></button>
-            <strong>¡ERROR! </strong>{{ session('MsjERR') }}
-        </div>
-    @endif
+	<?php
+		$usua=$_GET['valor'];
+	?>
 
 	<header>
 		<nav class="navegacion" style="width: 90%">
 			<ul class="menu">
 				<li><a href="#">Listas</a>
 						<ul class="submenu">
-						<li><a href ="http://127.0.0.1:8000/VisualizaMaGr?valor={{ ($usua) }}">Visualizar</a></li>
+						<li><a href ="/VisualizaMaGr?valor={{ ($usua) }}">Visualizar</a></li>
 					</ul>
+				</li>
 				<li><a href="#">Asistencias</a>
 						<ul class="submenu">
 						<li><a href ="http://127.0.0.1:8000/Asistencias?valor={{ ($usua) }}">Capturar</a></li>
 					</ul>
 				</li>
+
 			</ul>
 		</nav>
 
@@ -46,5 +44,6 @@
 	    Teléfono (467)-952-71-83 <br/>
 	    Correo-e:prepateul@yahoo.com.mx
     </p >
+
 </body>
 </html>

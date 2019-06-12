@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 {{--<a href="interfazprinci">
     <button class="btn btn-success" style="position: absolute;top: 110%;left:5%">Atras</button></a>--}}
 @extends('layouts.app')
@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
   </head>
+
 
 <body>
  <div class="card-header text-center" style="font-size:200%;width: 50%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 52%; left: 25%;" >{{ __('Registrar Docentes') }}</div> <!-- text-center ES PARA CENTRA EL TEXTO -->

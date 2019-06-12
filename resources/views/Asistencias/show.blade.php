@@ -1,15 +1,12 @@
-<a href="/DocenteInicio?valor={{ ($usua) }}">
+<!DOCTYPE html>
+<a href="/DocenteInicios?valor={{ ($usua) }}">
     <button class="btn btn-success" style="position: absolute;top: 81.5%;left:50%;z-index: 1;">Cancelar</button></a>
 @extends('layouts.app')
 
 @section('title','Docente')
 
-{{--@include('interfazprincipal.image')--}}
-<<<<<<< HEAD
 @include('DocenteInterfazPrincipal.InterfazPrincipal')
-=======
-@include('ControlEscolar.CEprincipal')
->>>>>>> da9eca21d3239f67ad3405eb3c5aaa42455bb574
+
 @section('content')
 @if (Session()->has('msg'))
   <div class="alert alert-success" role="alert" style="width: 90%; position:  absolute; top: 43%; left: 5%;z-index: 1;">
@@ -63,12 +60,6 @@
           {!! Form::close()!!}
         </tbody>
     </table>
-
-
-
-
-
-
 
   </div>
 

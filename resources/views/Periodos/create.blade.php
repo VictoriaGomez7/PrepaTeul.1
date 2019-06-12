@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 {{--<a href="interfazprinci">
     <button class="btn btn-success" style="position: absolute;top: 110%;left:5%">Atras</button></a>--}}
 @extends('layouts.app')

@@ -53,7 +53,7 @@ class AsistenciasController extends Controller
      */
     public function create(Request $request)
     {
-<<<<<<< HEAD
+
       $id=$request['id'];
       $usua=$request['usua'];
       $Asistencias=$request['Asist'];
@@ -77,7 +77,7 @@ class AsistenciasController extends Controller
             //return $CMateria;
             $new=[$CDocente,$CMateria];
       return view('Asistencias.create',compact('CDocente','CMateria','usua'));
-=======
+
       $asistencia=new Asistencia();
       $asistencia->id=$request['id'];
       $asistencia->Asistencias=$request['Asist'];
@@ -85,7 +85,6 @@ class AsistenciasController extends Controller
       $asistencia->Faltas=$request['Falt'];
       $asistencia->save();
       return view('Asistencias.show');
->>>>>>> da9eca21d3239f67ad3405eb3c5aaa42455bb574
     }
 
     /**
