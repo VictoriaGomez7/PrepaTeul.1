@@ -149,9 +149,6 @@ class AsistenciasController extends Controller
      */
     public function edit($id)
     {
-      $Alumno= Alumno::where('id',$id)->get();
-        return view('Asistencias.form',compact('Alumno'));
-        //return $Alumno;
     }
 
     /**

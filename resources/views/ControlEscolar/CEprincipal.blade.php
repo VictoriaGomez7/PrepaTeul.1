@@ -12,7 +12,7 @@
 <body>
 	@include('interfazprincipal.image')
 
-	
+
 	{{--<section style="width: 100%; max-width: 90%; background: #FEEEEF"> --}}
 		<header >
 			<nav class="navegacion" style="width: 90%">
@@ -53,6 +53,12 @@
 							<li><a href="http://127.0.0.1:8000/grupos">Crear Grupos</a></li>
 							<li><a href="http://127.0.0.1:8000/Asigna">Docentes - Materias</a></li>
 							<li><a href="http://127.0.0.1:8000/Periodos">Periodos</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Imprimir listas</a>
+						<ul class="submenu">
+							<li><a href="http://127.0.0.1:8000/Imprimelistas">Listar Grupos</a></li>
+
 						</ul>
 					</li>
 				</ul>

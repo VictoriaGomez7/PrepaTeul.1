@@ -7,7 +7,7 @@
       <link rel="stylesheet" type="text/css" href="/css/image.css">
      <link rel="icon" href="/images/escolarcono.ico">
 	@extends('layouts.app')
-  
+
 	<title>Control Escolar</title>
 </head>
 <body>
@@ -26,7 +26,7 @@
             <strong>¡ERROR! </strong>{{ session('MsjERR') }}
         </div>
     @endif
-    
+
 	<header>
 		<nav class="navegacion" style="width: 90%">
 			<ul class="menu">
@@ -63,16 +63,23 @@
 							<li><a href="http://127.0.0.1:8000/grupos">Crear Grupos</a></li>
 							<li><a href="http://127.0.0.1:8000/Asigna">Docentes - Materias</a></li>
 							<li><a href="http://127.0.0.1:8000/Periodos">Periodos</a></li>
-							
+
 						</ul>
 					</li>
+					<li><a href="#">Imprimir listas</a>
+						<ul class="submenu">
+							<li><a href="http://127.0.0.1:8000/Imprimelistas">Listar Grupos</a></li>
+
+						</ul>
+					</li>
+
 			</ul>
 		</nav>
 
 		@include('interfazprincipal.imagenn')
 	</header>
 	<!--<img src="/images/img7.png" class="imagen">-->
-	    <p align="center" style="color: black; font-size: 1.3em;position: absolute;top: 125%;left:5%; background: #EEF0F3; width: 90%"> 
+	    <p align="center" style="color: black; font-size: 1.3em;position: absolute;top: 125%;left:5%; background: #EEF0F3; width: 90%">
 	    	</br>
 	    	Constitución s/n Teul de González Ortega.<br/>
                 Zac. C.P. 99800 <br/>
