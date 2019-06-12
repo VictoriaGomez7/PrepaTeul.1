@@ -25,6 +25,13 @@
         </div>
     @endif
 
+<<<<<<< HEAD
+=======
+	<?php
+        $usua=$_GET['valor'];
+	?>
+
+>>>>>>> da9eca21d3239f67ad3405eb3c5aaa42455bb574
 
 	<header>
 		<nav class="navegacion" style="width: 90%">

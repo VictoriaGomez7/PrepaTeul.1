@@ -5,7 +5,11 @@
 @section('title','Docente')
 
 {{--@include('interfazprincipal.image')--}}
+<<<<<<< HEAD
 @include('DocenteInterfazPrincipal.InterfazPrincipal')
+=======
+@include('ControlEscolar.CEprincipal')
+>>>>>>> da9eca21d3239f67ad3405eb3c5aaa42455bb574
 @section('content')
 @if (Session()->has('msg'))
   <div class="alert alert-success" role="alert" style="width: 90%; position:  absolute; top: 43%; left: 5%;z-index: 1;">
