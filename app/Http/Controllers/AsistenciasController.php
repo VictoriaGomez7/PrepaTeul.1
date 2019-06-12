@@ -33,16 +33,16 @@ class AsistenciasController extends Controller
         $otro_id=$request;
         $doc=Docente::where('id',$request)->get();
         $CDocente = RelacionDocenteMateriaGrupo::where('docente', $doc[0]->Nombre)->get();
-            
+
             //return $CDocente[0]->Materia;
             $CMateria = Materia::get();
             //return $CMateria;
             $new=[$CDocente,$CMateria];
             //return $CMateria;
             return view('Asistencias.create',compact('CDocente','CMateria','usua'));
-        
 
-        
+
+
 
     }
 
@@ -71,20 +71,12 @@ class AsistenciasController extends Controller
       }
       $doc=Docente::where('id',$usua)->get();
         $CDocente = RelacionDocenteMateriaGrupo::where('docente', $doc[0]->Nombre)->get();
-            
+
             //return $CDocente[0]->Materia;
             $CMateria = Materia::get();
             //return $CMateria;
             $new=[$CDocente,$CMateria];
       return view('Asistencias.create',compact('CDocente','CMateria','usua'));
-
-      $asistencia=new Asistencia();
-      $asistencia->id=$request['id'];
-      $asistencia->Asistencias=$request['Asist'];
-      $asistencia->Retardos=$request['Ret'];
-      $asistencia->Faltas=$request['Falt'];
-      $asistencia->save();
-      return view('Asistencias.show');
     }
 
     /**
@@ -95,7 +87,7 @@ class AsistenciasController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**
@@ -133,9 +125,9 @@ class AsistenciasController extends Controller
            }
 
       }
-      
-      
-      
+
+
+
       $arrayalumnos = array();
       for ($i=0; $i <count($Claves) ; $i++) {
         for ($j=0; $j <count($Alumnos) ; $j++) {

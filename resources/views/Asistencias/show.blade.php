@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-<a href="/DocenteInicios?valor={{ ($usua) }}">
+<a href="/DocenteInicio?valor={{ ($usua) }}">
     <button class="btn btn-success" style="position: absolute;top: 81.5%;left:50%;z-index: 1;">Cancelar</button></a>
 @extends('layouts.app')
 
 @section('title','Docente')
 
+{{--@include('interfazprincipal.image')--}}
+
 @include('DocenteInterfazPrincipal.InterfazPrincipal')
 
+
 @section('content')
-@if (Session()->has('msg'))
+@if (Session()->has('msj'))
   <div class="alert alert-success" role="alert" style="width: 90%; position:  absolute; top: 43%; left: 5%;z-index: 1;">
     <button class="close" data-dismiss="alert"><span>&times;</span></button>
     <strong>Correcto</strong>{{Session('msg')}}
@@ -24,9 +26,6 @@
 <body>
 
   <div class="container">
-<script type="text/javascript">
-  Arreglo=[];
-</script>
     <table  id="alumn" class="table" >
       <thead>
         <tr>
@@ -60,6 +59,12 @@
           {!! Form::close()!!}
         </tbody>
     </table>
+
+
+
+
+
+
 
   </div>
 
