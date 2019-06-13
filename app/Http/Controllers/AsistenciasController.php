@@ -33,16 +33,16 @@ class AsistenciasController extends Controller
         $otro_id=$request;
         $doc=Docente::where('id',$request)->get();
         $CDocente = RelacionDocenteMateriaGrupo::where('docente', $doc[0]->Nombre)->get();
-            
+
             //return $CDocente[0]->Materia;
             $CMateria = Materia::get();
             //return $CMateria;
             $new=[$CDocente,$CMateria];
             //return $CMateria;
             return view('Asistencias.create',compact('CDocente','CMateria','usua'));
-        
 
-        
+
+
 
     }
 
@@ -67,14 +67,17 @@ class AsistenciasController extends Controller
       $total=($Asistencias[0])+($Retardos[0])+($Faltas[0]);
 
       $band=0;
-      for ($i=0; $i <count($registros) ; $i++) { 
-        if (($registros[$i]->Materia==$Mat)&&($registros[$i]->Periodo==$periodo)&&($registros[$i]->id)==$id[$i]) {
-          $band=1;
+      for ($i=0; $i <count($registros) ; $i++) {
+        for ($j=0; $j <count($id) ; $j++) {
+          if (($registros[$i]->Materia==$Mat)&&($registros[$i]->Periodo==$periodo)&&($registros[$i]->id)==$id[$j]) {
+            $band=1;
+          }
         }
+
       }
       //dd($band);
       if ($total==$actual[0]->dias) {
-          
+
       switch ($band) {
         case '0':
 
@@ -90,7 +93,7 @@ class AsistenciasController extends Controller
 
           $doc=Docente::where('id',$usua)->get();
         $CDocente = RelacionDocenteMateriaGrupo::where('docente', $doc[0]->Nombre)->get();
-            
+
             //return $CDocente[0]->Materia;
             $CMateria = Materia::get();
             //return $CMateria;
@@ -98,17 +101,17 @@ class AsistenciasController extends Controller
             return back()->with('msj1', 'Datos Guardados Correctamente');
         }
           break;
-        
+
         default:
        $doc=Docente::where('id',$usua)->get();
         $CDocente = RelacionDocenteMateriaGrupo::where('docente', $doc[0]->Nombre)->get();
-            
+
             //return $CDocente[0]->Materia;
             $CMateria = Materia::get();
             //return $CMateria;
             $new=[$CDocente,$CMateria];
             return back()->with('msj', ' Ya registraste la asistencia de esta materia en el periodo disponible ');
-          
+
           break;
       }
      }
@@ -117,9 +120,9 @@ class AsistenciasController extends Controller
       return back()->with('msj',' La cantidad de días habiles en el periodo no concuerdan con el total de asistencias' );
      }
 
-      
 
-      
+
+
     }
 
     /**
@@ -130,7 +133,7 @@ class AsistenciasController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**
@@ -175,9 +178,9 @@ class AsistenciasController extends Controller
            }
 
       }
-      
-      
-      
+
+
+
       $arrayalumnos = array();
       for ($i=0; $i <count($Claves) ; $i++) {
         for ($j=0; $j <count($Alumnos) ; $j++) {
