@@ -125,6 +125,7 @@ class AsistenciasController extends Controller
 
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -133,7 +134,26 @@ class AsistenciasController extends Controller
      */
     public function store(Request $request)
     {
+      $id= $request['id'];
+      $separar = explode("_", $id);
+      $Clavemat=$separar[0];
+      $Grupo=$separar[1];
+      $usua=$separar[2];
+      $Claves = Grupo::where('Grupo', $Grupo)->get();
+      $Materia= Materia::where('Clave',$Clavemat)->get();
+      $Alumnos= Alumno::get();
+      $asis=Asistencia::where('Materia',$Clavemat)->get();
+      $periodo=Periodo::get();
 
+      $arrayalumnos = array();
+      for ($i=0; $i <count($Claves) ; $i++) {
+        for ($j=0; $j <count($Alumnos) ; $j++) {
+          if ($Claves[$i]['id']==$Alumnos[$j]['id'] && $Materia[0]['Semestre']==$Alumnos[$j]['Semestre']) {
+            array_push($arrayalumnos, $Alumnos[$j]);
+          }
+        }
+      }
+      return view('Asistencias.Reporte',compact('arrayalumnos','usua','Materia','asis'));
     }
 
     /**

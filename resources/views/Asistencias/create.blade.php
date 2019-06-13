@@ -69,6 +69,8 @@ function mostrar(id) {
 @if($mat->Clave == $doc->ClaveMateria)
 <?php $new4=$doc->ClaveMateria.$doc->Grupo; ?>
 <?php $new=$doc->ClaveMateria .'_'. $doc->Grupo .'_'. $usua; ?>
+<?php $new5=$new; ?>
+
 <div class="element" id="{{$new4}}" style="display: none; position: absolute;top: 5%; left: 35%; width: 60%;height:70%;">
     <table id="alumn" class="table">
       <thead>
@@ -86,7 +88,6 @@ function mostrar(id) {
           <tr>
 
             <form class="form-group" method="GET" action="/Asistencias/<?php echo($new) ?>">
-              <label><?php echo($new4) ?></label>
               <td align="center">{{ $mat->Clave }}</td>
               <td align="center">{{ $mat->Nombre}}</td>
               <td align="center">{{ $mat->Tipo}}</td>
@@ -94,6 +95,9 @@ function mostrar(id) {
               <td align="center">{{ $new7}}</td>
               <td><button class="btn btn-success">Asistencias</button></td>
             </form>
+            {!!Form::open(['route' => ['Asistencias.store','id'=>$new5],'method'=>'POST'])!!}
+            <td>{!!Form::submit('Reporte',['class'=>'btn btn-primary'])!!}</td>
+            {!! Form::close()!!}
           </tr>
         </tbody>
 

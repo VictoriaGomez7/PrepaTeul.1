@@ -109,10 +109,13 @@
                     <p style="position: absolute; top:53%; left: 75.5%;font-size:90%"> {{('GRADO.')}}</p>
 
             </div>
+
+            @foreach($FtOBache as $FTBH)
             <div style="position: absolute;top: 127%; left: 5%; width: 90%;height:15%;background-color:#aaa">
                 <p style="font-size:138%">{{('Formación para el Trabajo:')}}</p>
                 <p style="font-size:138%">{{('Bachillerato:')}}</p>
-                <select name="ft2" id="ft2" style="font-size:110%;width: 26.5%; position:  absolute;top: 4%; left: 22%"  >
+                @if($bandera==1)
+                <select  name="ft2" id="ft2" style="font-size:110%;width: 26.5%; position:  absolute;top: 4%; left: 22%"  >
                             <option value="{{ old('Grado') }}">{{ old('Grado') }}</option>
 
                             <option value="Lenguas">Lenguas</option>
@@ -121,6 +124,14 @@
                             <option value="Económico Administrativo">Económico Administrativo</option>
                       </select>
 
+               <input readonly value=""  name="bach1" id="bach1" style="font-size:110%;width: 26.5%; position:  absolute;top: 53%; left: 22%" >
+                @elseif($bandera==11)
+                <input readonly value="{{ $FTBH->Formación_Trabajo }}" name="ft2" id="ft2" style="font-size:110%;width: 26.5%; position:  absolute;top: 4%; left: 22%"  >
+
+                <input readonly value="{{ $FTBH->Bachillerato }}"  name="bach1" id="bach1" style="font-size:110%;width: 26.5%; position:  absolute;top: 53%; left: 22%" >
+                @elseif($bandera==2)
+                <input readonly value="{{ $FTBH->Formación_Trabajo }}" name="ft2" id="ft2" style="font-size:110%;width: 26.5%; position:  absolute;top: 4%; left: 22%"  >
+
                 <select name="bach1" id="bach1" style="font-size:110%;width: 26.5%; position:  absolute;top: 53%; left: 22%" >
                             <option value="{{ old('Grado') }}">{{ old('Grado') }}</option>
                             <option value="Químico Biológico">Químico Biológico</option>
@@ -128,9 +139,20 @@
                             <option value="Ciencias sociales y humanidades">Ciencias sociales y humanidades</option>
                             <option value="Económico Administrativo">Económico Administrativo</option>
                       </select>
+                @elseif($bandera==22)
+                    <input readonly value="{{ $FTBH->Formación_Trabajo }}" name="ft2" id="ft2" style="font-size:110%;width: 26.5%; position:  absolute;top: 4%; left: 22%"  >
 
-                
+                    <input readonly value="{{ $FTBH->Bachillerato }}"  name="bach1" id="bach1" style="font-size:110%;width: 26.5%; position:  absolute;top: 53%; left: 22%" >
+
+                @else
+                <input readonly value="" name="ft2" id="ft2" style="font-size:110%;width: 26.5%; position:  absolute;top: 4%; left: 22%"  >
+
+                    <input readonly value=""  name="bach1" id="bach1" style="font-size:110%;width: 26.5%; position:  absolute;top: 53%; left: 22%" >
+                @endif
+
+
             </div>
+            @endforeach
 
 
             <button type="submit" class="btn btn-primary" href="#" style="position: absolute;top: 150%;left:65%">Reinscribir</button>

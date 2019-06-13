@@ -89,6 +89,9 @@ Route::get('/Asistencias' ,function(){
     return view('Periodos.show');
 });
 
+Route::get('Asistencias','AsistenciasController@Report');
+
+
 Route::resource('Imprimelistas','ImprimelistasController');
 Route::resource('LoginAlumno','LoginAController');
 

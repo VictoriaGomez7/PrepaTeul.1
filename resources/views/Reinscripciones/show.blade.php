@@ -4,7 +4,7 @@
  @include('ControlEscolar.CEprincipal')
 @section('content')
 
-		@include('Reinscripciones.form',compact('CAlumno'))
+		@include('Reinscripciones.form',compact('CAlumno','bandera','FtOBache'))
 
 
 @endsection()
