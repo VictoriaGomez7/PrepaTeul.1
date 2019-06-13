@@ -33,16 +33,16 @@ class AsistenciasController extends Controller
         $otro_id=$request;
         $doc=Docente::where('id',$request)->get();
         $CDocente = RelacionDocenteMateriaGrupo::where('docente', $doc[0]->Nombre)->get();
-
+            
             //return $CDocente[0]->Materia;
             $CMateria = Materia::get();
             //return $CMateria;
             $new=[$CDocente,$CMateria];
             //return $CMateria;
             return view('Asistencias.create',compact('CDocente','CMateria','usua'));
+        
 
-
-
+        
 
     }
 
@@ -60,23 +60,66 @@ class AsistenciasController extends Controller
       $Retardos=$request['Ret'];
       $Faltas=$request['Falt'];
       $periodo=$request['periodo'];
-      for ($i=0; $i <count($id); $i++) {
-        $asistencia=new Asistencia();
-        $asistencia->id=$id[$i];
-        $asistencia->Asistencias=$Asistencias[$i];
-        $asistencia->Retardos=$Retardos[$i];
-        $asistencia->Faltas=$Faltas[$i];
-        $asistencia->Periodo=$periodo;
-        $asistencia->save();
-      }
-      $doc=Docente::where('id',$usua)->get();
-        $CDocente = RelacionDocenteMateriaGrupo::where('docente', $doc[0]->Nombre)->get();
+      $Mat=$request['clavem'];
+      $registros=Asistencia::get();
+      $actual=Periodo::where('id',$periodo)->get();
 
+      $total=($Asistencias[0])+($Retardos[0])+($Faltas[0]);
+
+      $band=0;
+      for ($i=0; $i <count($registros) ; $i++) { 
+        if (($registros[$i]->Materia==$Mat)&&($registros[$i]->Periodo==$periodo)&&($registros[$i]->id)==$id[$i]) {
+          $band=1;
+        }
+      }
+      //dd($band);
+      if ($total==$actual[0]->dias) {
+          
+      switch ($band) {
+        case '0':
+
+           for ($i=0; $i <count($id); $i++) {
+          $asistencia=new Asistencia();
+          $asistencia->id=$id[$i];
+          $asistencia->Asistencias=$Asistencias[$i];
+          $asistencia->Retardos=$Retardos[$i];
+          $asistencia->Faltas=$Faltas[$i];
+          $asistencia->Periodo=$periodo;
+          $asistencia->Materia=$Mat;
+          $asistencia->save();
+
+          $doc=Docente::where('id',$usua)->get();
+        $CDocente = RelacionDocenteMateriaGrupo::where('docente', $doc[0]->Nombre)->get();
+            
             //return $CDocente[0]->Materia;
             $CMateria = Materia::get();
             //return $CMateria;
             $new=[$CDocente,$CMateria];
-      return view('Asistencias.create',compact('CDocente','CMateria','usua'));
+            return back()->with('msj1', 'Datos Guardados Correctamente');
+        }
+          break;
+        
+        default:
+       $doc=Docente::where('id',$usua)->get();
+        $CDocente = RelacionDocenteMateriaGrupo::where('docente', $doc[0]->Nombre)->get();
+            
+            //return $CDocente[0]->Materia;
+            $CMateria = Materia::get();
+            //return $CMateria;
+            $new=[$CDocente,$CMateria];
+            return back()->with('msj', ' Ya registraste la asistencia de esta materia en el periodo disponible ');
+          
+          break;
+      }
+     }
+     else{
+
+      return back()->with('msj',' La cantidad de días habiles en el periodo no concuerdan con el total de asistencias' );
+     }
+
+      
+
+      
     }
 
     /**
@@ -87,7 +130,7 @@ class AsistenciasController extends Controller
      */
     public function store(Request $request)
     {
-
+        
     }
 
     /**
@@ -111,23 +154,30 @@ class AsistenciasController extends Controller
       $per=Periodo::get();
       $estep=0;
       foreach ($per as $pe) {
+        if ($pe->fecha1==null || $pe->fecha2==null) {
+          return back()->with('msj',' Favor de solicitar a Control Escolar asignar periodos' );
+        }
+      }
+      foreach ($per as $pe) {
           if ($pe->fecha1<= $fecha && $pe->fecha2>=$fecha  && $pe->id!=1 && $pe->fecha1  != null && $pe->fecha2!=null) {
-               $estep= $pe->id-1;
+              $num=$pe->id-1;
+              $d=$per[$num-1]->dias;
+               $estep= [$num,$d];
            }
            if ($pe->fecha1 <= $fecha && $pe->fecha2<=$fecha && $pe->id==3  && $pe->fecha1 != null && $pe->fecha2!=null) {
-               $estep= $pe->id;
+               $estep= [$pe->id,$pe->dias];
            }
            if ($pe->fecha1<= $fecha && $pe->fecha2>=$fecha && $pe->id==1 && $pe->fecha1 != null && $pe->fecha2!=null) {
-               $estep= $pe->id;
+               $estep= [$pe->id,$pe->dias];
            }
            if ($pe->fecha1<= $fecha && $pe->fecha2>=$fecha  && $pe->id==1 && $pe->fecha1  != null && $pe->fecha2!=null) {
                return back()->with('msj',' Favor de asignar asistencias hasta culminar el primer periodo' );
            }
 
       }
-
-
-
+      
+      
+      
       $arrayalumnos = array();
       for ($i=0; $i <count($Claves) ; $i++) {
         for ($j=0; $j <count($Alumnos) ; $j++) {
@@ -137,7 +187,7 @@ class AsistenciasController extends Controller
         }
       }
         //return($arrayalumnos[0]);
-      return view('Asistencias.show',compact('arrayalumnos','usua','estep'));
+      return view('Asistencias.show',compact('arrayalumnos','usua','estep','Materia'));
     }
 
 

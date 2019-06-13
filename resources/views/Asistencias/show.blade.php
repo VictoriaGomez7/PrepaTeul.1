@@ -1,5 +1,4 @@
-<a href="/DocenteInicio?valor={{ ($usua) }}">
-    <button class="btn btn-success" style="position: absolute;top: 81.5%;left:50%;z-index: 1;">Cancelar</button></a>
+
 @extends('layouts.app')
 
 @section('title','Docente')
@@ -10,11 +9,17 @@
 
 
 @section('content')
-@if (Session()->has('msj'))
-  <div class="alert alert-success" role="alert" style="width: 90%; position:  absolute; top: 43%; left: 5%;z-index: 1;">
-    <button class="close" data-dismiss="alert"><span>&times;</span></button>
-    <strong>Correcto</strong>{{Session('msg')}}
-  </div>
+@if (session()->has('msj'))
+    <div class="alert alert-warning" role="alert" style="width: 50%; position:  absolute;top: 43%; left: 25%;z-index: 1;">
+        <button class="close" data-dismiss="alert"><span>&times;</span></button>
+        <strong>¡Incorrecto! </strong>{{ session('msj') }}
+    </div>
+@endif
+@if (session()->has('msj1'))
+    <div class="alert alert-success" role="alert" style="width: 50%; position:  absolute;top: 43%; left: 25%;z-index: 1;">
+        <button class="close" data-dismiss="alert"><span>&times;</span></button>
+        <strong>¡Correcto! </strong>{{ session('msj1') }}
+    </div>
 @endif
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -24,17 +29,20 @@
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 <title>Alumnos</title>
 <body>
+<div class="card-header text-center" style="font-size:200%;width: 50%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 45%; left: 25%;" >Control de Asistencias: {{$Materia[0]->Nombre}}</div>
 
-  <div class="container">
+  <div class="container"  style=" position:  absolute;top: 50%; left: 10%;">
+
     <table  id="alumn" class="table" >
       <thead>
         <tr>
-          <th  align="center">Matrícula</th>
-          <th  align="center">Alumno</th>
-          <th  align="center">Periodo</th>
-          <th>Asistencias</th>
-          <th>Retardos</th>
-          <th>Faltas</th>
+          <th  align="justify">Matrícula</th>
+          <th  align="justify">Alumno</th>
+          <th  align="justify">Periodo</th>
+          <th  align="justify">Días hábiles</th>
+          <th align="justify">Asistencias</th>
+          <th align="justify">Retardos</th>
+          <th align="justify">Faltas</th>
         </tr>
       </thead>
 
@@ -44,19 +52,29 @@
           @foreach($arrayalumnos as $alumno)
 
           <tr>
-            <td><input readonly type="text" name="id[]" value="{{ $alumno->id }}"></td>
-            <td align="center">{{ $alumno->Nombre_A}}</td>
-            <td align="center" name="peri">{{ $estep}}</td>
-            <td><input required  type="text" name="Asist[]" ></td>
-            <td><input required  type="text" name="Ret[]"> </td>
-            <td><input required  type="text" name="Falt[]"> </td>
+            <td align="justify"><input readonly type="text" name="id[]" value="{{ $alumno->id }}" style="width: 50%;"></td>
+            <td align="justify">{{ $alumno->Nombre_A}}</td>
+            <td align="justify" name="peri">{{ $estep[0]}}</td>
+            <td align="justify" name="dias">{{ $estep[1]}}</td>
+            <td align="justify"><input required  type="text" name="Asist[]"  style="width: 40%;"></td>
+            <td align="justify"><input required  type="text" name="Ret[]" style="width: 40%;"> </td>
+            <td align="justify"><input required  type="text" name="Falt[]" style="width: 40%;"> </td>
+
           </tr>
 
           @endforeach
-          {!!Form::submit('Aceptar',['class'=>'btn btn-primary'])!!}
+
 <input name='usua' value='{{$usua}} 'style="visibility:hidden;"></input>
-<input name='periodo' value='{{$estep}} 'style="visibility:hidden;"></input>
+<input name='periodo' value='{{$estep[0]}} 'style="visibility:hidden;"></input>
+<input name='clavem' value='{{$Materia[0]->Clave}} 'style="visibility:hidden;"></input>
+
+<div class="container"  style=" position:  absolute;top: -10%; left: -5%;">
+ {!!Form::submit('Aceptar',['class'=>'btn btn-primary'])!!}
+
           {!! Form::close()!!}
+          <a href="/DocenteInicio?valor={{ ($usua) }}">
+    <button class="btn btn-success" >Regresar</button></a>
+     </div>
         </tbody>
     </table>
 
