@@ -162,7 +162,7 @@
 
                 <select name="bach1" id="bach1" style="font-size:110%;width: 26.5%; position:  absolute;top: 53%; left: 22%" disabled="true">
                             <option value="{{ old('Grado') }}">{{ old('Grado') }}</option>
-                            <option value="Químico-Biológica">Químico Biológico</option>
+                            <option value="Químico Biológica">Químico-Biológica</option>
                             <option value="Físico Matemática">Físico-Matemática</option>
                             <option value="Humanidades y Ciencias Sociales">Humanidades y Ciencias Sociales</option>
                             <option value="Económico Administrativa">Económico-Administrativa</option>
