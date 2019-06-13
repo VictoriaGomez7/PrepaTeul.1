@@ -26,7 +26,7 @@
             if (valor=="SEGUNDO"){
                 document.getElementById("ft1").disabled = false;
             }else{
-                
+
                 document.getElementById("ft1").disabled = true;
             }
            }
@@ -36,7 +36,7 @@
             if (valor=="TERCER"){
                 document.getElementById("bach1").disabled = false;
             }else{
-                
+
                 document.getElementById("bach1").disabled = true;
             }
            }
@@ -58,7 +58,7 @@
             @endforeach
         @endif
 
-        
+
 
         <div class="card-header text-center" style="font-size:200%;width: 90%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 52%; left: 5%;" >{{ __('SOLICITUD DE INSCRIPCIÓN') }}</div> <!-- text-center ES PARA CENTRA EL TEXTO -->
 
@@ -79,7 +79,7 @@
             </div>
 
             <div style="position: absolute;top: 62%; left: 25%; width: 26%;height:53%;  background-color:#aaa">
-                <p><input type="text" placeholder="1800110001" value="{{ old('id') }}" required pattern="[1-9]{2}[0]{2}[1]{2}[0-9]{4}" id="id" name="id" style="font-size:105%; width: 95%"/></p>
+                <p><input type="text" placeholder="1800110001" value="{{ old('id') }}" required pattern="[1-9]{1}[0-9]{9}" id="id" name="id" style="font-size:105%; width: 95%"/></p>
                 <p><input type="text" placeholder="Velazquez Torres Ximena" value="{{ old('nombre') }}" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" id="nombre" name="nombre" style="font-size:105%; width: 95%;" /></h1>
                 <p><input type="text" placeholder="Torres Cortes Maria" value="{{ old('nombremadre') }}" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" id="nombremadre" name="nombremadre" style="font-size:105%; width: 95%;"/></p>
                 <p><input type="text" placeholder="Velazquez Luna Abel" value="{{ old('nombrepadre') }}" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" id="nombrepadre" name="nombrepadre" style="font-size:105%; width: 95%;"/></p>
@@ -133,7 +133,7 @@
             <div style="font-size:140%;width: 90%; height: 11.5%;position: absolute;top: 115%;left:5%; background-color:#aaa  ">
                     <p style="position: absolute;top: 2%;left:14%; width: 80%">{{('Con todo respeto solicito a Usted Sr. Director, me acepte como alumno  de esta Escuela Preparatoria a su cargo para cursar el')}}</p>
                         <select name="semestres" id="semestres" required onchange="Grado(this.value); semes(this.options[this.selectedIndex].innerHTML);habilitar(this.value),habilitar2(this.value)" style="font-size:80%;width: 17%;/*posicion->*/position: absolute;top:54%; left:46%;">
-                            <option value="{{ old('semestree') }}">{{ old('semestree') }}</option>
+                            <option value="{{ old('semestres') }}">{{ old('semestres') }}</option>
                             <option value="PRIMER">PRIMER SEMESTRE</option>
                             <option value="PRIMER">SEGUNDO SEMESTRE</option>
                             <option value="SEGUNDO">TERCER SEMESTRE</option>
@@ -144,31 +144,30 @@
 
                     <p style="position: absolute;top: 50%;left:64%">{{('del')}}</p>
                     <!--Caja del grado-->
-                    <input type="text" id="grado" value="{{ old('semestres') }}" name="Gradoo" disabled style="background-color:#aaa; position: absolute; top:51%; left: 67%; width: 8%;border: 0px;font-size:90%;text-align: center; color:black">
+                    <input type="text" id="grado" value="{{ old('Gradoo') }}" name="Gradoo" disabled style="background-color:#aaa; position: absolute; top:51%; left: 67%; width: 8%;border: 0px;font-size:90%;text-align: center; color:black">
                     <input type="text" value="{{ old('semestree') }}" id="semestree" name="semestree" style="background-color:#aaa; position: absolute; top:51%; left: 85%; width: 0%;border: 0px;font-size:90%;text-align: center; color:black">
 
                     <p style="position: absolute; top:53%; left: 75.5%;font-size:90%"> {{('GRADO.')}}</p>
             </div>
-            <div style="position: absolute;top: 126%; left: 5%; width: 90%;height:16%;background-color:#aaa">
+            <div style="position: absolute;top: 127%; left: 5%; width: 90%;height:15%;background-color:#aaa">
                 <p style="font-size:138%">{{('Formación para el Trabajo:')}}</p>
                 <p style="font-size:138%">{{('Bachillerato:')}}</p>
                 <select name="ft1" id="ft1" style="font-size:110%;width: 26.5%; position:  absolute;top: 4%; left: 22%"  disabled="true">
                             <option value="{{ old('Grado') }}">{{ old('Grado') }}</option>
-                            <option value="Lenguas">Lenguas</option>
-                            <option value="Informatica">Informática</option>
+                            <option value="Informática">Informática</option>
+                            <option value="Turismo">Turismo</option>
                             <option value="Higiene y Salud Comunitaria">Higiene y Salud Comunitaria</option>
-                            <option value="Económico Administrativo">Económico Administrativo</option>
                       </select>
 
                 <select name="bach1" id="bach1" style="font-size:110%;width: 26.5%; position:  absolute;top: 53%; left: 22%" disabled="true">
                             <option value="{{ old('Grado') }}">{{ old('Grado') }}</option>
-                            <option value="Químico-Biológica">Químico Biológico</option>
-                            <option value="Físico Matemática">Físico-Matemática</option>
-                            <option value="Humanidades y Ciencias Sociales">Humanidades y Ciencias Sociales</option>
-                            <option value="Económico Administrativa">Económico-Administrativa</option>
+                            <option value="Químico Biológica">Químico Biológica</option>
+                            <option value="Físico Matemática">Físico Matemática</option>
+                            <option value="Ciencias sociales y humanidades">Ciencias sociales y humanidades</option>
+                            <option value="Económico Administrativa">Económico Administrativa</option>
                       </select>
 
-                
+
             </div>
 
 
@@ -189,43 +188,43 @@
             <div style="position: absolute;top: 153%; left: 75%; width: 20%; height:65%;background-color:#aaa">
                 <p><select id="A" name="A" value="No" required style="width: 18%;height: 9%; position: absolute;top: 0%;left:10%">
                     <option value="{{ old('A') }}">{{ old('A') }}</option>
-                    <option selected value="Si">SI</option>
+                    <option value="Si">SI</option>
                     <option value="No">NO</option>
                 </select></p>
                 <p><select required id="B" name="B" style="width: 18%;height: 9%; position: absolute;top: 12%;left:10%">
                     <option value="{{ old('B') }}">{{ old('B') }}</option>
-                    <option selected value="Si">SI</option>
+                    <option value="Si">SI</option>
                     <option value="No">NO</option>
                 </select></p>
                 <p><select required id="C" name="C" style="width: 18%;height: 9%; position: absolute;top: 23%;left:10%">
                     <option value="{{ old('C') }}">{{ old('C') }}</option>
-                    <option selected value="Si">SI</option>
+                    <option value="Si">SI</option>
                     <option value="No">NO</option>
                 </select></p>
 
                 <p><select required id="D" name="D" style="width: 18%;height: 9%; position: absolute;top: 34%;left:10%">
                     <option value="{{ old('D') }}">{{ old('D') }}</option>
-                    <option selected value="Si">SI</option>
+                    <option value="Si">SI</option>
                     <option value="No">NO</option>
                 </select></p>
                 <p><select required name="E" style="width: 18%;height: 9%; position: absolute;top: 46%;left:10%">
                     <option value="{{ old('E') }}">{{ old('E') }}</option>
-                    <option selected value="Si">SI</option>
+                    <option value="Si">SI</option>
                     <option value="No">NO</option>
                 </select></p>
                 <p><select required id="F" name="F" style="width: 18%;height: 9%; position: absolute;top: 59%;left:10%">
                     <option value="{{ old('F') }}">{{ old('F') }}</option>
-                    <option selected value="Si">SI</option>
+                    <option value="Si">SI</option>
                     <option value="No">NO</option>
                 </select></p>
                 <p><select required id="G" name="G" style="width: 18%;height: 9%; position: absolute;top: 72%;left:10%">
                     <option value="{{ old('G') }}">{{ old('G') }}</option>
-                    <option selected value="Si">SI</option>
+                    <option value="Si">SI</option>
                     <option value="No">NO</option>
                 </select></p>
                 <p><select required id="H" name="H" style="width: 18%;height: 9%; position: absolute;top: 85%;left:10%">
                     <option value="{{ old('H') }}">{{ old('H') }}</option>
-                    <option selected value="Si">SI</option>
+                    <option value="Si">SI</option>
                     <option value="No">NO</option>
                 </select></p>
 
@@ -238,6 +237,6 @@
         {!! Form::close()!!}
 </body>
 
-    
+
 
 @endsection

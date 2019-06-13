@@ -42,7 +42,7 @@
 
                @foreach($CDocente as $doc)
                <?php $new7=$doc->Grupo; ?>
-               <?php $new2=$doc->ClaveMateria.$new7; ?>
+               <?php $new2=$doc->id; ?>
                 <option value="<?php echo $new2; ?>">{{$doc->Materia}} {{$doc->Grupo}}</option>
                @endforeach
                </select>
@@ -50,10 +50,10 @@
               <script type="text/javascript">
 function mostrar(id) {
   @foreach($CDocente as $doc)
-  <?php $new1=$doc->ClaveMateria.$doc->Grupo; ?>
+  <?php $new1=$doc->id; ?>
   if (id == "<?php echo $new1; ?>") {
     $("#<?php echo $new1; ?>").show();
-    <?php $new=$doc->ClaveMateria .'_'. $doc->Grupo .'_'. $usua; ?>
+
 
   }
   if (id != "<?php echo $new1; ?>") {
@@ -64,14 +64,17 @@ function mostrar(id) {
 }
 </script>
 
+@foreach($Mat_grup as $materia)
 @foreach($CMateria as $mat)
-@foreach( $CDocente as $doc)
-@if($mat->Clave == $doc->ClaveMateria)
+@foreach($CDocente as $doc)
+@if( $materia->Clave == $doc->ClaveMateria)
+
 <?php $new4=$doc->ClaveMateria.$doc->Grupo; ?>
 <?php $new=$doc->ClaveMateria .'_'. $doc->Grupo .'_'. $usua; ?>
 <?php $new5=$new; ?>
 
-<div class="element" id="{{$new4}}" style="display: none; position: absolute;top: 5%; left: 35%; width: 60%;height:70%;">
+<div class="element" id="{{$doc->id}}" style="display: none; position: absolute;top: 5%; left: 35%; width: 60%;height:70%;">
+  <label>{{$new4}}</label>
     <table id="alumn" class="table">
       <thead>
         <tr>
@@ -92,7 +95,7 @@ function mostrar(id) {
               <td align="center">{{ $mat->Nombre}}</td>
               <td align="center">{{ $mat->Tipo}}</td>
               <td align="center">{{ $mat->Horas}}</td>
-              <td align="center">{{ $new7}}</td>
+              <td align="center">{{ $doc->Grupo}}</td>
               <td><button class="btn btn-success">Asistencias</button></td>
             </form>
             {!!Form::open(['route' => ['Asistencias.store','id'=>$new5],'method'=>'POST'])!!}
@@ -122,7 +125,7 @@ $(document).ready(function() {
 @endif
 @endforeach
 @endforeach
-
+@endforeach
 
 
 

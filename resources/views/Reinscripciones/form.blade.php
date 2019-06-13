@@ -37,7 +37,7 @@
             </div>
 
             <div style="position: absolute;top: 62%; left: 24.9%; width: 25%;height:53%;background-color:#aaa">
-                <p><input type="number" required readonly pattern="[1-9]{2}[0]{2}[1]{2}[0-9]{4}" id="id" name="id" value="{{$alumno->id}}" style="font-size:105%; width: 95%"/></p>
+                <p><input type="number" required readonly min="1" max="9999999999" id="id" name="id" value="{{$alumno->id}}" style="font-size:105%; width: 95%"/></p>
 
                 <p><input type="text" required readonly id="nombr" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" name="nombre" value="{{$alumno->Nombre_A}}"style="font-size:105%; width: 95%;" /></h1>
 
@@ -111,17 +111,17 @@
             </div>
 
             @foreach($FtOBache as $FTBH)
-            <div style="position: absolute;top: 126%; left: 5%; width: 90%;height:15%;background-color:#aaa">
+            <div style="position: absolute;top: 127%; left: 5%; width: 90%;height:15%;background-color:#aaa">
                 <p style="font-size:138%">{{('Formación para el Trabajo:')}}</p>
                 <p style="font-size:138%">{{('Bachillerato:')}}</p>
                 @if($bandera==1)
                 <select  name="ft2" id="ft2" style="font-size:110%;width: 26.5%; position:  absolute;top: 4%; left: 22%"  >
                             <option value="{{ old('Grado') }}">{{ old('Grado') }}</option>
 
-                            <option value="Lenguas">Lenguas</option>
-                            <option value="Informatica">Informatica</option>
+                            <option value="Informática">Informática</option>
+                            <option value="Turismo">Turismo</option>
                             <option value="Higiene y Salud Comunitaria">Higiene y Salud Comunitaria</option>
-                            <option value="Económico Administrativo">Económico Administrativo</option>
+
                       </select>
 
                <input readonly value=""  name="bach1" id="bach1" style="font-size:110%;width: 26.5%; position:  absolute;top: 53%; left: 22%" >
@@ -130,17 +130,17 @@
 
                 <input readonly value="{{ $FTBH->Bachillerato }}"  name="bach1" id="bach1" style="font-size:110%;width: 26.5%; position:  absolute;top: 53%; left: 22%" >
                 @elseif($bandera==2)
-                <input readonly value="{{ $FTBH->Formación_Trabajo }}" name="ft2" id="ft2" style="font-size:110%;width: 26.5%; position:  absolute;top: 4%; left: 22%"  >
+                <input readonly value="" name="ft2" id="ft2" style="font-size:110%;width: 26.5%; position:  absolute;top: 4%; left: 22%"  >
 
                 <select name="bach1" id="bach1" style="font-size:110%;width: 26.5%; position:  absolute;top: 53%; left: 22%" >
                             <option value="{{ old('Grado') }}">{{ old('Grado') }}</option>
-                            <option value="Químico Biológico">Químico Biológico</option>
-                            <option value="Físico Matemático">Físico Matemático</option>
+                            <option value="Químico Biológica">Químico Biológica</option>
+                            <option value="Físico Matemática">Físico Matemática</option>
                             <option value="Ciencias sociales y humanidades">Ciencias sociales y humanidades</option>
-                            <option value="Económico Administrativo">Económico Administrativo</option>
+                            <option value="Económico Administrativa">Económico Administrativa</option>
                       </select>
                 @elseif($bandera==22)
-                    <input readonly value="{{ $FTBH->Formación_Trabajo }}" name="ft2" id="ft2" style="font-size:110%;width: 26.5%; position:  absolute;top: 4%; left: 22%"  >
+                    <input readonly value="" name="ft2" id="ft2" style="font-size:110%;width: 26.5%; position:  absolute;top: 4%; left: 22%"  >
 
                     <input readonly value="{{ $FTBH->Bachillerato }}"  name="bach1" id="bach1" style="font-size:110%;width: 26.5%; position:  absolute;top: 53%; left: 22%" >
 

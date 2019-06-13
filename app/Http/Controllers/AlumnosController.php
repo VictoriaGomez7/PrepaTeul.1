@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Alumno;
 use App\usuarioalumno;
 use App\ft_bach;
+use App\Grupo;
 use App\Http\Requests\TagStoreRequestFTyBACH;
 use App\Http\Requests\TagStoreRequest;
 

@@ -34,18 +34,101 @@
   </head>
 
 <body>
- <div class="card-header text-center" style="font-size:200%;width: 90%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 35%; left: 5%;" >{{ __('Materias') }}</div> <!-- text-center ES PARA CENTRA EL TEXTO -->
+ <div class="card-header text-center" style="font-size:200%;width: 90%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 35%; left: 5%;" >{{ __('Asistencias ') }}{{$Materia[0]->Nombre}} {{$Grupo}}</div> <!-- text-center ES PARA CENTRA EL TEXTO -->
 <div style="position: absolute;top: 44.5%; left: 5%; width: 90%;height:50%; border: 2px solid gray;">
               <select name="transporte" size="10" onChange="mostrar(this.value);"style="position: absolute;top: 5%; left: 5%; width: 25%;height:53%;">
               <!--<option value="otro">Seleccione uno</option>-->
 
 
                @foreach($asis as $doc)
-               
+
                 <option value="{{$doc->Periodo}}">{{$doc->Periodo}}</option>
                 
                @endforeach
                </select>
+
+<script type="text/javascript">
+function mostrar(id) {
+  @foreach($asis as $doc)
+  
+  if (id == "{{$doc->Periodo}}") {
+    $("#{{$doc->Periodo}}").show();
+    
+
+  }
+  if (id != "{{$doc->Periodo}}") {
+    $("#{{$doc->Periodo}}").hide();
+  }
+  @endforeach
+
+}
+</script>
+
+
+@foreach( $asis as $doc)
+@foreach($arrayalumnos as $alumn)
+@if($doc->id == $alumn->id)
+
+<div class="element" id="{{$doc->Periodo}}" style="display: none; position: absolute;top: 5%; left: 35%; width: 60%;height:70%;">
+    <table id="alumn" class="table">
+      <thead>
+        <tr>
+          <th  align="center">Clave</th>
+          <th  align="center">Nombre</th>
+          <th  align="center">Asistencias</th>
+          <th  align="center">Retardos</th>
+          <th  align="center">Faltas</th>
+          <th  align="center">Grupo</th>
+          <th></th>
+
+        </tr>
+      </thead>
+        <tbody>
+          <tr>
+
+            <form class="form-group" method="GET">
+              <td align="center">{{ $doc->id }}</td>
+              <td align="center">{{ $alumn->Nombre_A}}</td>
+              <td align="center">{{ $doc->Asistencias}}</td>
+              <td align="center">{{ $doc->Retardos}}</td>
+              <td align="center">{{ $doc->Faltas}}</td>
+              <td align="center">{{ $Grupo}}</td>
+              
+            </form>
+            
+          </tr>
+        </tbody>
+
+    </table>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('#alumn').DataTable({
+    "language": {
+      "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+    }
+  });
+});
+</script>
+  </div>
+@endif
+@endforeach
+@endforeach
+
+
+
+
+
+
+
+
+
+
 
   </div>
 
