@@ -208,23 +208,23 @@ width: 20px;
 
               <th align="center">Compromiso</th>
             </tr>
-            <?php 
+            <?php
               $cont=1;
             ?>
-            
+
             @foreach($compromisos as $r)
               <tr >
                 <td  align="center">{{$cont}}</td>
 
                 <td align="justify">{{ $r->compromiso }}</td>
-               <?php 
+               <?php
               $cont=$cont+1;
                 ?>
               </tr>
 
               @endforeach
           </table>
-          <p>Teúl de González Ortega, Zac. a  <?php echo date("m/d/Y");?></p>
+          <p>Teúl de González Ortega, Zac. a  <?php echo date("d/m/Y");?></p>
 </center>
           <center>
           <p>__________________________</p>
@@ -244,16 +244,16 @@ width: 20px;
 
               <th align="center">Compromiso</th>
             </tr>
-             <?php 
+             <?php
               $cont=1;
             ?>
             @foreach($compromisos2 as $r)
-            
+
               <tr >
                 <td  align="center">{{$cont}}</td>
 
                 <td align="justify">{{ $r->compromiso }}</td>
-                 <?php 
+                 <?php
               $cont=$cont+1;
                 ?>
               </tr>

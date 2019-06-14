@@ -28,6 +28,7 @@
     @endif
 
 	<header>
+
 		<nav class="navegacion" style="width: 90%">
 			<ul class="menu">
 				<li><a href="#">Alumnos</a>

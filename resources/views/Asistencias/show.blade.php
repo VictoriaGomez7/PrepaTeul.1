@@ -24,7 +24,7 @@
     </div>
 @endif
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    
+
 <title>Alumnos</title>
 <body>
 <div class="card-header text-center" style="font-size:200%;width: 50%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 45%; left: 25%;" >Control de Asistencias: {{$Materia[0]->Nombre}}</div>
@@ -70,7 +70,7 @@
  {!!Form::submit('Aceptar',['class'=>'btn btn-primary'])!!}
 
           {!! Form::close()!!}
-          <a href="/DocenteInicio?valor={{ ($usua) }}">
+          <a href="/DocenteInicios?valor={{ ($usua) }}">
     <button class="btn btn-success" >Regresar</button></a>
      </div>
         </tbody>
