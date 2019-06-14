@@ -1,9 +1,7 @@
 <!doctype html>
 <a href="http://127.0.0.1:8000/alumnosconsulta">
             <button class="btn btn-success" style="position: absolute;top: 210%;left:75%">Cancelar</button></a>
-
-
-{{--  --}}@extends('layouts.app')
+@extends('layouts.app')
 
 {{-- @section('title','Modifica Alumno') --}}
 
@@ -177,12 +175,12 @@
 
             </div>
 
-            
+
             <button type="submit" class="btn btn-primary" style="position: absolute;top: 210%;left:65%">Modificar</button>
         </form>
 
     {!!Form::open(['route' => ['Alumnos.store'],'method'=>'POST'])!!}
-    
+
     {!! Form::close()!!}
 
     {{-- @endsection() --}}

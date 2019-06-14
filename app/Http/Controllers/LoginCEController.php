@@ -67,7 +67,8 @@ class LoginCEController extends Controller
             }
             else{
 
-             return Redirect('/ControlEscolarInicio');
+              return view('ControlEscolar.CEprincipal2',compact('CE'));
+             //return Redirect('/ControlEscolarInicio');
             }
         }
     }

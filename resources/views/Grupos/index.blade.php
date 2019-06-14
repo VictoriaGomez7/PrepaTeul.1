@@ -75,39 +75,36 @@
          // alert(resultado2);
       }
     </script>
-    <label style="font-size:130%; position:  absolute;top: 10%; left: 7%" >
-          <input type="radio" id="opcion" name="grupoAB" class="with-gap" value="crear" required="true" onclick="verifica()">
-      <span>Crear grupos</span>
-    </label>
+  
 
-    <label style="font-size:130%; position:  absolute;top: 10%; left: 53%" >
+    <label style="font-size:130%; position:  absolute;top: 10%; left: 38%" >
           <input type="radio" name="semestre" onclick="verifica()" class="with-gap" value="PRIMER SEMESTRE" required="true" >
       <span>PRIMER SEMESTRE</span>
     </label>
 
-    <label style="font-size:130%; position:  absolute;top: 25%; left: 53%">
+    <label style="font-size:130%; position:  absolute;top: 25%; left: 38%">
           <input type="radio" name="semestre" onclick="verifica()" class="with-gap"  value="SEGUNDO SEMESTRE" >
       <span>SEGUNDO SEMESTRE</span>
     </label>
 
 
-    <label style="font-size:130%; position:  absolute;top: 40%; left: 53%">
+    <label style="font-size:130%; position:  absolute;top: 40%; left: 38%">
           <input type="radio" name="semestre" onclick="verifica()" class="with-gap" value="TERCER SEMESTRE" >
       <span>TERCER SEMESTRE</span>
     </label>
 
-       <label style="font-size:130%; position:  absolute;top: 55%; left: 53%" >
+       <label style="font-size:130%; position:  absolute;top: 55%; left: 38%" >
           <input type="radio" name="semestre" onclick="verifica()" class="with-gap" value="CUARTO SEMESTRE" required="true" >
       <span>CUARTO SEMESTRE</span>
     </label>
 
-    <label style="font-size:130%; position:  absolute;top: 70%; left: 53%">
+    <label style="font-size:130%; position:  absolute;top: 70%; left: 38%">
           <input type="radio" name="semestre" onclick="verifica()" class="with-gap" value="QUINTO SEMESTRE" >
       <span>QUINTO SEMESTRE</span>
     </label>
 
 
-    <label style="font-size:130%; position:  absolute;top: 85%; left: 53%">
+    <label style="font-size:130%; position:  absolute;top: 85%; left: 38%">
           <input type="radio" name="semestre" onclick="verifica()" class="with-gap" value="SEXTO SEMESTRE" >
       <span>SEXTO SEMESTRE</span>
     </label>

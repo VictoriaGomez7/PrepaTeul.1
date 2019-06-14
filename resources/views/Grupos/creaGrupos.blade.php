@@ -56,7 +56,7 @@
                 ?>
                 <tr><td>
                <label for="eliminar{{ $r->id }}"> {{$r->Nombre_A}}</label>
-                <input type="submit" name="eliminar{{$r->id}}" value=" x " > 
+                <input type="submit" name="eliminar{{$r->id}}" value="Mover" > 
               </td></tr>
                 <?php
               }  
@@ -73,7 +73,7 @@
                 ?>
                 <tr><td>
                <label for="eliminar{{ $r->id }}"> {{$r->Nombre_A}}</label>
-                <input type="submit" name="eliminar{{$r->id}}" value=" x " > 
+                <input type="submit" name="eliminar{{$r->id}}" value="Mover" > 
                 </td></tr>
                 <?php
               }  

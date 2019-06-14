@@ -54,7 +54,7 @@ class ImprimelistasController extends Controller
     {
         $semestre=$r->semestre;
         
-
+        $titulo='';
             if(($r->grupos =='formacion' && $r->semestre =='PRIMER SEMESTRE') || ($r->grupos =='formacion' && $r->semestre =='SEGUNDO SEMESTRE')){
                 return back();
             }else if($r->grupos =='formacion'){
@@ -70,6 +70,7 @@ class ImprimelistasController extends Controller
             from alumnos    WHERE  (EXISTS (SELECT 1 from grupos
         WHERE grupos.id=alumnos.id and grupos.Grupo='A'))
                           AND alumnos.Semestre= :sem" ,['sem'=>$semestre]);
+                 $titulo=$semestre . " Grupo A";
             }else{
 
 
@@ -77,11 +78,12 @@ class ImprimelistasController extends Controller
             from alumnos    WHERE  (EXISTS (SELECT 1 from grupos
         WHERE grupos.id=alumnos.id and grupos.Grupo='B'))
                           AND alumnos.Semestre= :sem" ,['sem'=>$semestre]);
-
+                 $titulo=$semestre . " Grupo B";
             }
-             $pdf= PDF::loadView('Listas.muestraGrupos',compact('listaA','semestre'));
+             $pdf= PDF::loadView('Listas.muestraGrupos',compact('listaA','semestre','titulo'));
              return $pdf->stream();
-    return view('Listas.muestraGrupos',compact('listaA','semestre'));
+
+    return view('Listas.muestraGrupos',compact('listaA','semestre','titulo'));
            
         
     }
@@ -101,7 +103,8 @@ class ImprimelistasController extends Controller
             from alumnos    WHERE  (EXISTS (SELECT 1 from ft_baches
         WHERE ft_baches.id=alumnos.id and ft_baches.Formación_Trabajo= :formacion ))
                           AND alumnos.Semestre= :sem" ,['sem'=>$semestre   , 'formacion'=>$formacion]);
-       $pdf= PDF::loadView('Listas.muestraGrupos',compact('listaA','semestre'));
+       $pdf= PDF::loadView('Listas.muestraGrupos',compact('listaA','semestre','titulo'));
+       $titulo=$semestre . " ".$r->formacionT;
        return $pdf->stream();
     }
 
@@ -121,7 +124,8 @@ class ImprimelistasController extends Controller
            from alumnos    WHERE  (EXISTS (SELECT 1 from ft_baches
         WHERE ft_baches.id=alumnos.id and ft_baches.Bachillerato= :bachillerato ))
                           AND alumnos.Semestre= :sem" ,['sem'=>$semestre   , 'bachillerato'=>$bachillerato]);
-      $pdf= PDF::loadView('Listas.muestraGrupos',compact('listaA','semestre'));
+         $titulo=$semestre . " ".$r->bachilleratoT;
+      $pdf= PDF::loadView('Listas.muestraGrupos',compact('listaA','semestre','titulo'));
        
        return $pdf->stream();
     }

@@ -21,6 +21,7 @@
     <br>
     <br><br>
              <left>
+              <h2>{{$titulo}} </h2>
                <table width="100%" left="5px" align="left" border="1">
           <tr>
            
