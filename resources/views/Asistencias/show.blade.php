@@ -9,6 +9,8 @@
 
 
 @section('content')
+
+
 @if (session()->has('msj'))
     <div class="alert alert-warning" role="alert" style="width: 50%; position:  absolute;top: 43%; left: 25%;z-index: 1;">
         <button class="close" data-dismiss="alert"><span>&times;</span></button>
@@ -27,18 +29,18 @@
 <body>
 <div class="card-header text-center" style="font-size:200%;width: 50%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 45%; left: 25%;" >Control de Asistencias: {{$Materia[0]->Nombre}}</div>
 
-  <div class="container"  style=" position:  absolute;top: 50%; left: 10%;">
+  <div class="container"  style=" position:  absolute;top: 53%; left: 5%;">
 
     <table  id="alumn" class="table" >
       <thead>
         <tr>
-          <th  align="justify">Matrícula</th>
-          <th  align="justify">Alumno</th>
-          <th  align="justify">Periodo</th>
-          <th  align="justify">Días hábiles</th>
-          <th align="justify">Asistencias</th>
-          <th align="justify">Retardos</th>
-          <th align="justify">Faltas</th>
+          <th  text-align="center" > Matrícula</th>
+          <th  text-align="center" >Alumno</th>
+          <th  text-align="center">Periodo</th>
+          <th  text-align="center">Días hábiles</th>
+          <th text-align="justify">Asistencias</th>
+          <th text-align="center">Retardos</th>
+          <th text-align="center">Faltas</th>
         </tr>
       </thead>
 
@@ -48,10 +50,10 @@
           @foreach($arrayalumnos as $alumno)
 
           <tr>
-            <td align="justify"><input readonly type="text" name="id[]" value="{{ $alumno->id }}" style="width: 50%;"></td>
-            <td align="justify">{{ $alumno->Nombre_A}}</td>
-            <td align="justify" name="peri">{{ $estep[0]}}</td>
-            <td align="justify" name="dias">{{ $estep[1]}}</td>
+            <td align="justify"><input readonly type="text" name="id[]" value="{{ $alumno->id }}" style="width: 58%; "></td>
+            <td align="left">{{ $alumno->Nombre_A}}</td>
+            <td align="center" name="peri">{{ $estep[0]}}</td>
+            <td align="center" name="dias">{{ $estep[1]}}</td>
             <td align="justify"><input required  type="text" name="Asist[]"  style="width: 40%;"></td>
             <td align="justify"><input required  type="text" name="Ret[]" style="width: 40%;"> </td>
             <td align="justify"><input required  type="text" name="Falt[]" style="width: 40%;"> </td>

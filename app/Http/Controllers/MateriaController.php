@@ -597,7 +597,7 @@ class MateriaController extends Controller
               {
                   $materia_Grupo=new Materia_Grupo();
                   $materia_Grupo->Clave=$Clavemat;
-                  $materia_Grupo->Grupo=$request['nombre'];
+                  $materia_Grupo->Grupo=$request['nombre'].' '.$request['tipo'];
                   $materia_Grupo->Semestre=$request['semestre'];
                   $materia_Grupo->save();
                   //return "Formación hola";
@@ -684,7 +684,7 @@ class MateriaController extends Controller
       $materia="";
       $materias=materia::where([['Clave',$r]])->get();
       foreach ($materias as $row ) {
-        
+
         $materia=$row;
         if($materia->Tipo=='Formación Propedéutica'){
                     $opciones=' <option value="Formación Propedéutica" selected="true">Formación Propedéutica</option>
@@ -769,7 +769,7 @@ class MateriaController extends Controller
     {
       $materia=[];
       $materias=Materia::where([['Clave',$r->Clave]])->get();
-      
+
       foreach ($materias as $row ) {
         $materia=$row;
       }
@@ -808,7 +808,7 @@ class MateriaController extends Controller
      */
     public function destroy($id)
     {
-       
+
        materia_grupo::where('Clave',$id)->delete();
        materia_grupo::get();
        return redirect('materia')->with('msj','Materia Eliminada Correctamente');
