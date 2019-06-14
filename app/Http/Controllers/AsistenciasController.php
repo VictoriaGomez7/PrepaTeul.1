@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\RelacionDocenteMateriaGrupo;
 use App\Materia;
+use App\ft_bach;
+use App\Materia_Grupo;
 use App\Docente;
 use App\Periodo;
-use App\Materia_Grupo;
 use App\Alumno;
 use App\Grupo;
 use App\Asistencia;
@@ -36,10 +37,11 @@ class AsistenciasController extends Controller
 
             //return $CDocente[0]->Materia;
             $CMateria = Materia::get();
+            $Mat_grup = Materia_Grupo::get();
             //return $CMateria;
             $new=[$CDocente,$CMateria];
             //return $CMateria;
-            return view('Asistencias.create',compact('CDocente','CMateria','usua'));
+            return view('Asistencias.create',compact('CDocente','CMateria','Mat_grup','usua'));
 
 
 
@@ -64,7 +66,7 @@ class AsistenciasController extends Controller
       $registros=Asistencia::get();
       $actual=Periodo::where('id',$periodo)->get();
 
-      $total=($Asistencias[0])+($Retardos[0])+($Faltas[0]);
+      $total=($Asistencias[0])+($Faltas[0]);
 
       $band=0;
       for ($i=0; $i <count($registros) ; $i++) {
@@ -139,8 +141,10 @@ class AsistenciasController extends Controller
       $Clavemat=$separar[0];
       $Grupo=$separar[1];
       $usua=$separar[2];
-      $Claves = Grupo::where('Grupo', $Grupo)->get();
-      $Materia= Materia::where('Clave',$Clavemat)->get();
+
+      if ($Grupo == 'A' || $Grupo =='B') {
+        $Claves = Grupo::where('Grupo', $Grupo)->get();
+        $Materia= Materia::where('Clave',$Clavemat)->get();
       $Alumnos= Alumno::get();
       $asis=Asistencia::where('Materia',$Clavemat)->get();
       $periodo=Periodo::get();
@@ -153,8 +157,53 @@ class AsistenciasController extends Controller
           }
         }
       }
-      return view('Asistencias.Reporte',compact('arrayalumnos','usua','Materia','asis'));
+      return view('Asistencias.Reporte',compact('arrayalumnos','usua','Materia','asis','Grupo'));
+      }
+      
+      
+      else{
+        $Claves = ft_bach::where('Bachillerato', $Grupo)->get();
+        if (($Claves==[]) == True) {
+          $Claves = ft_bach::where('Formación_Trabajo', $Grupo)->get();
+          $Materia= Materia::where('Clave',$Clavemat)->get();
+      $Alumnos= Alumno::get();
+      $asis=Asistencia::where('Materia',$Clavemat)->get();
+      $periodo=Periodo::get();
+
+      $arrayalumnos = array();
+      for ($i=0; $i <count($Claves) ; $i++) {
+        for ($j=0; $j <count($Alumnos) ; $j++) {
+          if ($Claves[$i]['id']==$Alumnos[$j]['id'] && $Materia[0]['Semestre']==$Alumnos[$j]['Semestre']) {
+            array_push($arrayalumnos, $Alumnos[$j]);
+          }
+        }
+      }
+      return view('Asistencias.Reporte',compact('arrayalumnos','usua','Materia','asis','Grupo'));
+        }
+        else{
+          
+        
+        $Materia= Materia::where('Clave',$Clavemat)->get();
+      $Alumnos= Alumno::get();
+      $asis=Asistencia::where('Materia',$Clavemat)->get();
+      $periodo=Periodo::get();
+
+      $arrayalumnos = array();
+      for ($i=0; $i <count($Claves) ; $i++) {
+        for ($j=0; $j <count($Alumnos) ; $j++) {
+          if ($Claves[$i]['id']==$Alumnos[$j]['id'] && $Materia[0]['Semestre']==$Alumnos[$j]['Semestre']) {
+            array_push($arrayalumnos, $Alumnos[$j]);
+          }
+        }
+      }
+      return view('Asistencias.Reporte',compact('arrayalumnos','usua','Materia','asis','Grupo'));
     }
+  }
+    }
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -198,8 +247,12 @@ class AsistenciasController extends Controller
            }
 
       }
-
-
+      if ($Grupo == 'A' || $Grupo =='B') {
+        $Claves = Grupo::where('Grupo', $Grupo)->get();
+        $Materia= Materia::where('Clave',$Clavemat)->get();
+      $Alumnos= Alumno::get();
+      $asis=Asistencia::where('Materia',$Clavemat)->get();
+      $periodo=Periodo::get();
 
       $arrayalumnos = array();
       for ($i=0; $i <count($Claves) ; $i++) {
@@ -209,8 +262,49 @@ class AsistenciasController extends Controller
           }
         }
       }
-        //return($arrayalumnos[0]);
       return view('Asistencias.show',compact('arrayalumnos','usua','estep','Materia'));
+      }
+      
+      
+      else{
+        $Claves = ft_bach::where('Bachillerato', $Grupo)->get();
+
+        if (($Claves==[]) == True) {
+          $Claves = ft_bach::where('Formación_Trabajo', $Grupo)->get();
+          $Materia= Materia::where('Clave',$Clavemat)->get();
+      $Alumnos= Alumno::get();
+      $asis=Asistencia::where('Materia',$Clavemat)->get();
+      $periodo=Periodo::get();
+
+      $arrayalumnos = array();
+      for ($i=0; $i <count($Claves) ; $i++) {
+        for ($j=0; $j <count($Alumnos) ; $j++) {
+          if ($Claves[$i]['id']==$Alumnos[$j]['id'] && $Materia[0]['Semestre']==$Alumnos[$j]['Semestre']) {
+            array_push($arrayalumnos, $Alumnos[$j]);
+          }
+        }
+      }
+      return view('Asistencias.show',compact('arrayalumnos','usua','estep','Materia'));
+        }
+        else{
+          
+        
+        $Materia= Materia::where('Clave',$Clavemat)->get();
+      $Alumnos= Alumno::get();
+      $asis=Asistencia::where('Materia',$Clavemat)->get();
+      $periodo=Periodo::get();
+
+      $arrayalumnos = array();
+      for ($i=0; $i <count($Claves) ; $i++) {
+        for ($j=0; $j <count($Alumnos) ; $j++) {
+          if ($Claves[$i]['id']==$Alumnos[$j]['id'] && $Materia[0]['Semestre']==$Alumnos[$j]['Semestre']) {
+            array_push($arrayalumnos, $Alumnos[$j]);
+          }
+        }
+      }
+      return view('Asistencias.show',compact('arrayalumnos','usua','estep','Materia'));
+    }
+  }
     }
 
 

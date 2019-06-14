@@ -43,7 +43,6 @@ class ReinscripcionesController extends Controller
     {
 
         $campo=new ft_bach();
-
         $campo->id=$request['id'];
         $campo->Formación_Trabajo=$request2['ft1'];
         $campo->Bachillerato=$request2['bach1'];
@@ -155,12 +154,8 @@ class ReinscripcionesController extends Controller
 
                 $row->save();
             }
-
-        //return $CAlumno;
-        //return redirect()->view('Reinscripcion.show');
-        //return back()->with('re',' correctamente' );
-        //return back()->with('msj',' esa matricula no existe' );
-        return view('Reinscripciones.create');
+        //return 'hola';
+        return redirect('/reinscripcion')->with('msjCorrecto','Alumno reinscrito con éxito.');
     }
 
 

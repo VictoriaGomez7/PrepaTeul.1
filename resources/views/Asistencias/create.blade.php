@@ -1,5 +1,7 @@
-<a href="/DocenteInicio?valor={{ ($usua) }}">
-    <button class="btn btn-success" style="position: absolute;top: 81.5%;left:50%;z-index: 1;">Cancelar</button></a>
+<!DOCTYPE html>
+<a href="/DocenteInicios?valor={{ ($usua) }}">
+    <button class="btn btn-success" style="position: absolute;top: 105%;left:50%;z-index: 1;">Cancelar</button></a>
+
 @extends('layouts.app')
 
 @section('title','Docente')
@@ -20,29 +22,16 @@
                 <strong>¡Correcto! </strong>{{ session('msj1') }}
             </div>
         @endif
-
-
-  <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-      <!-- vinculo a bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
-
-
-
-  </head>
-
 <body>
- <div class="card-header text-center" style="font-size:200%;width: 90%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 35%; left: 5%;" >{{ __('Materias') }}</div> <!-- text-center ES PARA CENTRA EL TEXTO -->
-<div style="position: absolute;top: 44.5%; left: 5%; width: 90%;height:50%; border: 2px solid gray;">
+ <div class="card-header text-center" style="font-size:200%;width: 90%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 52%; left: 5%;" >{{ __('Materias') }}</div> <!-- text-center ES PARA CENTRA EL TEXTO -->
+<div style="position: absolute;top: 62%; left: 5%; width: 90%;height:50%; border: 2px solid gray;">
               <select name="transporte" size="10" onChange="mostrar(this.value);"style="position: absolute;top: 5%; left: 5%; width: 25%;height:53%;">
               <!--<option value="otro">Seleccione uno</option>-->
 
 
                @foreach($CDocente as $doc)
                <?php $new7=$doc->Grupo; ?>
-               <?php $new2=$doc->ClaveMateria.$new7; ?>
+               <?php $new2=$doc->id; ?>
                 <option value="<?php echo $new2; ?>">{{$doc->Materia}} {{$doc->Grupo}}</option>
                @endforeach
                </select>
@@ -50,10 +39,10 @@
               <script type="text/javascript">
 function mostrar(id) {
   @foreach($CDocente as $doc)
-  <?php $new1=$doc->ClaveMateria.$doc->Grupo; ?>
+  <?php $new1=$doc->id; ?>
   if (id == "<?php echo $new1; ?>") {
     $("#<?php echo $new1; ?>").show();
-    <?php $new=$doc->ClaveMateria .'_'. $doc->Grupo .'_'. $usua; ?>
+
 
   }
   if (id != "<?php echo $new1; ?>") {
@@ -64,14 +53,17 @@ function mostrar(id) {
 }
 </script>
 
+@foreach($Mat_grup as $materia)
 @foreach($CMateria as $mat)
-@foreach( $CDocente as $doc)
-@if($mat->Clave == $doc->ClaveMateria)
+@foreach($CDocente as $doc)
+@if( $materia->Clave == $doc->ClaveMateria)
+
 <?php $new4=$doc->ClaveMateria.$doc->Grupo; ?>
 <?php $new=$doc->ClaveMateria .'_'. $doc->Grupo .'_'. $usua; ?>
 <?php $new5=$new; ?>
 
-<div class="element" id="{{$new4}}" style="display: none; position: absolute;top: 5%; left: 35%; width: 60%;height:70%;">
+<div class="element" id="{{$doc->id}}" style="display: none; position: absolute;top: 5%; left: 35%; width: 60%;height:70%;">
+  <label>{{$new4}}</label>
     <table id="alumn" class="table">
       <thead>
         <tr>
@@ -92,7 +84,7 @@ function mostrar(id) {
               <td align="center">{{ $mat->Nombre}}</td>
               <td align="center">{{ $mat->Tipo}}</td>
               <td align="center">{{ $mat->Horas}}</td>
-              <td align="center">{{ $new7}}</td>
+              <td align="center">{{ $doc->Grupo}}</td>
               <td><button class="btn btn-success">Asistencias</button></td>
             </form>
             {!!Form::open(['route' => ['Asistencias.store','id'=>$new5],'method'=>'POST'])!!}
@@ -122,7 +114,7 @@ $(document).ready(function() {
 @endif
 @endforeach
 @endforeach
-
+@endforeach
 
 
 

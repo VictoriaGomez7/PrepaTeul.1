@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Alumno;
 use App\usuarioalumno;
 use App\ft_bach;
+use App\Grupo;
 use App\Http\Requests\TagStoreRequestFTyBACH;
 use App\Http\Requests\TagStoreRequest;
 
@@ -39,10 +40,6 @@ class AlumnosController extends Controller
         }
 
       }
-
-
-
-
 
       else if  (isset($clave)) {
         $CAlumno = Alumno::where('id', $alumno1->id)->get();
@@ -94,9 +91,9 @@ class AlumnosController extends Controller
      */
     public function store(TagStoreRequest $request, TagStoreRequestFTyBACH $request2)
     {
-        
+
         $alumno=new Alumno();
-        
+
         $alumno->id=$request['id'];
         $alumno->Nombre_A=$request['nombre'];
         $alumno->Nombre_P=$request['nombrepadre'];
@@ -129,7 +126,7 @@ class AlumnosController extends Controller
         $alumnoL->save();
 
         $campo=new ft_bach();
-        
+
         $campo->id=$request['id'];
         $campo->Formación_Trabajo=$request2['ft1'];
         $campo->Bachillerato=$request2['bach1'];

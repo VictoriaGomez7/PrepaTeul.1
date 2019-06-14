@@ -1,23 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <a href="http://127.0.0.1:8000/docenteconsulta">
             <button class="btn btn-success" style="position: absolute;top: 120%;left:69%">Cancelar</button></a>
 
 @extends('layouts.app')
 
+@section('title','Docente')
 
-
-{{--@include('interfazprincipal.image')--}}
 @include('ControlEscolar.CEprincipal')
 
 <body>
-    @section('title','Docente')
-
+    
     @if (session()->has('msj1'))
-            <div class="alert alert-success" role="alert" style="width: 50%; position:  absolute;top: 43%; left: 25%;z-index: 1;">
-                <button type="button" class="close" data-dismiss="alert" >&times;</button>
-                <strong>¡Correcto! </strong>{{session('msj1')}}
-            </div>
-
+        <div class="alert alert-success" role="alert" style="width: 50%; position:  absolute;top: 43%; left: 25%;z-index: 1;">
+            <button type="button" class="close" data-dismiss="alert" >&times;</button>
+            <strong>¡Correcto! </strong>{{session('msj1')}}
+        </div>
     @endif()
 
     @foreach($CDocente as $docente)
@@ -30,13 +27,12 @@
             @csrf
 
             <div style="position: absolute;top: 62%; left: 25%; width: 50%;height:45%;background-color:#aaa">
-                <p></p>
-                <p style="font-size:130%">{{('Clave:')}}</p>
-                <p style="font-size:130%">{{('Nombre:')}}</p>
-                <p style="font-size:130%">{{('Domicilio:')}}</p>
-                <p style="font-size:130%">{{('Teléfono:')}}</p>
-                <p style="font-size:130%">{{('Email:')}}</p>
-                <p style="font-size:130%">{{('Clave CURP:')}}</p>
+                <p style="font-size:140%;position: absolute;top:6%;left: 10%">{{('Clave:')}}</p>
+                <p style="font-size:140%;position: absolute;top:20%;left: 10%">{{('Nombre:')}}</p>
+                <p style="font-size:140%;position: absolute;top:34%;left: 10%">{{('Domicilio:')}}</p>
+                <p style="font-size:140%;position: absolute;top:48%;left: 10%">{{('Teléfono:')}}</p>
+                <p style="font-size:140%;position: absolute;top:63%;left: 10%">{{('Email:')}}</p>
+                <p style="font-size:140%;position: absolute;top:78%;left: 10%">{{('Clave CURP:')}}</p>
 
             </div>
 
@@ -58,10 +54,9 @@
 
               <button type="submit" class="btn btn-primary" href="#" style="position: absolute;top: 120%;left:59%">Modificar</button>
 
-
-
         </form>
 
-</body>
 
 @endforeach()
+
+</body>

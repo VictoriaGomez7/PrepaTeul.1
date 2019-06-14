@@ -6,5 +6,4 @@
 
 		@include('Reinscripciones.form',compact('CAlumno','bandera','FtOBache'))
 
-
 @endsection()

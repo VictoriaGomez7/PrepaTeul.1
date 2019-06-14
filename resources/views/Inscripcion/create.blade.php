@@ -26,7 +26,7 @@
             if (valor=="SEGUNDO"){
                 document.getElementById("ft1").disabled = false;
             }else{
-                
+
                 document.getElementById("ft1").disabled = true;
             }
            }
@@ -36,7 +36,7 @@
             if (valor=="TERCER"){
                 document.getElementById("bach1").disabled = false;
             }else{
-                
+
                 document.getElementById("bach1").disabled = true;
             }
            }
@@ -58,7 +58,7 @@
             @endforeach
         @endif
 
-        
+
 
         <div class="card-header text-center" style="font-size:200%;width: 90%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 52%; left: 5%;" >{{ __('SOLICITUD DE INSCRIPCIÓN') }}</div> <!-- text-center ES PARA CENTRA EL TEXTO -->
 
@@ -133,7 +133,7 @@
             <div style="font-size:140%;width: 90%; height: 11.5%;position: absolute;top: 115%;left:5%; background-color:#aaa  ">
                     <p style="position: absolute;top: 2%;left:14%; width: 80%">{{('Con todo respeto solicito a Usted Sr. Director, me acepte como alumno  de esta Escuela Preparatoria a su cargo para cursar el')}}</p>
                         <select name="semestres" id="semestres" required onchange="Grado(this.value); semes(this.options[this.selectedIndex].innerHTML);habilitar(this.value),habilitar2(this.value)" style="font-size:80%;width: 17%;/*posicion->*/position: absolute;top:54%; left:46%;">
-                            <option value="{{ old('semestree') }}">{{ old('semestree') }}</option>
+                            <option value="{{ old('semestres') }}">{{ old('semestres') }}</option>
                             <option value="PRIMER">PRIMER SEMESTRE</option>
                             <option value="PRIMER">SEGUNDO SEMESTRE</option>
                             <option value="SEGUNDO">TERCER SEMESTRE</option>
@@ -144,7 +144,7 @@
 
                     <p style="position: absolute;top: 50%;left:64%">{{('del')}}</p>
                     <!--Caja del grado-->
-                    <input type="text" id="grado" value="{{ old('semestres') }}" name="Gradoo" disabled style="background-color:#aaa; position: absolute; top:51%; left: 67%; width: 8%;border: 0px;font-size:90%;text-align: center; color:black">
+                    <input type="text" id="grado" value="{{ old('Gradoo') }}" name="Gradoo" disabled style="background-color:#aaa; position: absolute; top:51%; left: 67%; width: 8%;border: 0px;font-size:90%;text-align: center; color:black">
                     <input type="text" value="{{ old('semestree') }}" id="semestree" name="semestree" style="background-color:#aaa; position: absolute; top:51%; left: 85%; width: 0%;border: 0px;font-size:90%;text-align: center; color:black">
 
                     <p style="position: absolute; top:53%; left: 75.5%;font-size:90%"> {{('GRADO.')}}</p>
@@ -154,21 +154,20 @@
                 <p style="font-size:138%">{{('Bachillerato:')}}</p>
                 <select name="ft1" id="ft1" style="font-size:110%;width: 26.5%; position:  absolute;top: 4%; left: 22%"  disabled="true">
                             <option value="{{ old('Grado') }}">{{ old('Grado') }}</option>
-                            <option value="Lenguas">Lenguas</option>
-                            <option value="Informatica">Informática</option>
+                            <option value="Informática">Informática</option>
+                            <option value="Turismo">Turismo</option>
                             <option value="Higiene y Salud Comunitaria">Higiene y Salud Comunitaria</option>
-                            <option value="Económico Administrativo">Económico Administrativo</option>
                       </select>
 
                 <select name="bach1" id="bach1" style="font-size:110%;width: 26.5%; position:  absolute;top: 53%; left: 22%" disabled="true">
                             <option value="{{ old('Grado') }}">{{ old('Grado') }}</option>
-                            <option value="Químico-Biológica">Químico Biológico</option>
+                            <option value="Químico Biológica">Químico-Biológica</option>
                             <option value="Físico Matemática">Físico-Matemática</option>
                             <option value="Humanidades y Ciencias Sociales">Humanidades y Ciencias Sociales</option>
                             <option value="Económico Administrativa">Económico-Administrativa</option>
                       </select>
 
-                
+
             </div>
 
 
@@ -238,6 +237,6 @@
         {!! Form::close()!!}
 </body>
 
-    
+
 
 @endsection
