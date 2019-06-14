@@ -1,4 +1,5 @@
 @include('ControlEscolar.CEprincipal')
+@extends('layouts.app')
  <meta name="viewport" content="width=divice-width,user-scalable=no,initial-scale=1, maximum-scale=1, minimum-scale=1">
   <center>
     <h2> Nuestros Compromisos Como Familia</h2>

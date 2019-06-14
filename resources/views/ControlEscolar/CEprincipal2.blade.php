@@ -44,7 +44,6 @@
 						<li><a href="VisualizarDocentes">Materia de los Docentes</a></li>
 					</ul>
 				</li>
-				<li><a href="#">Directivo</a></li>
 				<li><a href="#">Materias</a>
 					<ul class="submenu">
 						<li><a href="RegistraMateria">Registrar</a></li>
@@ -72,7 +71,11 @@
 
 						</ul>
 					</li>
-
+                    <li style="left: 18%;"><a href="#" >Control Escolar</a>
+						<ul class="submenu">
+							<li><a href="http://127.0.0.1:8000/interfazpri">CERRAR SESION</a>
+						</ul>
+					</li>
 			</ul>
 		</nav>
 

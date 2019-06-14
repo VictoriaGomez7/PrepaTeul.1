@@ -1,10 +1,12 @@
+<!DOCTYPE html>
 
-@extends('layouts.app')
 
 @section('title','Consultar')
 
 @include('ControlEscolar.CEprincipal')
 
+
+@extends('layouts.app')
 
 @section('frameTitulo')
 @if (Session()->has('msj'))
@@ -83,14 +85,10 @@ body{
 
 </style>
   <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
       <!-- vinculo a bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<!-- Temas--
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
- se vincula al hoja de estilo para definir el aspecto del formulario de login--
-<link rel="stylesheet" type="text/css" href="estilo.css"-->
-    </head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+
     <body>
      <div id="Contenedor" style="position: absolute; top: 45%; left: 35%">
 <div class="ContentForm" style="text-align: center;" >
@@ -98,8 +96,7 @@ body{
 
 
       <div class="input-group input-group-lg" style="padding:10px; text-align: center; ">
-      {{--<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
-      <input type="text" class="form-control" name="Usuario" placeholder="Usuario" id="Usuario" aria-describedby="sizing-addon1" required>--}}
+      
       <label for="Matrícula"  style="margin: 0px; padding: 0px;color: #4B5E7B; font-size:20px;">Buscar Formato</label>
 
     </div>
@@ -114,10 +111,7 @@ body{
     <br>
     <p><button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Generar documento</button></p>
 
-        {{--
-          <p><button class="btn btn-lg btn-primary btn-block btn-signin" id="IngresoLog" type="submit">Entrar</button></p>
-
-          <div class="opcioncontra"><a href="">Olvidaste tu contraseña?</a></div>--}}
+      
 {!! form::close() !!}
      </div>
 <a href="ControlEscolarInicio">
@@ -126,22 +120,6 @@ body{
      </div>
 
 </body>
- <!-- vinculando a libreria Jquery-->
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
- <!-- Libreria java scritp de bootstrap -->
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  {{--<form type="session" class="form-group"  method="GET" action="/DocenteC/show">
-      <div class="text-center">
-      <label for="Clave1" style="/*posicion->*/position: absolute;top:260px; left:500px; margin: 0px; padding: 0px;/*color: #696969;*/ font-size:20px;">Clave</label>
 
-      <input type="text" id="id1" name="id1"  style="/*ancho->*/width: 25%; padding: 7px 20px;margin: 8px 0;/*posicion->*/position: absolute; top: 280px; left: 500px;/*ancho y color del borde->*/border: 1px solid #646464;border-radius: 10px;box-sizing: border-box;right: 500px;/*alinacion del texto->*/text-align: center; color:#646464;">
-
-      <label for="nomb" style="/*posicion->*/position: absolute;top:340px; left:500px; margin: 0px; padding: 0px;/*color: #696969;*/ font-size:20px;">Nombre</label>
-
-      <input type="text" id="name" name="name" style="/*ancho->*/width: 25%; padding: 7px 20px;margin: 8px 0;/*posicion->*/position: absolute; top: 360px; left: 500px;/*ancho y color del borde->*/border: 1px solid #646464;border-radius: 10px;box-sizing: border-box;right: 500px;/*alinacion del texto->*/text-align: center; color:#646464;">
-
-      <button  class="btn btn-primary" style="/*posicion->*/position: absolute; top: 410px; left: 550px; /*ancho->*/width: 200; /*color del boton->*/background-color:#000080;/*color del dexto->*/color:white; padding: 7px 20px;margin: 8px 0;border: none;border-radius: 20px;/*evento->*/cursor: pointer;font-size:18px;">Buscar</button>
-    </div>
-  </form>--}}
 @endsection()
 

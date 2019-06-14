@@ -1,87 +1,85 @@
 
 {{--<a href="interfazprinci">
     <button class="btn btn-success" style="position: absolute;top: 110%;left:5%">Atras</button></a>--}}
+@include('ControlEscolar.CEprincipal')
 @extends('layouts.app')
 
 @section('title','Docente')
 
 {{--@include('interfazprincipal.image')--}}
-@include('ControlEscolar.CEprincipal')
+
 @section('content')
 
-        @if (session()->has('msj'))
-            <div class="alert alert-warning" role="alert" style="width: 50%; position:  absolute;top: 43%; left: 25%;z-index: 1;">
-                <button class="close" data-dismiss="alert"><span>&times;</span></button>
-                <strong>¡Incorrecto! </strong>{{ session('msj') }}
-            </div>
-        @endif
- @if (session()->has('msj1'))
-            <div class="alert alert-success" role="alert" style="width: 50%; position:  absolute;top: 43%; left: 25%;z-index: 1;">
-                <button class="close" data-dismiss="alert"><span>&times;</span></button>
-                <strong>¡Correcto! </strong>{{ session('msj1') }}
-            </div>
-        @endif
+  @if (session()->has('msj'))
+    <div class="alert alert-warning" role="alert" style="width: 50%; position:  absolute;top: 43%; left: 25%;z-index: 1;">
+      <button class="close" data-dismiss="alert"><span>&times;</span></button>
+      <strong>¡Incorrecto! </strong>{{ session('msj') }}
+    </div>
+  @endif
+  @if (session()->has('msj1'))
+    <div class="alert alert-success" role="alert" style="width: 50%; position:  absolute;top: 43%; left: 25%;z-index: 1;">
+      <button class="close" data-dismiss="alert"><span>&times;</span></button>
+      <strong>¡Correcto! </strong>{{ session('msj1') }}
+    </div>
+  @endif
 
-  <head>
+<head>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
       <!-- vinculo a bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
   <script type="text/javascript">
-function mostrar(id) {
-  if (id == "Primer") {
-    $("#Primer").show();
-    $("#Segundo").hide();
-    $("#Tercer").hide();
-    $("#boton").show();
-  }
-  
-  if (id == "Segundo") {
-    $("#Primer").hide();
-    $("#Segundo").show();
-    $("#Tercer").hide();
-    $("#boton").show();
-  }
-  
-  if (id == "Tercer") {
-    $("#Primer").hide();
-    $("#Segundo").hide();
-    $("#Tercer").show();
-    $("#boton").show();
-  }
+    function mostrar(id) {
+      if (id == "Primer") {
+        $("#Primer").show();
+        $("#Segundo").hide();
+        $("#Tercer").hide();
+        $("#boton").show();
+      }
+      
+      if (id == "Segundo") {
+        $("#Primer").hide();
+        $("#Segundo").show();
+        $("#Tercer").hide();
+        $("#boton").show();
+      }
+      
+      if (id == "Tercer") {
+        $("#Primer").hide();
+        $("#Segundo").hide();
+        $("#Tercer").show();
+        $("#boton").show();
+      }
 
-  if (id == "ningun") {
-    $("#Primer").hide();
-    $("#Segundo").hide();
-    $("#Tercer").hide();
-    $("#boton").hide();
-  }
-  
-}
-</script>
+      if (id == "ningun") {
+        $("#Primer").hide();
+        $("#Segundo").hide();
+        $("#Tercer").hide();
+        $("#boton").hide();
+      }
+      
+    }
+  </script>
 
-  </head>
+</head>
 
 <body>
 
+  <div class="card-header text-center" style="font-size:200%;width: 50%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 52%; left: 25%;" >{{ __('Definir Periodos Parciales') }}</div> <!-- text-center ES PARA CENTRA EL TEXTO -->
+    <div style="position: absolute;top: 62%; left: 25%; width: 50%;height:30%; background-color:#aaa">
 
-  <div class="card-header text-center" style="font-size:200%;width: 50%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 52%; left: 25%;" >{{ __('Periodos Parciales') }}</div> <!-- text-center ES PARA CENTRA EL TEXTO -->
-
-
-            <div style="position: absolute;top: 62%; left: 25%; width: 50%;height:30%; background-color:#aaa">
-
-  {!!Form::open(['route' => ['Periodos.store'],'method'=>'POST','id'=>'elForm'])!!}
-  @csrf
-<div>
-  <select name="periodo" id="periodo" size="10" onChange="mostrar(this.value);" style="position: absolute;top: 15%; left: 5%; width: 20%;height:53%;">
+      {!!Form::open(['route' => ['Periodos.store'],'method'=>'POST','id'=>'elForm'])!!}
+        @csrf
+    <div>
+  <select name="periodo" id="periodo" size="10" onChange="mostrar(this.value);" style="font-size:150%;position: absolute;top: 10%; left: 5%; width: 30%;height:80%;">
 <!--<option value="ningun" >Seleccione un periodo</option>-->
-<option value="Primer" >Primer Periodo</option>
+    <option value="Primer" >Primer Periodo</option>
 
-<option value="Segundo">Segundo Periodo</option>
+    <option value="Segundo">Segundo Periodo</option>
 
-<option  value="Tercer">Tercer Periodo</option>
+    <option  value="Tercer">Tercer Periodo</option>
 
-</select>
+  </select>
 
 @foreach($no_p as $per)
 @endforeach

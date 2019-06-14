@@ -42,7 +42,7 @@
             </div>
 
             <div style="position: absolute;top: 62%; left: 24.9%; width: 25%;height:53%;background-color:#aaa">
-                <p><input type="text" required readonly pattern="[1-9]{1}[0-9]{9}" name="id" value="{{$Alumno->id}}" style="font-size:105%; width: 95%"/></p>
+                <p><input type="text" required readonly pattern="[1-9]{2}[0]{2}[1]{2}[0-9]{4}" name="id" value="{{$Alumno->id}}" style="font-size:105%; width: 95%"/></p>
 
                 <p><input type="text" required readonly id="nombr" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" name="Nombre_A" value="{{$alumno->Nombre_A}}"style="font-size:105%; width: 95%;" /></h1>
 

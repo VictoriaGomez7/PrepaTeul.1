@@ -2,8 +2,6 @@
     <button class="btn btn-success" style="position: absolute;top: 90%;left:5%"><--Atras</button></a>
 
     @if (session()->has('msj1'))
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
             <div class="alert alert-success" role="alert" style="width: 50%; position:  absolute;top: 43%; left: 25%;z-index: 1;">
                 <button type="button" class="close" data-dismiss="alert" >&times;</button>
                 <strong>¡Correcto! </strong>{{session('msj1')}}
