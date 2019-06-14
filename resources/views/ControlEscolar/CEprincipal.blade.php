@@ -60,6 +60,7 @@
 
 						</ul>
 					</li>
+                    <li><a href="http://127.0.0.1:8000/interfazpri">CERRAR SESION: Control Escolar</a></li>
 				</ul>
 			</nav>
 			{{--@include('interfazprincipal.imagenn')--}}
