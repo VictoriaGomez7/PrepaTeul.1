@@ -34,7 +34,6 @@
 
 						</ul>
 					</li>
-					<li><a href="#">Directivo</a></li>
 					<li><a href="#">Materias</a>
 						<ul class="submenu">
 							<li><a href="http://127.0.0.1:8000/RegistraMateria">Registrar</a></li>

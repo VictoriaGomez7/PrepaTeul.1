@@ -41,10 +41,6 @@ class AlumnosController extends Controller
 
       }
 
-
-
-
-
       else if  (isset($clave)) {
         $CAlumno = Alumno::where('id', $alumno1->id)->get();
         //return $CAlumno;

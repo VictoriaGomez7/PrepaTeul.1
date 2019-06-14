@@ -30,12 +30,10 @@
 						<li><a href ="http://127.0.0.1:8000//Asistencias?valor={{ ($usua) }}">Capturar</a></li>
 					</ul>
 				</li>
-				<li><a href="http://127.0.0.1:8000/interfazpri">CERRAR SESION</a>
-				</li>
 				<?php use App\Docentes;
 					$Docente=Docentes::where('id',$usua)->get('Nombre');
 				?>
-				<li style="left: 700px;"><a href="#" >Docente: {{$Docente[0]->Nombre}}</a>
+				<li style="left: 55%;"><a  href="#" >Docente: {{$Docente[0]->Nombre}}</a>
 					<ul class="submenu">
 						<li><a href="http://127.0.0.1:8000/interfazpri">CERRAR SESION</a>
 					</ul>

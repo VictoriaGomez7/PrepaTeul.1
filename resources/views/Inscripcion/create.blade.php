@@ -79,7 +79,7 @@
             </div>
 
             <div style="position: absolute;top: 62%; left: 25%; width: 26%;height:53%;  background-color:#aaa">
-                <p><input type="text" placeholder="1800110001" value="{{ old('id') }}" required pattern="[1-9]{1}[0-9]{9}" id="id" name="id" style="font-size:105%; width: 95%"/></p>
+                <p><input type="text" placeholder="1800110001" value="{{ old('id') }}" required pattern="[1-9]{2}[0]{2}[1]{2}[0-9]{4}" id="id" name="id" style="font-size:105%; width: 95%"/></p>
                 <p><input type="text" placeholder="Velazquez Torres Ximena" value="{{ old('nombre') }}" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" id="nombre" name="nombre" style="font-size:105%; width: 95%;" /></h1>
                 <p><input type="text" placeholder="Torres Cortes Maria" value="{{ old('nombremadre') }}" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" id="nombremadre" name="nombremadre" style="font-size:105%; width: 95%;"/></p>
                 <p><input type="text" placeholder="Velazquez Luna Abel" value="{{ old('nombrepadre') }}" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" id="nombrepadre" name="nombrepadre" style="font-size:105%; width: 95%;"/></p>
@@ -149,7 +149,7 @@
 
                     <p style="position: absolute; top:53%; left: 75.5%;font-size:90%"> {{('GRADO.')}}</p>
             </div>
-            <div style="position: absolute;top: 127%; left: 5%; width: 90%;height:15%;background-color:#aaa">
+            <div style="position: absolute;top: 126%; left: 5%; width: 90%;height:16%;background-color:#aaa">
                 <p style="font-size:138%">{{('Formación para el Trabajo:')}}</p>
                 <p style="font-size:138%">{{('Bachillerato:')}}</p>
                 <select name="ft1" id="ft1" style="font-size:110%;width: 26.5%; position:  absolute;top: 4%; left: 22%"  disabled="true">
@@ -161,17 +161,10 @@
 
                 <select name="bach1" id="bach1" style="font-size:110%;width: 26.5%; position:  absolute;top: 53%; left: 22%" disabled="true">
                             <option value="{{ old('Grado') }}">{{ old('Grado') }}</option>
-<<<<<<< HEAD
-                            <option value="Químico Biológica">Químico Biológica</option>
-                            <option value="Físico Matemática">Físico Matemática</option>
-                            <option value="Ciencias sociales y humanidades">Ciencias sociales y humanidades</option>
-                            <option value="Económico Administrativa">Económico Administrativa</option>
-=======
                             <option value="Químico Biológica">Químico-Biológica</option>
                             <option value="Físico Matemática">Físico-Matemática</option>
                             <option value="Humanidades y Ciencias Sociales">Humanidades y Ciencias Sociales</option>
                             <option value="Económico Administrativa">Económico-Administrativa</option>
->>>>>>> 798d5a4c0ad396a291ba909d497e2a44b21bfb2e
                       </select>
 
 
@@ -195,43 +188,43 @@
             <div style="position: absolute;top: 153%; left: 75%; width: 20%; height:65%;background-color:#aaa">
                 <p><select id="A" name="A" value="No" required style="width: 18%;height: 9%; position: absolute;top: 0%;left:10%">
                     <option value="{{ old('A') }}">{{ old('A') }}</option>
-                    <option value="Si">SI</option>
+                    <option selected value="Si">SI</option>
                     <option value="No">NO</option>
                 </select></p>
                 <p><select required id="B" name="B" style="width: 18%;height: 9%; position: absolute;top: 12%;left:10%">
                     <option value="{{ old('B') }}">{{ old('B') }}</option>
-                    <option value="Si">SI</option>
+                    <option selected value="Si">SI</option>
                     <option value="No">NO</option>
                 </select></p>
                 <p><select required id="C" name="C" style="width: 18%;height: 9%; position: absolute;top: 23%;left:10%">
                     <option value="{{ old('C') }}">{{ old('C') }}</option>
-                    <option value="Si">SI</option>
+                    <option selected value="Si">SI</option>
                     <option value="No">NO</option>
                 </select></p>
 
                 <p><select required id="D" name="D" style="width: 18%;height: 9%; position: absolute;top: 34%;left:10%">
                     <option value="{{ old('D') }}">{{ old('D') }}</option>
-                    <option value="Si">SI</option>
+                    <option selected value="Si">SI</option>
                     <option value="No">NO</option>
                 </select></p>
                 <p><select required name="E" style="width: 18%;height: 9%; position: absolute;top: 46%;left:10%">
                     <option value="{{ old('E') }}">{{ old('E') }}</option>
-                    <option value="Si">SI</option>
+                    <option selected value="Si">SI</option>
                     <option value="No">NO</option>
                 </select></p>
                 <p><select required id="F" name="F" style="width: 18%;height: 9%; position: absolute;top: 59%;left:10%">
                     <option value="{{ old('F') }}">{{ old('F') }}</option>
-                    <option value="Si">SI</option>
+                    <option selected value="Si">SI</option>
                     <option value="No">NO</option>
                 </select></p>
                 <p><select required id="G" name="G" style="width: 18%;height: 9%; position: absolute;top: 72%;left:10%">
                     <option value="{{ old('G') }}">{{ old('G') }}</option>
-                    <option value="Si">SI</option>
+                    <option selected value="Si">SI</option>
                     <option value="No">NO</option>
                 </select></p>
                 <p><select required id="H" name="H" style="width: 18%;height: 9%; position: absolute;top: 85%;left:10%">
                     <option value="{{ old('H') }}">{{ old('H') }}</option>
-                    <option value="Si">SI</option>
+                    <option selected value="Si">SI</option>
                     <option value="No">NO</option>
                 </select></p>
 

@@ -8,23 +8,17 @@
 @include('ControlEscolar.CEprincipal')
 @section('content')
 	@if (session()->has('msj'))
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
 		<div class="alert alert-danger" role="alert" style="width: 30%; position:  absolute;top: 43%; left: 35%;z-index: 1;">
 			<button type="button" class="close" data-dismiss="alert" >&times;</button>
 			<strong>¡Error! </strong>{{session('msj')}}
 		</div>
 	@endif
-	@if (session()->has('re'))
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-	@endif
-	    @if (session()->has('msj1'))
-        <div class="alert alert-success" role="alert" style="width: 30%; position:  absolute;top: 43%; left: 35%;z-index: 1;">
-            <button class="close" data-dismiss="alert"><span>&times;</span></button>
-            <strong>¡Correcto! </strong>{{ session('msj1') }}
-        </div>
-    @endif
+	@if (session()->has('msj1'))
+    <div class="alert alert-success" role="alert" style="width: 30%; position:  absolute;top: 43%; left: 35%;z-index: 1;">
+      <button class="close" data-dismiss="alert"><span>&times;</span></button>
+        <strong>¡Correcto! </strong>{{ session('msj1') }}
+    </div>
+  @endif
 <style>
 /*Al cuerpo de la
 pagina se aplica el tamaño de fuente

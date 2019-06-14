@@ -2,7 +2,6 @@
 <a href="http://127.0.0.1:8000/reinscripcion">
             <button class="btn btn-success" style="position: absolute;top: 150%;left:75%">Cancelar</button></a>
 
-
 <body>
 @foreach($CAlumno as $alumno)
         <script type="text/javascript">
@@ -37,7 +36,7 @@
             </div>
 
             <div style="position: absolute;top: 62%; left: 24.9%; width: 25%;height:53%;background-color:#aaa">
-                <p><input type="number" required readonly min="1" max="9999999999" id="id" name="id" value="{{$alumno->id}}" style="font-size:105%; width: 95%"/></p>
+                <p><input type="text" required pattern="[1-9]{2}[0]{2}[1]{2}[0-9]{4}" id="id" name="id" value="{{$alumno->id}}" style="font-size:105%; width: 95%"/></p>
 
                 <p><input type="text" required readonly id="nombr" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" name="nombre" value="{{$alumno->Nombre_A}}"style="font-size:105%; width: 95%;" /></h1>
 

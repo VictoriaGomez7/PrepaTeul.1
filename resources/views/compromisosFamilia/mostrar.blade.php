@@ -1,9 +1,8 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
+	@extends('layouts.app')
 
 </head>
 <body>

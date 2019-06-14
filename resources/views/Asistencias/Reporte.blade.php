@@ -1,11 +1,12 @@
-<a href="/DocenteInicio?valor={{ ($usua) }}">
-    <button class="btn btn-success" style="position: absolute;top: 81.5%;left:50%;z-index: 1;">Cancelar</button></a>
+<!DOCTYPE html>
+<a href="/DocenteInicios?valor={{ ($usua) }}">
+    <button class="btn btn-success" style="position: absolute;top: 105%;left:50%;z-index: 1;">Cancelar</button></a>
 @extends('layouts.app')
 
 @section('title','Docente')
 
-{{--@include('interfazprincipal.image')--}}
 @include('DocenteInterfazPrincipal.InterfazPrincipal')
+
 @section('content')
 
         @if (session()->has('msj'))
@@ -21,21 +22,9 @@
             </div>
         @endif
 
-
-  <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-      <!-- vinculo a bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
-
-
-
-  </head>
-
 <body>
- <div class="card-header text-center" style="font-size:200%;width: 90%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 35%; left: 5%;" >{{ __('Asistencias ') }}{{$Materia[0]->Nombre}} {{$Grupo}}</div> <!-- text-center ES PARA CENTRA EL TEXTO -->
-<div style="position: absolute;top: 44.5%; left: 5%; width: 90%;height:50%; border: 2px solid gray;">
+ <div class="card-header text-center" style="font-size:200%;width: 90%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 52%; left: 5%;" >{{ __('Asistencias ') }}{{$Materia[0]->Nombre}} {{$Grupo}}</div> <!-- text-center ES PARA CENTRA EL TEXTO -->
+<div style="position: absolute;top: 62%; left: 5%; width: 90%;height:50%; border: 2px solid gray;">
               <select name="transporte" size="10" onChange="mostrar(this.value);"style="position: absolute;top: 5%; left: 5%; width: 25%;height:53%;">
               <!--<option value="otro">Seleccione uno</option>-->
 

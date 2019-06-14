@@ -21,13 +21,13 @@
 
     <div class="alert alert-danger" role="alert">
       <button type="button" class="close" data-dismiss="alert" >&times;</button>
-      <strong>¡¡Error!!</strong>{{session('msj2')}}
+      <strong>¡Error! </strong>{{session('msj2')}}
     </div>
   @endif
 
  <section style="width: 100%; max-width: 100%; height:100%;max-height: 100%; background: #FFFFFF">
 
-        <div class="card-header text-center" style="font-size:200%;width: 50%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 50%; left: 25%;" >{{ __(' Grupos: ') }}
+        <div class="card-header text-center" style="font-size:200%;width: 50%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 50%; left: 25%;" >{{ __(' Asignar Grupos') }}
 
 
 

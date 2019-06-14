@@ -20,7 +20,7 @@
 
     <div class="alert alert-danger" role="alert">
       <button type="button" class="close" data-dismiss="alert" >&times;</button>
-      <strong>¡¡Error!!</strong>{{session('msj2')}}
+      <strong>¡Error! </strong>{{session('msj2')}}
     </div>
   @endif
 
@@ -28,7 +28,7 @@
    <?php
           if(isset($semestre)){ 
          ?>
-        <div class="card-header text-center" style="font-size:200%;width: 90%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 52%; left: 5%;" >{{ __(' Grupos: '.$semestre) }}
+        <div class="card-header text-center" style="font-size:200%;width: 90%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 52%; left: 5%;" >{{ __('Grupos del '.$semestre) }}
         </div> <div style="position: absolute;top: 62%; left:5%; width: 90%; background-color:#aaa">
           {!! Form::open(['route'=>['grupos.show', $semestre ],'method'=>'GET','files'=>false]) !!}     {{ csrf_field() }}
         
@@ -56,7 +56,7 @@
                 ?>
                 <tr><td>
                <label for="eliminar{{ $r->id }}"> {{$r->Nombre_A}}</label>
-                <input type="submit" name="eliminar{{$r->id}}" value="Quitar Grupo" > 
+                <input type="submit" name="eliminar{{$r->id}}" value=" x " > 
               </td></tr>
                 <?php
               }  
@@ -73,7 +73,7 @@
                 ?>
                 <tr><td>
                <label for="eliminar{{ $r->id }}"> {{$r->Nombre_A}}</label>
-                <input type="submit" name="eliminar{{$r->id}}" value="Quitar grupo" > 
+                <input type="submit" name="eliminar{{$r->id}}" value=" x " > 
                 </td></tr>
                 <?php
               }  
@@ -110,7 +110,7 @@
                   <option value="A">A</option>
                   <option value="B">B</option>
               </select>
-                <input type="submit" name="{{ $r->id }}" value="Aceptar" > 
+                <input type="submit" name="{{ $r->id }}" value="Asignar" > 
                 <br><br>
 
                 <?php
@@ -120,23 +120,14 @@
         </td>
         </tr>
         </table>
-       
+       <input type="submit" name="A" value="Guardar" class="btn btn-primary" top="20%" align="center" style="position: absolute;left: 45%">
+             
         </div>
          <?php 
           }else{
         ?>
-         <div class="card-header text-center" style="font-size:200%;width: 50%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 32.5%; left: 25%;" >{{ __(' Grupos: ') }}
-        </div> <div style="position: absolute;top: 42.5%; left: 25%; width: 50%; background-color:#aaa">
-          <?php } ?>
-
-        <div style="position: absolute;top: 110%; left: 25%; width: 50%; background-color:#aaa" align="center">
-        <p>
-          
-        </p>
-       
-
-              <input type="submit" name="A" value="Aceptar final" class="btn btn-primary" top="20%" align="center">
-             
+        <?php } ?>
+              
       </div>
 
       {!! Form::close()!!}

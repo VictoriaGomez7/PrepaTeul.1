@@ -4,8 +4,9 @@
 
 @include('ControlEscolar.CEprincipal')
 @section('content')
+	<div class="card-header text-center" style="font-size:200%;width: 90%; height: 12%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 54%; left: 5%;" >{{ __('Materias por Docente') }}</div>
 
-	<div class="row"style="width: 80%; margin-top:2%;position: absolute;left:10%">
+	<div class="row"style="width: 90%; margin-top:2%;position: absolute;top: 62%;left:6%">
 
 		<?php $var1=array(); ?>
 		@foreach($Docents as $Docentes)
