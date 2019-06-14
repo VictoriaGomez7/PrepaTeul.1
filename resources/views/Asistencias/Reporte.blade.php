@@ -29,11 +29,15 @@
               <!--<option value="otro">Seleccione uno</option>-->
 
 
-               @foreach($asis as $doc)
+               @foreach( $asis as $doc)
+              @foreach($arrayalumnos as $alumn)
+              @if($doc->id == $alumn->id)
 
                 <option value="{{$doc->Periodo}}">{{$doc->Periodo}}</option>
                 
-               @endforeach
+               @endif
+              @endforeach
+              @endforeach
                </select>
 
 <script type="text/javascript">

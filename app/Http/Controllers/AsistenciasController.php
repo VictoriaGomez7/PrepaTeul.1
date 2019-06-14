@@ -148,6 +148,20 @@ class AsistenciasController extends Controller
       $Alumnos= Alumno::get();
       $asis=Asistencia::where('Materia',$Clavemat)->get();
       $periodo=Periodo::get();
+      $bandera=True;
+      foreach ($Alumnos as $alum) {
+        foreach ($Claves as $grup) {
+          foreach ($asis as $asist) {
+            if ($alum->id==$grup->id && $grup->id==$asist->id) {
+              $bandera=False;
+            }
+          }
+        }
+      }
+
+      if ($bandera==True) {
+        return back()->with('msj',' No se han capturado asistencias');
+      }
 
       $arrayalumnos = array();
       for ($i=0; $i <count($Claves) ; $i++) {
@@ -169,6 +183,20 @@ class AsistenciasController extends Controller
       $Alumnos= Alumno::get();
       $asis=Asistencia::where('Materia',$Clavemat)->get();
       $periodo=Periodo::get();
+      $bandera=True;
+      foreach ($Alumnos as $alum) {
+        foreach ($Claves as $grup) {
+          foreach ($asis as $asist) {
+            if ($alum->id==$grup->id && $grup->id==$asist->id) {
+              $bandera=False;
+            }
+          }
+        }
+      }
+
+      if ($bandera==True) {
+        return back()->with('msj',' No se han capturado asistencias');
+      }
 
       $arrayalumnos = array();
       for ($i=0; $i <count($Claves) ; $i++) {
@@ -187,6 +215,20 @@ class AsistenciasController extends Controller
       $Alumnos= Alumno::get();
       $asis=Asistencia::where('Materia',$Clavemat)->get();
       $periodo=Periodo::get();
+      $bandera=True;
+      foreach ($Alumnos as $alum) {
+        foreach ($Claves as $grup) {
+          foreach ($asis as $asist) {
+            if ($alum->id==$grup->id && $grup->id==$asist->id) {
+              $bandera=False;
+            }
+          }
+        }
+      }
+
+      if ($bandera==True) {
+        return back()->with('msj',' No se han capturado asistencias');
+      }
 
       $arrayalumnos = array();
       for ($i=0; $i <count($Claves) ; $i++) {
