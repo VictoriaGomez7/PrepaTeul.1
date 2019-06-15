@@ -66,8 +66,9 @@ class LoginCEController extends Controller
                 return back()->with('msj',' Usuario o Contrseña incorrecta' );
             }
             else{
-              //return view('ControlEscolar.CEprincipal2',compact('CE'));
-              return Redirect('/ControlEscolarInicio');
+
+              return view('ControlEscolar.CEprincipal2',compact('CE'));
+             //return Redirect('/ControlEscolarInicio');
             }
         }
     }
