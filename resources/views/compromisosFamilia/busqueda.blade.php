@@ -20,7 +20,7 @@
       
   		<div clas="form-group"> 
   		<label for="cambios"> Número de compromiso</label>
-  		<input type="number" name="cambios" min="1" value="" required pattern="[1-9][0-9]?d?" >
+  		<input type="number" name="cambios" min="1" value="{{$numero}}" required pattern="[1-9][0-9]?d?" >
   				<td><input type="submit" name="buscar" class="btn btn-primary" value="Buscar">
             <input type="submit" name="editar" class="btn btn-primary" value="Editar">
   				<input type="submit" name="eliminar" class="btn btn-primary" value="Eliminar">
