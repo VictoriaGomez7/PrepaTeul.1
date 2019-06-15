@@ -66,7 +66,7 @@
 				<li><a href="#">Asignaciones</a>
 						<ul class="submenu">
 							<li><a href="http://127.0.0.1:8000/grupos">Crear Grupos</a></li>
-							<li><a href="http://127.0.0.1:8000/Asigna">Docentes - Materias</a></li>
+							<li><a href="http://127.0.0.1:8000/Asigna">Materias a los Docentes</a></li>
 							<li><a href="http://127.0.0.1:8000/Periodos">Periodos</a></li>
 
 						</ul>

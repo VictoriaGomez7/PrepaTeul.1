@@ -630,45 +630,40 @@ class MateriaController extends Controller
         $materia=$row;
 
      }
-
-
       if(strlen($materia)){
-                if(($r->Tipo=="Formación Propedéutica")){
-                    if ($r->Semestre=="QUINTO SEMESTRE" or $r->Semestre=="SEXTO SEMESTRE") {
-                              $materia->fill($r->all());
-                            $materia->save();
-                            return redirect('materia')->with('msj','Materia Modificada Correctamente');
-
-                    }else{
-
-                        return back()->with('msjERROR','El semestre seleccionado no coincide para el tipo de materia.' );
-                    }
-
-
-                }
-                if ($r->Tipo=="Formación Para El Trabajo"){
-                  if ($r->Semestre=="TERCER SEMESTRE" or $r->Semestre=="CUARTO SEMESTRE" or $r->Semestre=="QUINTO SEMESTRE" or $r->Semestre=="SEXTO SEMESTRE") {
-                       $materia->fill($r->all());
-                              $materia->save();
-                             return redirect('materia')->with('msj','Materia Modificada Correctamente');
-                  }
-                  else{
-                      return back()->with('msj','El semestre seleccionado no coincide para el tipo de materia.' );
-                  }
-                }
-                else{
-                  $materia->fill($r->all());
-                  $materia->save();
-                  return redirect('materia')->with('msj','Materia Modificada Correctamente');
-                }
-        }else {
-
-         return redirect('materia')->with('msj2','Materia Modificada Correctamente1');
-
+        //return 'Aqui';
+        if(($r->Tipo=="Formación Propedéutica")){
+          if ($r->Semestre=="QUINTO SEMESTRE" or $r->Semestre=="SEXTO SEMESTRE") {
+              $materia->fill($r->all());
+              $materia->save();
+              //return $materia;
+              return redirect('materia')->with('msj','Materia Modificada Correctamente');
+          }
+          else{
+            //return 'por aqui';
+            return back()->with('msjERROR','El semestre seleccionado no coincide para el tipo de materia.' );
+            }
         }
-         //return redirect('materia')->with('msj','Materia Modificada Correctamente');
-         return redirect('materia')->with('msj2','Materia Modificada Correctamente2');
-
+        if ($r->Tipo=="Formación Para El Trabajo"){
+          if ($r->Semestre=="TERCER SEMESTRE" or $r->Semestre=="CUARTO SEMESTRE" or $r->Semestre=="QUINTO SEMESTRE" or $r->Semestre=="SEXTO SEMESTRE") {
+              $materia->fill($r->all());
+              $materia->save();
+              return redirect('materia')->with('msj','Materia Modificada Correctamente');
+          }
+          else{
+            return back()->with('msj','El semestre seleccionado no coincide para el tipo de materia.' );
+          }
+        }
+        else{
+          $materia->fill($r->all());
+          $materia->save();
+          return redirect('materia')->with('msj','Materia Modificada Correctamente');
+        }
+      }
+      else {
+        return redirect('materia')->with('msj2','Materia Modificada Correctamente1');
+      }
+      return redirect('materia')->with('msj2','Materia Modificada Correctamente2');
      }
     /**
      * Display the specified resource.
@@ -808,9 +803,9 @@ class MateriaController extends Controller
      */
     public function destroy($id)
     {
-
+       
+       materia::where('Clave',$id)->delete();
        materia_grupo::where('Clave',$id)->delete();
-       materia_grupo::get();
        return redirect('materia')->with('msj','Materia Eliminada Correctamente');
         //return  view('Alumnos.index',compact('alumnos'));
        //return view('materias.consulta');

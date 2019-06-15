@@ -16,6 +16,13 @@
 	<?php
 		$usua=$_GET['valor'];
 	?>
+	
+	@if (session()->has('MsjERR'))
+        <div class="alert alert-danger" role="alert" style="width: 90%; position:  absolute;top: 43%; left: 5%;z-index: 1;">
+            <button class="close" data-dismiss="alert"><span>&times;</span></button>
+            <strong>¡ERROR! </strong>{{ session('MsjERR') }}
+        </div>
+    @endif
 
 	<header>
 		<nav class="navegacion" style="width: 90%">

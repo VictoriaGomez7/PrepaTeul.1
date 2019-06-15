@@ -8,6 +8,9 @@
 
 @include('ControlEscolar.CEprincipal')
 
+
+
+
 <body>
     @section('frameDocentes')
 

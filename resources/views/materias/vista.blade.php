@@ -28,11 +28,12 @@
 
         {!! Form::open(['route'=>['materia.show',$materia->Clave],'method'=>'GET','files'=>false]) !!}     {{ csrf_field() }}
 
-          <p style="font-size:130%; position:  absolute;top: 10%; left: 10%">{{('Clave:')}}</p>
-          <p style="font-size:130%; position:  absolute;top: 25%; left: 10%">{{('Tipo:')}}</p>
-          <p style="font-size:130%; position:  absolute;top: 40%; left: 10%">{{('Bachillerato:')}}</p>
-          <p style="font-size:130%; position:  absolute;top: 55%; left: 10%">{{('Semestre:')}}</p>
-          <p style="font-size:130%; position:  absolute;top: 70%; left: 10%">{{('Horas:')}}</p>
+          <p style="font-size:130%; position:  absolute;top: 10%; left: 5%">{{('Clave:')}}</p>
+          <p style="font-size:130%; position:  absolute;top: 25%; left: 5%">{{('Tipo:')}}</p>
+          <p style="font-size:130%; position:  absolute;top: 38%; left: 5%">{{('Área')}}</p>
+          <p style="font-size:130%; position:  absolute;top: 44%; left: 5%">{{('Propedéutica:')}}</p>
+          <p style="font-size:130%; position:  absolute;top: 57%; left: 5%">{{('Semestre:')}}</p>
+          <p style="font-size:130%; position:  absolute;top: 72%; left: 5%">{{('Horas:')}}</p>
 
 
           <p><input type="text" name="Clave" value="{{ $materia->Clave }}" style="font-size:105%; width: 65%; position:  absolute;top: 10%; left: 30%" disabled="true"/></p>
@@ -41,11 +42,11 @@
 
           <p><input type="input" name="claveOriginal" value="{{ $materia->Clave }}"  hidden="true"></p>
 
-          <p><input type="input" name="Nombre" value="{{ $materia->Nombre }}" required="true" style="font-size:105%; width: 65%; position:  absolute;top: 40%; left: 30%" disabled="true"></p>
+          <p><input type="input" name="Bachillerato" value="{{ $materia->Bachillerato }}" style="font-size:105%; width: 65%; position:  absolute;top: 44%; left: 30%" disabled="true"></p>
       	
-          <p><input type="input" name="Semestre" value="{{ $materia->Semestre}}" style="font-size:105%; width: 65%; position:  absolute;top: 55%; left: 30%" disabled="true"></p>
+          <p><input type="input" name="Semestre" value="{{ $materia->Semestre}}" style="font-size:105%; width: 65%; position:  absolute;top: 59%; left: 30%" disabled="true"></p>
 
-          <p><input type="number" name="Horas"  min="1"  max="12" value="{{ $materia->Horas }}" required="true" style="font-size:105%; width: 65%; position:  absolute;top: 70%; left: 30%" disabled="true"></p>
+          <p><input type="number" name="Horas"  min="1"  max="12" value="{{ $materia->Horas }}" required="true" style="font-size:105%; width: 65%; position:  absolute;top: 74%; left: 30%" disabled="true"></p>
         
 
          {!!Form::submit('Modificar',['class'=>'btn btn-primary', 'style'=>'width: 20%; position:  absolute;top: 105%; left: 55%'])!!}

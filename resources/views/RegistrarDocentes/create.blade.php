@@ -1,7 +1,7 @@
 <!doctype html>
 
 <a href="http://127.0.0.1:8000/ControlEscolarInicio">
-            <button class="btn btn-success" style="position: absolute;top: 140%;left:65%">Cancelar</button></a>
+            <button class="btn btn-success" style="position: absolute;top: 120%;left:65%">Cancelar</button></a>
 
 @extends('layouts.app')
 
@@ -34,7 +34,7 @@
 
             @csrf
 
-            <div style="position: absolute;top: 62%; left: 25%; width: 50%;height:70%; background-color:#aaa">
+            <div style="position: absolute;top: 62%; left: 25%; width: 50%;height:50%; background-color:#aaa">
 
                 <p style="font-size:130%; position:  absolute;top: 10%; left: 10%">{{('Clave:')}}</p>
                 <p style="font-size:130%; position:  absolute;top: 25%; left: 10%">{{('Nombre:')}}</p>
@@ -51,7 +51,7 @@
                 <p><input type="text" placeholder="ALRA030913MZSLRMA6" value="{{ old('Curp') }}" required id="curp" pattern="^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$" name="Curp"   style="font-size:105%; width:65%; position:  absolute;top: 85%; left: 30%"/></p>
             </div>
 
-           <button type="submit" class="btn btn-primary" style="position: absolute;top: 140%;left:55%">Registrar</button>
+           <button type="submit" class="btn btn-primary" style="position: absolute;top: 120%;left:55%">Registrar</button>
 
 </body>
 

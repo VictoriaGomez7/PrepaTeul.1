@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <a href="ControlEscolarInicio">
-            <button class="btn btn-success" style="position: absolute;top: 120%;left:65%">Cancelar</button></a>
+            <button class="btn btn-success" style="position: absolute;top: 115%;left:65%">Cancelar</button></a>
 
 @extends('layouts.app')
 
@@ -54,11 +54,12 @@
 
             <div style="position: absolute;top: 62%; left: 25%; width: 50%;height:50%; background-color:#aaa">
 
-                <p style="font-size:130%; position:  absolute;top: 10%; left: 10%">{{('Nombre:')}}</p>
-                <p style="font-size:130%; position:  absolute;top: 25%; left: 10%">{{('Tipo:')}}</p>
-                <p style="font-size:130%; position:  absolute;top: 40%; left: 10%">{{('Bachillerato:')}}</p>
-                <p style="font-size:130%; position:  absolute;top: 55%; left: 10%">{{('Semestre:')}}</p>
-                <p style="font-size:130%; position:  absolute;top: 70%; left: 10%">{{('Horas:')}}</p>
+                <p style="font-size:130%; position:  absolute;top: 10%; left: 5%">{{('Nombre:')}}</p>
+                <p style="font-size:130%; position:  absolute;top: 25%; left: 5%">{{('Tipo:')}}</p>
+                <p style="font-size:130%; position:  absolute;top: 38%; left: 5%">{{('Área')}}</p>
+                <p style="font-size:130%; position:  absolute;top: 44%; left: 5%">{{('Propedéutica:')}}</p>
+                <p style="font-size:130%; position:  absolute;top: 57%; left: 5%">{{('Semestre:')}}</p>
+                <p style="font-size:130%; position:  absolute;top: 72%; left: 5%">{{('Horas:')}}</p>
 
                 <p><input type="text" placeholder="Matemáticas I" value="{{ old('nombre') }}" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" id="nombre" name="nombre" style="font-size:105%; width:65%; position:  absolute;top: 10%; left: 30%"/></p>
 
@@ -69,7 +70,7 @@
                             <option value="Actividades Paraescolares">Actividades Paraescolares</option>
                             <option value="Formación Básica" selected>Formación Básica</option>
                       </select>
-                <select name="bachillerato" id="bachillerato" required style="font-size:110%;width: 65%; position:  absolute;top: 40%; left: 30%" disabled="true">
+                <select name="bachillerato" id="bachillerato" required style="font-size:110%;width: 65%; position:  absolute;top: 42%; left: 30%" disabled="true">
                             <option value="{{ old('tipo') }}">{{ old('tipo') }}</option>
                             <option value="Químico Biológica">Químico-Biológica</option>
                             <option value="Físico Matemática">Físico-Matemática</option>
@@ -77,7 +78,7 @@
                             <option value="Económico Administrativa">Económico-Administrativa</option>
                       </select>
                 
-                <select name="semestre" required style="font-size:110%;width: 65%;;position: absolute;top:55%; left:30%;">
+                <select name="semestre" required style="font-size:110%;width: 65%;;position: absolute;top:59%; left:30%;">
                             <option value="{{ old('semestre') }}">{{ old('semestre') }}</option>
                             <option value="PRIMER SEMESTRE" selected>PRIMER SEMESTRE</option>
                             <option value="SEGUNDO SEMESTRE">SEGUNDO SEMESTRE</option>
@@ -86,13 +87,13 @@
                             <option value="QUINTO SEMESTRE">QUINTO SEMESTRE</option>
                             <option value="SEXTO SEMESTRE">SEXTO SEMESTRE</option>
                       </select>
-                <p><input type="number" placeholder="1" value="{{ old('horas') }}" required min="1" id="horas" name="horas" style="font-size:105%; width: 65%; position:  absolute;top: 70%; left: 30%"/></p>
+                <p><input type="number" placeholder="1" value="{{ old('horas') }}" required min="1" id="horas" name="horas" style="font-size:105%; width: 65%; position:  absolute;top: 74%; left: 30%"/></p>
 
                 
             </div>
 
 
-        {!!Form::submit('Registrar',['class'=>'btn btn-primary', 'style'=>'position: absolute;top: 120%;left:55%'])!!}
+        {!!Form::submit('Registrar',['class'=>'btn btn-primary', 'style'=>'position: absolute;top: 115%;left:55%'])!!}
         {!! Form::close()!!}
 </body>
 

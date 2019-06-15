@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <a href="http://127.0.0.1:8000/docenteconsulta">
-            <button class="btn btn-success" style="position: absolute;top: 120%;left:69%">Cancelar</button></a>
+            <button class="btn btn-success" style="position: absolute;top: 110%;left:69%">Cancelar</button></a>
 
 @extends('layouts.app')
 
@@ -52,7 +52,7 @@
 
             </div>
 
-              <button type="submit" class="btn btn-primary" href="#" style="position: absolute;top: 120%;left:59%">Modificar</button>
+              <button type="submit" class="btn btn-primary" href="#" style="position: absolute;top: 110%;left:59%">Modificar</button>
 
         </form>
 

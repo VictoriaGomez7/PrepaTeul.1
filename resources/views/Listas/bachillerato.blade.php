@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 
 <a href="ControlEscolarInicio">
-            <button class="btn btn-success" style="font-size:120%; position: absolute;top: 115%;left:67%">Cancelar</button></a>
-             @if (session()->has('msj'))
-        <div class="alert alert-danger" role="alert" style="width: 50%; position:  relative;text-align: center; left: 25%;">
-            <button class="close" data-dismiss="alert"><span>&times;</span></button>
-            <strong>¡Error! </strong>{{ session('msj') }}
-        </div>
-    @endif
+  <button class="btn btn-success" style="font-size:120%; position: absolute;top: 107%;left:62%">Cancelar</button></a>
+  
+  @if (session()->has('msj'))
+    <div class="alert alert-danger" role="alert" style="width: 40%; position:  relative;text-align: center; left: 30%;">
+      <button class="close" data-dismiss="alert"><span>&times;</span></button>
+      <strong>¡Error! </strong>{{ session('msj') }}
+    </div>
+  @endif
 <html>
 
     <head>
@@ -23,21 +24,21 @@
 <body>
 
     
-        @if (session()->has('msj2'))
-
-    <div class="alert alert-danger" role="alert">
+  @if (session()->has('msj2'))
+    <div class="alert alert-danger" role="alert" style="width: 40%; position:  relative;text-align: center; left: 30%;">
       <button type="button" class="close" data-dismiss="alert" >&times;</button>
-      <strong>¡¡Error!!</strong>{{session('msj2')}}
+      <strong>¡Error! </strong>{{session('msj2')}}
     </div>
   @endif
 
  <section style="width: 100%; max-width: 100%; height:100%;max-height: 100%; background: #FFFFFF">
 
-        <div class="card-header text-center" style="font-size:200%;width: 50%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 50%; left: 25%;" >Bachillerato
-        </div> <div style="position: absolute;top: 60%; left: 25%; width: 50%;height:50%; background-color:#aaa">
+  <div class="card-header text-center" style="font-size:200%;width: 40%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 54%; left: 30%;" >Área Propedéutica</div> 
 
-{!! Form::open(['route'=>['Imprimelistas.update', $semestre],'method'=>'PUT','files'=>false]) !!}     {{ csrf_field() }}
-  <script type="text/javascript">
+  <div style="position: absolute;top: 64%; left: 30%; width: 40%;height:40%; background-color:#aaa; font-size: 120%">
+
+  {!! Form::open(['route'=>['Imprimelistas.update', $semestre],'method'=>'PUT','files'=>false]) !!}     {{ csrf_field() }}
+    <script type="text/javascript">
       function verifica(){
         var opciones1=document.getElementsByName('grupoAB');
         var resultado="";
@@ -61,7 +62,7 @@
         if(resultado=='formacion'  && (resultado2=='PRIMER SEMESTRE' || 
           resultado2=="SEGUNDO SEMESTRE")){
 
-            alert('Unicamente los alumnos de tercer semestre en adelante tienen asignada formacion profecional');
+            alert('Unicamente los alumnos de Tercero y Cuarto Semestre  tienen asignado una Formación Para el Trabajo');
            
         }
 
@@ -70,7 +71,7 @@
           resultado2=="SEGUNDO SEMESTRE" || resultado2=='TERCER SEMESTRE' || 
           resultado2=="CUARTO SEMESTRE")){
 
-            alert('Unicamente los alumnos de quinto y sexto semestre  tienen asignado un bachillerato');
+            alert('Unicamente los alumnos de Quinto y Sexto Semestre  tienen asignado una Área Propedéutica');
         }
           //alert(resultado);
          // alert(resultado2);
@@ -78,32 +79,28 @@
     </script>
    
 
-    <label style="font-size:130%; position:  absolute;top: 10%; left: 40%" >
-          <input type="radio" name="bachilleratoT"  class="with-gap" value="Químico Biológico" required="true" >
-      <span>Químico Biológico</span>
+    <label style="font-size:130%; position:  absolute;top: 15%; left: 15%" >
+          <input type="radio" name="bachilleratoT"  class="with-gap" value="Químico Biológica" required="true" >
+      <span>Químico-Biológica</span>
     </label>
 
-    <label style="font-size:130%; position:  absolute;top: 25%; left: 40%">
-          <input type="radio" name="bachilleratoT"  class="with-gap"  value="Físico Matemático" >
-      <span>Físico Matemático</span>
+    <label style="font-size:130%; position:  absolute;top: 35%; left: 15%">
+          <input type="radio" name="bachilleratoT"  class="with-gap"  value="Físico Matemática" >
+      <span>Físico-Matemática</span>
     </label>
 
 
-    <label style="font-size:130%; position:  absolute;top: 40%; left: 40%">
-          <input type="radio" name="bachilleratoT"  class="with-gap" value="Ciencias sociales y humanidades" >
-      <span>Ciencias sociales y humanidades</span>
+    <label style="font-size:130%; position:  absolute;top: 55%; left: 15%">
+          <input type="radio" name="bachilleratoT"  class="with-gap" value="Humanidades y Ciencias Sociales" >
+      <span>Humanidades y Ciencias Sociales</span>
     </label>
 
-       <label style="font-size:130%; position:  absolute;top: 55%; left: 40%" >
-          <input type="radio" name="bachilleratoT"  class="with-gap" value="Económico Administrativo" required="true" >
-      <span>Económico Administrativo</span>
+       <label style="font-size:130%; position:  absolute;top: 75%; left: 15%" >
+          <input type="radio" name="bachilleratoT"  class="with-gap" value="Económico Administrativa" required="true" >
+      <span>Económico-Administrativa</span>
     </label>
 
-   
-
-
-
-     <input type="submit"  name="bachillerato" value="Aceptar" class="btn btn-primary" style="font-size:120%; position :absolute;top: 110%; left: 65%" >
+     <input type="submit"  name="bachillerato" value="Aceptar" class="btn btn-primary" style="font-size:100%; position :absolute;top: 108%; left: 60%" >
 
      {!! form::close() !!}
     </div>

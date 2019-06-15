@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <a href="ControlEscolarInicio">
-            <button class="btn btn-success" style="font-size:120%; position: absolute;top: 115%;left:67%">Cancelar</button></a>
+            <button class="btn btn-success" style="font-size:120%; position: absolute;top: 119%;left:67%">Cancelar</button></a>
 <html>
 
     <head>
@@ -17,18 +17,17 @@
 <body>
 
 
-        @if (session()->has('msj2'))
-
-    <div class="alert alert-danger" role="alert">
+  @if (session()->has('msj2'))
+    <div class="alert alert-danger" role="alert" style="width: 50%; position:  relative;text-align: center; left: 25%;">
       <button type="button" class="close" data-dismiss="alert" >&times;</button>
-      <strong>¡¡Error!!</strong>{{session('msj2')}}
+      <strong>¡Error! </strong>{{session('msj2')}}
     </div>
   @endif
 
  <section style="width: 100%; max-width: 100%; height:100%;max-height: 100%; background: #FFFFFF">
 
-        <div class="card-header text-center" style="font-size:200%;width: 50%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 50%; left: 25%;" >Listar
-        </div> <div style="position: absolute;top: 60%; left: 25%; width: 50%;height:50%; background-color:#aaa">
+  <div class="card-header text-center" style="font-size:200%;width: 50%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 54%; left: 25%;" >Listar
+  </div> <div style="position: absolute;top: 64%; left: 25%; width: 50%;height:50%; background-color:#aaa">
 
 {!! Form::open(['route'=>['Imprimelistas.show','a'],'method'=>'GET','files'=>false]) !!}     {{ csrf_field() }}
   <script type="text/javascript">
@@ -55,7 +54,7 @@
         if(resultado=='formacion'  && (resultado2=='PRIMER SEMESTRE' ||
           resultado2=="SEGUNDO SEMESTRE")){
 
-            alert('Unicamente los alumnos de tercer semestre en adelante tienen asignada formacion profecional');
+            alert('Unicamente los alumnos de Tercero y Cuarto Semestre  tienen asignado una Formación Para el Trabajo');
 
         }
 
@@ -64,7 +63,7 @@
           resultado2=="SEGUNDO SEMESTRE" || resultado2=='TERCER SEMESTRE' ||
           resultado2=="CUARTO SEMESTRE")){
 
-            alert('Unicamente los alumnos de quinto y sexto semestre  tienen asignado un bachillerato');
+            alert('Unicamente los alumnos de Quinto y Sexto Semestre  tienen asignado una Área Propedéutica');
         }
           //alert(resultado);
          // alert(resultado2);
@@ -76,12 +75,12 @@
     </label>
       <label style="font-size:130%; position:  absolute;top: 25%; left: 4%" >
           <input type="radio" id="opcion" name="grupos" class="with-gap" value="formacion" required="true" onclick="verifica()">
-      <span>Formacion para el trabajo</span>
+      <span>Formación Para El Trabajo</span>
     </label>
 
       <label style="font-size:130%; position:  absolute;top: 40%; left: 4%" >
           <input type="radio" id="opcion" name="grupos" class="with-gap" value="bachillerato" required="true" onclick="verifica()">
-      <span>Bachillerato</span>
+      <span>Área Propedéutica</span>
     </label>
 
     <label style="font-size:130%; position:  absolute;top: 10%; left: 46%" >

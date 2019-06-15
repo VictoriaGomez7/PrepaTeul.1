@@ -15,19 +15,16 @@
           @extends('layouts.app')
     </head>
 <body>
-
-
-        @if (session()->has('msj2'))
-
-    <div class="alert alert-danger" role="alert">
+  @if (session()->has('msj2'))
+    <div class="alert alert-danger" role="alert" style="width: 40%; position:  relative;text-align: center; left: 30%;">
       <button type="button" class="close" data-dismiss="alert" >&times;</button>
-      <strong>¡¡Error!!</strong>{{session('msj2')}}
+      <strong>¡Error! </strong>{{session('msj2')}}
     </div>
   @endif
 
  <section style="width: 100%; max-width: 100%; height:100%;max-height: 100%; background: #FFFFFF">
 
-        <div class="card-header text-center" style="font-size:200%;width: 50%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 50%; left: 25%;" >Formacion Para El Trabajo
+        <div class="card-header text-center" style="font-size:200%;width: 50%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 50%; left: 25%;" >Formación Para El Trabajo
         </div> <div style="position: absolute;top: 60%; left: 25%; width: 50%;height:50%; background-color:#aaa">
 
 {!! Form::open(['route'=>['Imprimelistas.edit', $semestre],'method'=>'GET','files'=>false]) !!}     {{ csrf_field() }}
@@ -55,7 +52,7 @@
         if(resultado=='formacion'  && (resultado2=='PRIMER SEMESTRE' ||
           resultado2=="SEGUNDO SEMESTRE")){
 
-            alert('Unicamente los alumnos de tercer semestre en adelante tienen asignada formacion profecional');
+            alert('Unicamente los alumnos de Tercero y Cuarto Semestre  tienen asignado una Formación Para el Trabajo');
 
         }
 
@@ -64,7 +61,7 @@
           resultado2=="SEGUNDO SEMESTRE" || resultado2=='TERCER SEMESTRE' ||
           resultado2=="CUARTO SEMESTRE")){
 
-            alert('Unicamente los alumnos de quinto y sexto semestre  tienen asignado un bachillerato');
+            alert('Unicamente los alumnos de Quinto y Sexto Semestre  tienen asignado una Área Propedéutica');
         }
           //alert(resultado);
          // alert(resultado2);
@@ -74,12 +71,12 @@
 
     <label style="font-size:130%; position:  absolute;top: 10%; left: 40%" >
           <input type="radio" name="formacionT"  class="with-gap" value="Lenguas" required="true" >
-      <span>Lenguas</span>
+      <span>Turismo</span>
     </label>
 
     <label style="font-size:130%; position:  absolute;top: 25%; left: 40%">
           <input type="radio" name="formacionT"  class="with-gap"  value="Informatica" >
-      <span>Informatica</span>
+      <span>Informática</span>
     </label>
 
 
@@ -87,16 +84,6 @@
           <input type="radio" name="formacionT"  class="with-gap" value="Higiene y Salud Comunitaria" >
       <span>Higiene y Salud Comunitaria</span>
     </label>
-
-       <label style="font-size:130%; position:  absolute;top: 55%; left: 40%" >
-          <input type="radio" name="formacionT"  class="with-gap" value="Económico Administrativo" required="true" >
-      <span>Económico Administrativo</span>
-    </label>
-
-
-
-
-
      <input type="submit"  name="formacion" value="Aceptar" class="btn btn-primary" style="font-size:120%; position :absolute;top: 110%; left: 65%" >
 
      {!! form::close() !!}

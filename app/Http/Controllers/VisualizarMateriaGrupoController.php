@@ -27,7 +27,7 @@ class VisualizarMateriaGrupoController extends Controller
         $visibility=2;
         //return $MateriasDelDocente;
         if (count($MateriasDelDocente)==0){
-            return back()->with('MsjERR','No tiene materias asignadas');
+            return redirect('/DocenteInicios?valor='.$usua)->with('MsjERR','No tiene materias asignadas');
         }
         else{
             view('DocenteInterfazPrincipal.InterfazPrincipal',compact('usua'));

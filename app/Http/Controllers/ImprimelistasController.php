@@ -53,15 +53,22 @@ class ImprimelistasController extends Controller
     public function show(Request $r )
     {
         $semestre=$r->semestre;
-        
         $titulo='';
-            if(($r->grupos =='formacion' && $r->semestre =='PRIMER SEMESTRE') || ($r->grupos =='formacion' && $r->semestre =='SEGUNDO SEMESTRE')){
-                return back();
+        if(($r->grupos =='formacion' && $r->semestre =='PRIMER SEMESTRE') || ($r->grupos =='formacion' && $r->semestre =='SEGUNDO SEMESTRE')){
+            //return 'esta aqui';
+            return back()->with('msj2','Sólo Tercer y Cuarto Semestre tienen asignado Formación Para el Trabajo');
             }else if($r->grupos =='formacion'){
                 return view('Listas.formacion',compact('semestre'));
 
             }else if($r->grupos =='bachillerato'){
-                return view('Listas.bachillerato',compact('semestre'));
+                
+                if ($r->semestre =='QUINTO SEMESTRE' || $r->semestre =='SEXTO SEMESTRE'){
+                    return view('Listas.bachillerato',compact('semestre'));
+                }
+                else{
+                    return back()->with('msj2','Sólo Quinto y Sexto Semestre tienen Área Propedéutica');
+                }
+                
 
 
             }else if ($r->Grupo=="A"){
@@ -86,7 +93,6 @@ class ImprimelistasController extends Controller
              return $pdf->stream();
             }else{
                  return back()->with('msj2','No existen alumnos registrados');
-
             }
             
 

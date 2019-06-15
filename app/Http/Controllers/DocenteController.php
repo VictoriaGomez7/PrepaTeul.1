@@ -20,78 +20,51 @@ class DocenteController extends Controller
      */
     public function index(Request $id)
     {
-      if ($id->name!="" && $id->id1=="")
-         {
+        //return $id->id1;
+        //return $id->name;
+        if ($id->name!="" && $id->id1==""){
+            return 'Primer if';
             $CDocente = Docentes::where('Nombre', $id->name)->get();
             if (count($CDocente)==0)
             {
-
                 return back()->with('msj',' El docente no existe' );
+            }
+            else{
+                if (count($CDocente)>1)
+                {
+                    return view('Docente.consultaT',compact('CDocente'));
+                }
+                else{
+                    return view('DocenteC.showC',compact('CDocente'));
+                }
+            }
         }
-        else{
-            //return view('DocenteC.showC',compact('CDocente'));
-        //}
-            //return count($CDocente);
-            if (count($CDocente)>1)
-            {
-                return view('Docente.consultaT',compact('CDocente'));
+        if ($id->id1!="" && $id->name==""){
+            $CDocente = Docentes::where('id', $id->id1)->get();
+            if (count($CDocente)==0){
+                return back()->with('msj',' El docente no existe' );
             }
             else{
                 return view('DocenteC.showC',compact('CDocente'));
             }
         }
-         }
-         if ($id->id1!="" && $id->name=="")
-         {
-            $CDocente = Docentes::where('id', $id->id1)->get();
-            if (count($CDocente)==0)
-            {
 
-                return back()->with('msj',' El docente no existe' );
-        }
-        else{
-            //return view('DocenteC.showC',compact('CDocente'));
-        //}
-            return view('DocenteC.showC',compact('CDocente'));
-        }
-         }
-
-         if ($id->name=="" && $id->id1=="")
-         {
+        if ($id->name=="" && $id->id1==""){
             return back()->with('msj','Favor de ingresar un dato' );
-         }
+        }
 
-         if ($id->name!="" && $id->id1!="")
-         {
-            //$CDocente = Docente::where('id', $id->id)->get();
+        if ($id->name!="" && $id->id1!=""){
             $CDocente = Docentes::where('id', $id->id1)->get();
             foreach ($CDocente as $key) {
-                # code...
+                return $id->name;
+                if ($key->Nombre==$id->name){
+                    return view('DocenteC.showC',compact('CDocente'));
+                }
+                else{
+                   return back()->with('msj','El usuario y nombre no coinciden' );
+                }
             }
-
-            if ($key->Nombre==$id->name)
-            {
-                return view('DocenteC.showC',compact('CDocente'));
-            }
-            else{
-               return back()->with('msj','No coinciden' );
-            }
-
-
-
-            //return back()->with('msj','Favor de ingresar un solo dato' );
-         }
-
-
-        //if (count($CDocente)==0)
-        //{
-
-            //return back()->with('msj',' esa matricula no existe' );
-        //}
-        //else{
-            //return view('DocenteC.showC',compact('CDocente'));
-        //}
-
+        }
     }
 
 
