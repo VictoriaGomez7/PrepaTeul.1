@@ -11,9 +11,9 @@
 		<center>
 		&nbsp 	<table border="1" width="70%" align="center">
 			<tr>
-				<td width="1%" align="center"> <h6>Número</h6></td>
+				<td width="1%" align="center"> <b>Número</b></td>
 
-				<td align="center"><h6>Compromiso</h6></td>
+				<td align="center"><b>Compromiso</b></td>
 			</tr>
 			@if(isset($compromisos))
 			<?php
