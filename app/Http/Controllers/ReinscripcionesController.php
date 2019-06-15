@@ -79,31 +79,36 @@ class ReinscripcionesController extends Controller
                 //return $CALumno;
                 $Semes=$row;
                 if($Semes->Semestre=='PRIMER SEMESTRE'){
+                    $Gra='PRIMER';
                     $opciones2='<option value="PRIMER" selected="true">SEGUNDO SEMESTRE</option>';
                 }else if($Semes->Semestre=='SEGUNDO SEMESTRE'){
                      $bandera=1;
+                     $Gra='SEGUNDO';
                     $opciones2='
                             <option value="SEGUNDO" selected="true">TERCER SEMESTRE</option>';
                 }else if($Semes->Semestre=='TERCER SEMESTRE'){
                    $bandera=11;
+                   $Gra='SEGUNDO';
                     $opciones2='
                             <option value="SEGUNDO" selected="true">CUARTO SEMESTRE</option>';
                 }else if($Semes->Semestre=='CUARTO SEMESTRE'){
                      $bandera=2;
+                     $Gra='TERCER';
                     $opciones2='
                             <option value="TERCER" selected="true">QUINTO SEMESTRE</option>';
                 }else if($Semes->Semestre=='QUINTO SEMESTRE'){
                    $bandera=22;
+                   $Gra='TERCER';
                     $opciones2='
                             <option value="TERCER" selected="true">SEXTO SEMESTRE</option>';
                 }else if($Semes->Semestre=='SEXTO SEMESTRE'){
-
+                    $Gra='TERCER';
                     $opciones2='
                             <option value="TERCER" selected="true">SEXTO SEMESTRE</option>';
                     }
             }
 
-        return view('Reinscripciones.show',compact('CAlumno','alumno1','opciones2','bandera','FtOBache'));
+        return view('Reinscripciones.show',compact('CAlumno','alumno1','opciones2','bandera','FtOBache','Gra'));
         }
     }
 

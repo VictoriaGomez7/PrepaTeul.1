@@ -102,7 +102,7 @@
                       </select>
                     <p style="position: absolute;top: 50%;left:64%">{{('del')}}</p>
                     <!--Caja del grado-->
-                    <input type="text" id="grado" value="{{$alumno->Grado}}" name="Gradoo" disabled style="background-color:#aaa; position: absolute; top:51%; left: 67%; width: 8%;border: 0px;font-size:90%;text-align: center; color:black">
+                    <input type="text" id="grado" value="<?php echo $Gra ?>" name="Gradoo" disabled style="background-color:#aaa; position: absolute; top:51%; left: 67%; width: 8%;border: 0px;font-size:90%;text-align: center; color:black">
                     <input type="text" id="semestree" value="{{$alumno->Semestre}}" name="Semestre" style="background-color:#aaa; position: absolute; top:51%; left: 85%; width: 0%;border: 0px;font-size:90%;text-align: center; color:black">
 
                     <p style="position: absolute; top:53%; left: 75.5%;font-size:90%"> {{('GRADO.')}}</p>

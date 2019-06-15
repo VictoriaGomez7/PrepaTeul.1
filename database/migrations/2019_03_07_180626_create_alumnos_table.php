@@ -32,6 +32,7 @@ class CreateAlumnosTable extends Migration
             $table->string('Sexo');
             $table->string('Semestre');
             $table->string('Grado');
+            $table->string('Estado');
             $table->string('Requisito_A');
             $table->string('Requisito_B');
             $table->string('Requisito_C');
