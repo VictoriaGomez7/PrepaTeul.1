@@ -33,28 +33,23 @@
       if (id == "Primer") {
         $("#Primer").show();
         $("#Segundo").hide();
-        $("#Tercer").hide();
+        
         $("#boton").show();
       }
       
       if (id == "Segundo") {
         $("#Primer").hide();
         $("#Segundo").show();
-        $("#Tercer").hide();
+        
         $("#boton").show();
       }
       
-      if (id == "Tercer") {
-        $("#Primer").hide();
-        $("#Segundo").hide();
-        $("#Tercer").show();
-        $("#boton").show();
-      }
+      
 
       if (id == "ningun") {
         $("#Primer").hide();
         $("#Segundo").hide();
-        $("#Tercer").hide();
+
         $("#boton").hide();
       }
       
@@ -77,7 +72,6 @@
 
     <option value="Segundo">Segundo Periodo</option>
 
-    <option  value="Tercer">Tercer Periodo</option>
 
   </select>
 
@@ -128,27 +122,6 @@
   </div>
 
 
-
-<div id="Tercer" class="element" style="display: none; position: absolute;top: 5%; left: 45%; width: 20%;height:53%;">
-
-  <label>Fecha Inicial</label>
-  <input 
-   id="fecha5" 
-   type="date" name="fecha5" onChange="sinDomingo5();" 
-   onblur="obtenerfechafinf5();" style="width:200px;" value="{{$no_p[2]->fecha1}}"/>
-   <input
-    id="elSubmit5"  type="submit" style="display:none;" />
-
-    <label>Fecha Final</label>
-  <input 
-   id="fecha6" 
-   type="date" name="fecha6" onChange="sinDomingos6();" 
-   onblur="obtenerfechafinf6();" style="width:200px;"value="{{$no_p[2]->fecha2}}"/>
-   <input
-    id="elSubmit6"  type="submit" style="display:none;" />   
-
-
-  </div>
 
 <button type="submit" class="btn btn-primary" id="boton" style="display:none; position: absolute;top: 70%; left: 52.5%;">Guardar</button>
 
@@ -251,51 +224,6 @@ function obtenerfechafinf4(){
 
 
 
-<script type="text/javascript">
-var elDate5 = document.getElementById('fecha5');
-var elForm5 = document.getElementById('elForm');
-var elSubmit5 = document.getElementById('elSubmit5');
-
-
-
-function sinDomingos5(){
-    var day = new Date(elDate5.value ).getUTCDay();
-    // Días 0-6, 0 es Domingo 6 es Sábado
-    elDate5.setCustomValidity(''); // limpiarlo para evitar pisar el fecha inválida
-    if( day == 0 || day == 6 ){
-       elDate5.setCustomValidity('Fines de semana no disponibles, por favor seleccione otro día');
-    } else {
-       elDate5.setCustomValidity('');
-    }
-    if(!elForm5.checkValidity()) {elSubmit5.click()};
-}
-
-function obtenerfechafinf5(){
-    sinDomingos5();
-}
-
-var elDate6 = document.getElementById('fecha6');
-var elForm6 = document.getElementById('elForm');
-var elSubmit6 = document.getElementById('elSubmit6');
-
-
-
-function sinDomingos6(){
-    var day = new Date(elDate6.value ).getUTCDay();
-    // Días 0-6, 0 es Domingo 6 es Sábado
-    elDate6.setCustomValidity(''); // limpiarlo para evitar pisar el fecha inválida
-    if( day == 0 || day == 6 ){
-       elDate6.setCustomValidity('Fines de semana no disponibles, por favor seleccione otro día');
-    } else {
-       elDate6.setCustomValidity('');
-    }
-    if(!elForm6.checkValidity()) {elSubmit6.click()};
-}
-
-function obtenerfechafinf6(){
-    sinDomingos6();
-}
-</script>
 
 </div>
 </div>

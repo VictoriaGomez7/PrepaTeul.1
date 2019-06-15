@@ -266,29 +266,29 @@ class AsistenciasController extends Controller
       $bandera=0;
       $fecha=date("Y-m-d");
       $per=Periodo::get();
-      $estep=0;
+      $estep=[];
       foreach ($per as $pe) {
         if ($pe->fecha1==null || $pe->fecha2==null) {
           return back()->with('msj',' Favor de solicitar a Control Escolar asignar periodos' );
         }
       }
-      foreach ($per as $pe) {
-          if ($pe->fecha1<= $fecha && $pe->fecha2>=$fecha  && $pe->id!=1 && $pe->fecha1  != null && $pe->fecha2!=null) {
-              $num=$pe->id-1;
-              $d=$per[$num-1]->dias;
+        
+          if ($per[0]->fecha1<=$fecha && $per[0]->fecha2>$fecha != null && $per[0]->fecha2!=null) {
+            return back()->with('msj',' Favor de asignar asistencias hasta culminar el primer periodo' );
+          }
+          
+        
+          if ($per[1]->fecha2>=$fecha  && $per[1]->id==2 && $per[1]->fecha1  != null && $per[1]->fecha2!=null) {
+              $num=$per[0]->id;
+              $d=$per[0]->dias;
                $estep= [$num,$d];
            }
-           if ($pe->fecha1 <= $fecha && $pe->fecha2<=$fecha && $pe->id==3  && $pe->fecha1 != null && $pe->fecha2!=null) {
-               $estep= [$pe->id,$pe->dias];
+           if ($per[1]->fecha1 <= $fecha && $per[1]->fecha2<=$fecha && $per[1]->id==2  && $per[1]->fecha1 != null && $per[1]->fecha2!=null) {
+               $estep= [$per[1]->id,$per[1]->dias];
            }
-           if ($pe->fecha1<= $fecha && $pe->fecha2>=$fecha && $pe->id==1 && $pe->fecha1 != null && $pe->fecha2!=null) {
-               $estep= [$pe->id,$pe->dias];
-           }
-           if ($pe->fecha1<= $fecha && $pe->fecha2>=$fecha  && $pe->id==1 && $pe->fecha1  != null && $pe->fecha2!=null) {
-               return back()->with('msj',' Favor de asignar asistencias hasta culminar el primer periodo' );
-           }
+           
 
-      }
+      
       if ($Grupo == 'A' || $Grupo =='B') {
         $Claves = Grupo::where('Grupo', $Grupo)->get();
         $Materia= Materia::where('Clave',$Clavemat)->get();

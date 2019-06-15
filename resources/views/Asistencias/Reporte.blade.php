@@ -25,16 +25,24 @@
 <body>
  <div class="card-header text-center" style="font-size:200%;width: 90%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 52%; left: 5%;" >{{ __('Asistencias ') }}{{$Materia[0]->Nombre}} {{$Grupo}}</div> <!-- text-center ES PARA CENTRA EL TEXTO -->
 <div style="position: absolute;top: 62%; left: 5%; width: 90%;height:50%; border: 2px solid gray;">
-              <select name="transporte" size="10" onChange="mostrar(this.value);"style="position: absolute;top: 5%; left: 5%; width: 25%;height:53%;">
+              <b style="position: absolute;top: 2%; left: 11%; width: 25%;height:53%;">Periodos Capturados</b>
+              <select name="transporte" size="10" onChange="mostrar(this.value);"style="position: absolute;top: 10%; left: 5%; width: 25%;height:53%;">
               <!--<option value="otro">Seleccione uno</option>-->
 
 
                @foreach( $asis as $doc)
               @foreach($arrayalumnos as $alumn)
               @if($doc->id == $alumn->id)
+              @if($doc->Periodo ==1)
 
-                <option value="{{$doc->Periodo}}">{{$doc->Periodo}}</option>
+                <option value="{{$doc->Periodo}}">Primer periodo</option>
                 
+               @endif
+               @if($doc->Periodo ==2)
+
+                <option value="{{$doc->Periodo}}">Segundo periodo</option>
+                
+               @endif
                @endif
               @endforeach
               @endforeach
