@@ -2,6 +2,12 @@
 
 <a href="ControlEscolarInicio">
             <button class="btn btn-success" style="font-size:120%; position: absolute;top: 115%;left:67%">Cancelar</button></a>
+             @if (session()->has('msj'))
+        <div class="alert alert-danger" role="alert" style="width: 50%; position:  relative;text-align: center; left: 25%;">
+            <button class="close" data-dismiss="alert"><span>&times;</span></button>
+            <strong>¡Error! </strong>{{ session('msj') }}
+        </div>
+    @endif
 <html>
 
     <head>

@@ -70,7 +70,7 @@ class ImprimelistasController extends Controller
             from alumnos    WHERE  (EXISTS (SELECT 1 from grupos
         WHERE grupos.id=alumnos.id and grupos.Grupo='A'))
                           AND alumnos.Semestre= :sem" ,['sem'=>$semestre]);
-                 $titulo=$semestre . " Grupo A";
+                 $titulo=$semestre . " GRUPO A";
             }else{
 
 
@@ -78,10 +78,17 @@ class ImprimelistasController extends Controller
             from alumnos    WHERE  (EXISTS (SELECT 1 from grupos
         WHERE grupos.id=alumnos.id and grupos.Grupo='B'))
                           AND alumnos.Semestre= :sem" ,['sem'=>$semestre]);
-                 $titulo=$semestre . " Grupo B";
+                 
             }
-             $pdf= PDF::loadView('Listas.muestraGrupos',compact('listaA','semestre','titulo'));
+            if(count($listaA)){
+                $titulo=$semestre . " GRUPO B";
+                 $pdf= PDF::loadView('Listas.muestraGrupos',compact('listaA','semestre','titulo'));
              return $pdf->stream();
+            }else{
+                 return back()->with('msj2','No existen alumnos registrados');
+
+            }
+            
 
     return view('Listas.muestraGrupos',compact('listaA','semestre','titulo'));
            
@@ -103,9 +110,19 @@ class ImprimelistasController extends Controller
             from alumnos    WHERE  (EXISTS (SELECT 1 from ft_baches
         WHERE ft_baches.id=alumnos.id and ft_baches.Formación_Trabajo= :formacion ))
                           AND alumnos.Semestre= :sem" ,['sem'=>$semestre   , 'formacion'=>$formacion]);
-       $pdf= PDF::loadView('Listas.muestraGrupos',compact('listaA','semestre','titulo'));
-       $titulo=$semestre . " ".$r->formacionT;
+      $titulo=$semestre . " ".$r->formacionT;
+
+        if(count($listaA)>0){
+
+                 $pdf= PDF::loadView('Listas.muestraGrupos',compact('listaA','semestre','titulo'));
+       
        return $pdf->stream();
+
+        }else{
+            
+           return back()->with('msj2','No existen alumnos registrados');
+        }
+      
     }
 
     /**
@@ -124,10 +141,18 @@ class ImprimelistasController extends Controller
            from alumnos    WHERE  (EXISTS (SELECT 1 from ft_baches
         WHERE ft_baches.id=alumnos.id and ft_baches.Bachillerato= :bachillerato ))
                           AND alumnos.Semestre= :sem" ,['sem'=>$semestre   , 'bachillerato'=>$bachillerato]);
+         if(count($listaA)>0){
          $titulo=$semestre . " ".$r->bachilleratoT;
+
       $pdf= PDF::loadView('Listas.muestraGrupos',compact('listaA','semestre','titulo'));
        
        return $pdf->stream();
+        }else{
+
+            $msj2= "No existen alumnos registrados";
+            
+            return back()->with('msj2','No existen alumnos registrados');
+        }
     }
 
     /**

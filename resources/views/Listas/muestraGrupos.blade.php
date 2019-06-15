@@ -25,8 +25,8 @@
                <table width="100%" left="5px" align="left" border="1">
           <tr>
            
-            <td width="15%" align="left">Matricula</td>
-             <td width="85%" align="left">Alumno</td>
+            <td width="15%" align="left"><b>Matricula</b></td>
+             <td width="85%" align="left"><b>Alumno</b></td>
           </tr>
           
         

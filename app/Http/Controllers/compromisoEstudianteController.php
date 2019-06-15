@@ -134,10 +134,11 @@ class compromisoEstudianteController extends Controller
                     $compromisos= compromisoEstudiante::take(100)->get();
              if(count($compromisoEstudiante)>=$r->cambios){
                      $compromiso= $compromisoEstudiante[$r->cambios-1];
+                     $numero=$r->cambios;
                     // return $compromiso;
                       $compromisoEstudiante=compromisoEstudiante::take(100)->get();
                     $compromisos= compromisoEstudiante::take(100)->get();
-                        return view('compromisos.busqueda' ,compact('compromiso','compromisos'));
+                        return view('compromisos.busqueda' ,compact('compromiso','compromisos','numero'));
              }else{
                 return redirect('formatoestudiantes' )->with('msj2','Compromiso no encontrado');
              }
