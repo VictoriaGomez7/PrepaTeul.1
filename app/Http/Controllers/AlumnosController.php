@@ -111,6 +111,7 @@ class AlumnosController extends Controller
         $alumno->Grado=$request['semestres'];
         $alumno->Semestre=$request['semestree'];
         $alumno->Sexo=$request['sexo'];
+        $alumno->Estado='REGULAR';
         $alumno->Requisito_A=$request['A'];
         $alumno->Requisito_B=$request['B'];
         $alumno->Requisito_C=$request['C'];
