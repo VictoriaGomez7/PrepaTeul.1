@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <a href="http://127.0.0.1:8000/docenteconsulta">
-            <button class="btn btn-success" style="position: absolute;top: 120%;left:25%">Cancelar</button></a>
+            <button class="btn btn-success" style="position: absolute;top: 120%;left:69%">Cancelar</button></a>
 
 @extends('layouts.app')
 
@@ -22,7 +22,7 @@
         <form class="form-group" method="PUT" action="/Docente/{{$docente->id}}">
 
             <div style="position: absolute;top: 62%; left: 25%; width: 50%;height:50%;background-color:#aaa">
-               
+
                 <p style="font-size:140%;position: absolute;top:6%;left: 10%">{{('Clave:')}}</p>
                 <p style="font-size:140%;position: absolute;top:20%;left: 10%">{{('Nombre:')}}</p>
                 <p style="font-size:140%;position: absolute;top:34%;left: 10%">{{('Domicilio:')}}</p>
@@ -49,7 +49,7 @@
 
             </div>
 
-            <button type="submit" class="btn btn-primary" href="#" style="position: absolute;top: 120%;left:59%">Modificar</button>
+            <button type="submit" class="btn btn-primary" href="#" style="position: absolute;top: 120%;left:25%">Modificar</button>
 
 
         </form>
@@ -59,5 +59,5 @@
 </body>
 
 {!!Form::open(['route' => ['Docente.destroy',$docente->id],'method'=>'DELETE'])!!}
-{!!Form::submit('Eliminar',['class'=>'btn btn-danger', 'style'=>'position: absolute;top: 120%;left:69%'])!!}
+{!!Form::submit('Eliminar',['class'=>'btn btn-danger', 'style'=>'position: absolute;top: 120%;left:35%'])!!}
 {!! Form::close()!!}

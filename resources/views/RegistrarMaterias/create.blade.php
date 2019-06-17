@@ -15,7 +15,7 @@
             if (valor=="Formación Propedéutica"){
                 document.getElementById("bachillerato").disabled = false;
             }else{
-                
+
                 document.getElementById("bachillerato").disabled = true;
             }
            }
@@ -77,7 +77,7 @@
                             <option value="Humanidades y Ciencias Sociales">Humanidades y Ciencias Sociales</option>
                             <option value="Económico Administrativa">Económico-Administrativa</option>
                       </select>
-                
+
                 <select name="semestre" required style="font-size:110%;width: 65%;;position: absolute;top:59%; left:30%;">
                             <option value="{{ old('semestre') }}">{{ old('semestre') }}</option>
                             <option value="PRIMER SEMESTRE" selected>PRIMER SEMESTRE</option>
@@ -87,9 +87,9 @@
                             <option value="QUINTO SEMESTRE">QUINTO SEMESTRE</option>
                             <option value="SEXTO SEMESTRE">SEXTO SEMESTRE</option>
                       </select>
-                <p><input type="number" placeholder="1" value="{{ old('horas') }}" required min="1" id="horas" name="horas" style="font-size:105%; width: 65%; position:  absolute;top: 74%; left: 30%"/></p>
+                <p><input type="number" placeholder="1" value="{{ old('horas') }}" required min="1" max="12" id="horas" name="horas" style="font-size:105%; width: 65%; position:  absolute;top: 74%; left: 30%"/></p>
 
-                
+
             </div>
 
 

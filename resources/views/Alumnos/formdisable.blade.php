@@ -1,6 +1,6 @@
 <!doctype html>
 <a href="http://127.0.0.1:8000/alumnosconsulta">
-            <button class="btn btn-success" style="position: absolute;top: 210%;left:5%">Cancelar</button></a>
+            <button class="btn btn-success" style="position: absolute;top: 210%;left:85%">Cancelar</button></a>
 @extends('layouts.app')
 
 @section('title','Modificar Alumno')
@@ -181,11 +181,11 @@
         </form>
 
     {!!Form::open(['route' => ['Alumnos.update',$alumno->id],'method'=>'PUT'])!!}
-    {!!Form::submit('Modificar',['class'=>'btn btn-primary','style'=>'position: absolute;top:210%;left:75%;'])!!}
+    {!!Form::submit('Modificar',['class'=>'btn btn-primary','style'=>'position: absolute;top:210%;left:5%;'])!!}
     {!! Form::close()!!}
 
     {!!Form::open(['route' => ['Alumnos.destroy',$alumno->id],'method'=>'DELETE'])!!}
-    {!!Form::submit('Eliminar',['class'=>'btn btn-danger','style'=>'position: absolute;top:210%;left:85%;'])!!}
+    {!!Form::submit('Eliminar',['class'=>'btn btn-danger','style'=>'position: absolute;top:210%;left:15%;'])!!}
     {!! Form::close()!!}
 
 

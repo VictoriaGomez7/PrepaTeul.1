@@ -114,19 +114,19 @@ body{
 				<p><button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Entrar</button></p>
 
 		</a>
-				
+
 		 	</form>
 		 </div>
 		 <a href="interfazpri">
     	<button class="btn btn-lg btn-success btn-block btn-signin">Cancelar</button>
 		 </div>
 	     <br><br><br><br><br>
-	      <p align="center" style="color: black; font-size: 1.3em;"> Constitución s/n Teul de González Ortega.<br/>
+	      <p align="center" style="color: black; font-size: 1.3em;"> Constitución #100 Teul de González Ortega.<br/>
 	     Zac. C.P. 99800 <br/>
 	    Teléfono (467)-952-71-83 <br/>
 	      Correo-e:prepateul@yahoo.com.mx
 	     </p >
 	</body>
- 
-	
+
+
 @endsection

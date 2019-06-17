@@ -125,7 +125,7 @@ body{
     <button class="btn  btn-lg btn-success btn-block btn-signin">Cancelar</button></a>
 		 </div>
      <br><br><br><br><br>
-      <p align="center" style="color: black; font-size: 1.3em;"> Constitución s/n Teúl de González Ortega.<br/>
+      <p align="center" style="color: black; font-size: 1.3em;"> Constitución #100 Teúl de González Ortega.<br/>
      Zac. C.P. 99800 <br/>
     Teléfono (467)-952-71-83 <br/>
       Correo-e:prepateul@yahoo.com.mx
@@ -135,5 +135,5 @@ body{
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
  <!-- Libreria java scritp de bootstrap -->
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	
+
 @endsection
