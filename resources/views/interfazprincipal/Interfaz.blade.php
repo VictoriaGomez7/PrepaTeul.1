@@ -67,7 +67,7 @@
      </div>
      <br>
      <br><br><br><br><br><br><br>
-      <p align="center" style="color: white; font-size: 1.3em;"> Constitución s/n Teul de González Ortega.</p>
+      <p align="center" style="color: white; font-size: 1.3em;"> Constitución #100 Teul de González Ortega.</p>
       <p align="center" style="color: white; font-size: 1.3em;"> Zac. C.P. 99800</p>
       <p align="center" style="color: white; font-size: 1.3em;">Teléfono (467)-952-71-83  </p>
       <p align="center" style="color: white; font-size: 1.3em;">Correo-e:prepateul@yahoo.com.mx
