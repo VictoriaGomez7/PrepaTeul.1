@@ -36,6 +36,11 @@
 						<ul class="submenu">
 						<li><a href ="http://127.0.0.1:8000/VisualizaMaGr?valor={{ ($usua) }}">Visualizar</a></li>
 					</ul>
+				<li><a href="#">Calificaciones</a>
+						<ul class="submenu">
+						<li><a href ="http://127.0.0.1:8000/AsignarCalificacion?valor={{ ($usua) }}">Visualizar</a></li>
+					</ul>
+				</li>
 				<li><a href="#">Asistencias</a>
 						<ul class="submenu">
 						<li><a href ="http://127.0.0.1:8000//Asistencias?valor={{ ($usua) }}">Capturar</a></li>

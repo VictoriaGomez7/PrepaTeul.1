@@ -130,3 +130,5 @@ Route::resource('Asistencias','AsistenciasController');
 Route::resource('VisualizarDocentes','VisuaDocentesController');
 
 Route::resource('VisualizaMaGr','VisualizarMateriaGrupoController');
+
+Route::resource('AsignarCalificacion','CalificacionesController');
