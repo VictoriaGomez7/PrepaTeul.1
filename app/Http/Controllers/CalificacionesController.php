@@ -3,16 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\CalificacionesParciales;
 use App\Docentes;
 use App\RelacionDocenteMateriaGrupo;
 use App\Alumno;
 use App\Grupo;
 use App\Materia_Grupo;
-
 use App\Periodo;
-
 
 class CalificacionesController extends Controller
 {
@@ -29,7 +26,6 @@ class CalificacionesController extends Controller
         //return $id;
         $NombreDoc=Docentes::where('id',$id)->get();
         $MateriasDelDocente=RelacionDocenteMateriaGrupo::where('Docente',$NombreDoc[0]->Nombre)->get();
-
         $Periodo1ini=Periodo::where('id','1')->get('fecha1');
         $Periodo1fin=Periodo::where('id','1')->get('fecha2');
         $Periodo2ini=Periodo::where('id','2')->get('fecha1');
@@ -47,16 +43,6 @@ class CalificacionesController extends Controller
         else{
             view('DocenteInterfazPrincipal.InterfazPrincipal',compact('usua'));
             return view('Calificaciones.VisualizarCalif',compact('MateriasDelDocente','visibility','id','usua'));
-
-        $visibility=2;
-        //return $MateriasDelDocente;
-        if (count($MateriasDelDocente)==0){
-            return redirect('/DocenteInicios?valor='.$usua)->with('MsjERR','No tiene materias asignadas');
-        }
-        else{
-            view('DocenteInterfazPrincipal.InterfazPrincipal',compact('usua'));
-            return view('Calificaciones.VisualizarCalifi',compact('MateriasDelDocente','visibility','id','usua'));
-
         }
         
     }
@@ -79,7 +65,6 @@ class CalificacionesController extends Controller
      */
     public function store(Request $request)
     {
-
         //return $request->ClaveMateriaSelec;
         
 
@@ -197,6 +182,7 @@ class CalificacionesController extends Controller
         view('DocenteInterfazPrincipal.InterfazPrincipal',compact('usua'));
         return view('Calificaciones.VisualizarCalif',compact('MateriasDelDocente','AlumnosEnMismoSemestre','visibility','id','usua','Materiasele','PeriodoActivo','Calif_Extraidas'));
 
+        
     }
 
     /**
@@ -216,7 +202,6 @@ class CalificacionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
     public function edit(Request $id)
     {
         //return $id->Usua;
