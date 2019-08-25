@@ -25,6 +25,7 @@
 				<li><a href="#">Calificaciones</a>
 						<ul class="submenu">
 						<li><a href ="http://127.0.0.1:8000/AsignarCalificacion?valor={{ ($usua) }}">Capturar</a></li>
+
 					</ul>
 				</li>
 				<li><a href="#">Asistencias</a>
