@@ -149,17 +149,12 @@ class AlumnosController extends Controller
             {
         $ides=$alumno1['id'];
         $alumn="";
-        $alumns=Alumno::where([
-            ['id',$alumno1->id]
-        ])->get();
+        $alumns=Alumno::where([['id',$alumno1->id]])->get();
         foreach ($alumns as $row){
-            # code...
             $alumn=$row;
             $alumn->fill($alumno1->all());
-
         }
-          $alumn->save();
-
+        $alumn->save();
 
        return redirect('alumnosconsulta')->with('msj2','Alumno modificado correctamente');
 

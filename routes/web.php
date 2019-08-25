@@ -89,10 +89,22 @@ Route::get('/Asistencias' ,function(){
     return view('Periodos.show');
 });
 
+//Ruta para vista de calificaciones de Control Escolar
+Route::resource('CONSULTACALIFICACIONESCE','ConsultarCalificacionesCEController');
+//Ruta para vista de calificaciones de Docenetes
+Route::get('/CONSULTACALIFICACIONESDC', function () {
+    return view('Calificaciones.ConsultaDC');
+});
+
+
+
+
+
 Route::get('Asistencias','AsistenciasController@Report');
 
 
 Route::resource('Imprimelistas','ImprimelistasController');
+
 Route::resource('LoginAlumno','LoginAController');
 
 Route::resource('LoginDocente','LoginMController');
@@ -130,3 +142,7 @@ Route::resource('Asistencias','AsistenciasController');
 Route::resource('VisualizarDocentes','VisuaDocentesController');
 
 Route::resource('VisualizaMaGr','VisualizarMateriaGrupoController');
+
+Route::resource('AsignarCalificacion','CalificacionesController');
+
+Route::resource('Calificaciones','CalificacionesController');

@@ -56,6 +56,13 @@
 						<li><a href="materia">Consultar</a></li>
 					</ul>
 				</li>
+
+				<li><a href="#">Calificaciones</a>
+							<ul class="submenu">
+							<li><a href="http://127.0.0.1:8000/CONSULTACALIFICACIONESCE">Consultar Calificaciones</a></li>
+						</ul>
+					</li>
+
 				<li><a href="#">Compromisos</a>
 						<ul class="submenu">
 						<li><a href="compromisos">Agregar Compromisos Estudiantes</a></li>
@@ -77,7 +84,7 @@
 
 						</ul>
 					</li>
-                    <li style="left: 18%;"><a href="#" >Control Escolar</a>
+                    <li><a href="#" >Control Escolar</a>
 						<ul class="submenu">
 							<li><a href="http://127.0.0.1:8000/interfazpri">CERRAR SESION</a>
 						</ul>
@@ -88,7 +95,7 @@
 		@include('interfazprincipal.imagenn')
 	</header>
 	<!--<img src="/images/img7.png" class="imagen">-->
-	    <p align="center" style="color: black; font-size: 1.3em;position: absolute;top: 125%;left:5%; background: #EEF0F3; width: 90%">
+	    <p align="center" style="color: black; font-size: 1.3em;position: absolute;top: 110%;left:5%; background: #EEF0F3; width: 90%">
 	    	</br>
 	    	Constitución #100 Teul de González Ortega.<br/>
                 Zac. C.P. 99800 <br/>

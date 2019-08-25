@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/css/estilos2.css">
     <link rel="stylesheet" type="text/css" href="/css/image.css">
 	@extends('layouts.app')
-	<title>Visualizar Listas</title>
+	<title>Visualizar</title>
 </head>
 <body>
 	<style type="text/css">
@@ -26,7 +26,7 @@
 			<!--<?php print_r($MateriasDelDocent->Materia); ?>-->
 
 
-			{!!Form::open(['route' => ['VisualizaMaGr.store'],'method'=>'POST'])!!}
+			{!!Form::open(['route' => ['AsignarCalificacion.store'],'method'=>'POST'])!!}
 			<input type="submit" value="{{$MateriasDelDocent->Materia." ".$MateriasDelDocent->Grupo}}" name="MateriaSeleccionada" class="NombreMateria" style="background-color: #85C1E9; border: 2px solid #0000000; width: 200px;height: 40px; margin: 5px;" readonly>
 			<input type="hidden" value="{{$MateriasDelDocent->ClaveMateria}}" name="ClaveMateriaSelec" >
 			<input type="hidden" value="{{$MateriasDelDocent->Grupo}}" name="Grupo" >
@@ -49,12 +49,16 @@
 		        <tr style="font-size:120%">
 		          <th  align="center" style="width:2%">{{ ('Matrícula') }}</th>
 		          <th  align="center">{{ ('Alumno') }}</th>
+		          <th  align="center">{{ ('Parcial 1') }}</th>
+		          <th  align="center">{{ ('Parcial 2') }}</th>
 		        </tr>
 		        	<?php $contador=0;?>
 		        @foreach($AlumnosEnMismoSemestre as $AlumnosEnMismoSemestr)
 		          <tr>
 		            <td>{{ $AlumnosEnMismoSemestr[$contador]->id }}</td>
 		            <td >{{ $AlumnosEnMismoSemestr[$contador]->Nombre_A}}</td>
+		            <td><input type="number" step="0.1" name="Parcial1" placeholder="0"> </td>
+		            <td><input type="number" step="0.1" name="Parcial2" placeholder="0"></td>
 		          </tr>
 		         @endforeach
 		    </table>
