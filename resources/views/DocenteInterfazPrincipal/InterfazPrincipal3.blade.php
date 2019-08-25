@@ -18,9 +18,16 @@
 	?>
 
 	@if (session()->has('MsjERR'))
-        <div class="alert alert-danger" role="alert" style="width: 90%; position:  absolute;top: 43%; left: 5%;z-index: 1;">
+        <div class="alert alert-danger" role="alert" style="width: 90%; position:  absolute;top: 45%; left: 5%;z-index: 1;">
             <button class="close" data-dismiss="alert"><span>&times;</span></button>
             <strong>¡ERROR! </strong>{{ session('MsjERR') }}
+        </div>
+    @endif
+
+    @if (session()->has('MsjC'))
+        <div class="alert alert-success" role="alert" style="width: 90%; position:  absolute;top: 45%; left: 5%;z-index: 1;">
+            <button class="close" data-dismiss="alert"><span>&times;</span></button>
+            <strong>Correcto! </strong>{{ session('MsjC') }}
         </div>
     @endif
 
@@ -30,6 +37,11 @@
 				<li><a href="#">Listas</a>
 						<ul class="submenu">
 						<li><a href ="http://127.0.0.1:8000//VisualizaMaGr?valor={{ ($usua) }}">Visualizar</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Calificaciones</a>
+						<ul class="submenu">
+						<li><a href ="http://127.0.0.1:8000/AsignarCalificacion?valor={{ ($usua) }}">Capturar</a></li>
 					</ul>
 				</li>
 				<li><a href="#">Asistencias</a>
@@ -52,7 +64,7 @@
 		@include('interfazprincipal.imagenn')
 	</header>
 
-	<p align="center" style="color: black; font-size: 1.3em;position: absolute;top: 125%;left:5%; background: #EEF0F3; width: 90%">
+	<p align="center" style="color: black; font-size: 1.3em;position: absolute;top: 110%;left:5%; background: #EEF0F3; width: 90%">
 		</br>
 		Constitución #100 Teul de González Ortega.<br/>
 	    Zac. C.P. 99800 <br/>

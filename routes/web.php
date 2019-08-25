@@ -93,6 +93,7 @@ Route::get('Asistencias','AsistenciasController@Report');
 
 
 Route::resource('Imprimelistas','ImprimelistasController');
+
 Route::resource('LoginAlumno','LoginAController');
 
 Route::resource('LoginDocente','LoginMController');
@@ -130,3 +131,5 @@ Route::resource('Asistencias','AsistenciasController');
 Route::resource('VisualizarDocentes','VisuaDocentesController');
 
 Route::resource('VisualizaMaGr','VisualizarMateriaGrupoController');
+
+Route::resource('AsignarCalificacion','CalificacionesController');

@@ -88,7 +88,7 @@
 		@include('interfazprincipal.imagenn')
 	</header>
 	<!--<img src="/images/img7.png" class="imagen">-->
-	    <p align="center" style="color: black; font-size: 1.3em;position: absolute;top: 125%;left:5%; background: #EEF0F3; width: 90%">
+	    <p align="center" style="color: black; font-size: 1.3em;position: absolute;top: 110%;left:5%; background: #EEF0F3; width: 90%">
 	    	</br>
 	    	Constitución #100 Teul de González Ortega.<br/>
                 Zac. C.P. 99800 <br/>
