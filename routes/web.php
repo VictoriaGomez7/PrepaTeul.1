@@ -98,6 +98,8 @@ Route::get('/CONSULTACALIFICACIONESDC', function () {
 
 
 
+
+
 Route::get('Asistencias','AsistenciasController@Report');
 
 
@@ -142,3 +144,5 @@ Route::resource('VisualizarDocentes','VisuaDocentesController');
 Route::resource('VisualizaMaGr','VisualizarMateriaGrupoController');
 
 Route::resource('AsignarCalificacion','CalificacionesController');
+
+Route::resource('Calificaciones','CalificacionesController');

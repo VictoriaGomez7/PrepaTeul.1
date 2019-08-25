@@ -1,18 +1,11 @@
-
 @extends('layouts.app')
 
 @section('title','Tabla Calificacio Alumno')
  @include('ControlEscolar.CEprincipal')
 @section('content')
-@if (session()->has('msj1'))
-    <div class="alert alert-success" role="alert" style="width: 60%; position:  absolute;top: 43%; left: 15%;z-index: 1;">
-      <button class="close" data-dismiss="alert"><span>&times;</span></button>
-        <strong>¡Correcto! </strong>{{ session('msj1') }}
-    </div>
-  @endif
 <a href="http://127.0.0.1:8000/CONSULTACALIFICACIONESCE">
             <button class="btn btn-success" style="position: absolute;top: 150%;left:75%">Cancelar</button></a>
-		{{--@include('Reinscripciones.form',compact('CAlumno','bandera','FtOBache'))--}}
+    {{--@include('Reinscripciones.form',compact('CAlumno','bandera','FtOBache'))--}}
 <html>
 <head>
 <style>
@@ -34,8 +27,8 @@ tr:nth-child(even) {
 </style>
 </head>
 <body>
-@foreach($nombreA as $nombre)
-	<h2 style="position: absolute;left: 5%;">{{$nombre->Nombre_A}}</h2>
+@foreach($alum as $nombre)
+  <h2 style="position: absolute;left: 5%;">{{$nombre->Nombre_A}}</h2>
 @endforeach()
 
 
@@ -46,15 +39,16 @@ tr:nth-child(even) {
     <th>Parcial 2</th>
     <th></th>
   </tr>
-  @foreach($AL as $alumno)
-  	<tr>
-      {!! Form::open(['route'=>['Calificaciones.show',$alumno->id],'method'=>'PUT']) !!}
-	    <td>{{$alumno->ClaveM}}</td>
-	    <td>{{$alumno->Parcial1}}</td>
-	    <td>{{$alumno->Parcial2}}</td>
-      <td><button class="btn btn-success">Modificar</button></td>
-      </form>
-  	</tr>
+  @foreach($alum as $alumno)
+    <tr>
+      <form class="form-group" method="GET" action="/Calificaciones/{{$alumno->id}}">
+      <td>{{$alumno->ClaveM}}</td>
+
+      <td><input type="number" step="0.1" name="Parcial1" value="{{ $alumno->Parcial1}}"> </td>
+      <td><input type="number" step="0.1" name="Parcial2" value="{{ $alumno->Parcial2}}"></td>
+          <td><button class="btn btn-success">Guardar</button></td>
+        </form>
+    </tr>
   @endforeach()
   {{--
   <tr>

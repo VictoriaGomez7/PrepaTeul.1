@@ -54,7 +54,7 @@ class CalificacionesController extends Controller
      */
     public function create()
     {
-        return "MEMD";
+        return 'hola1';
     }
 
     /**
@@ -191,9 +191,25 @@ class CalificacionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($g, Request $r)
     {
-        //
+        //return $r;
+
+        //$docente = Docente::where('Clave', $docente1->clave1)->first();
+
+
+        $calif=CalificacionesParciales::find($g);
+
+        $usua=$calif->ClaveA;
+        $calif->Parcial1 = $r->Parcial1;
+        $calif->Parcial2 = $r->Parcial2;
+        //echo $docente->Domicilio;
+        //$docente->save();
+        $calif->save();
+
+        //return $usua;
+            //return view('Docente.create')->with('msj1','Docente modificado exitosamente');
+        return Redirect('/CONSULTACALIFICACIONESCE/show?id='.$usua)->with('msj1','Calificación modificada exitosamente' );
     }
 
     /**
@@ -242,7 +258,12 @@ class CalificacionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $alum=CalificacionesParciales::where('id',$id)->get();
+        //$mate=Materia::get();
+        //return $id;
+
+        return view('Calificaciones.modificarC',compact('alum'));
     }
 
     /**
