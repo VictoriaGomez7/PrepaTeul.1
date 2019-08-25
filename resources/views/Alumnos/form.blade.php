@@ -23,6 +23,17 @@
             }
             </script>
 
+            <script>
+              function calcular(nacio){
+              fecha=new Date();
+              nacimiento=new Date(nacio);
+              edad=(fecha-nacimiento);
+              edad=Math.floor(edad/(1000*60*60*24*365));
+              alert("Tienes "+edad+" años");
+              }
+            </script> 
+
+
             <div class="card-header text-center" style="font-size:200%;width: 90%; height: 9.8%; background: #000080; color: rgb(212, 172, 13); position:  absolute;top: 52%; left: 5%;" >{{ __('MODIFICAR ALUMNO') }}</div> <!-- text-center ES PARA CENTRA EL TEXTO -->
 
 
@@ -73,6 +84,7 @@
 
                 <p><input type="text" required id="curp" pattern="^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$" name="Curp" value="{{$alumno->Curp}}"  value="{{$alumno->Curp}}" style="font-size:105%; width:97%;"/></p>
                 <p><input type="text" id="nss"  value="{{$alumno->NSS}}" min="1" max="99999999999" name="NSS" style="font-size:105%; width:97%;"/></p>
+
 
                 <p> <input type="date" name="Fecha_Nac" required value="{{$alumno->Fecha_Nac}}" style="position: absolute;top: 69%;left:0%; width:90%"> </p>
 
